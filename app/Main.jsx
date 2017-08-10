@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 function add() {
   console.log('hello')
- }
+}
 
 ReactDOM.render(
   <div>Hello world!</div>,
