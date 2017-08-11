@@ -20,6 +20,7 @@ class MapContainer extends React.Component {
   }
 
 	render() {
+    console.log(this.props.selectedMarker)
 		return (
       <div style={{height: '100vh'}}>
         <InitialMap
@@ -36,7 +37,7 @@ class MapContainer extends React.Component {
 // CONTAINER
 
 const mapState = (state) => ({
-  selectedMarker: state.selectedMarker
+  selectedMarker: state.map.selectedMarker
 })
 
 
