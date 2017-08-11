@@ -11,34 +11,31 @@ class MapContainer extends React.Component {
 
   constructor(props) {
     super(props)
+    this.state = {
+      selectedMarker: {}
+    }
     this.onMapClick = this.onMapClick.bind(this);
   }
 
   onMapClick(e) {
     console.log(e)
-    this.props.setCoords(e.da.x, e.da.y)
+    this.setState({selectedMarker: {lat: e.latLng.lat(), lng: e.latLng.lng()}})
+    //this.props.setCoords(e.da.x, e.da.y)
   }
 
 	render() {
-    console.log(this.props.selectedMarker)
+    console.log(this.state.selectedMarker)
 		return (
       <div style={{height: '100vh'}}>
         <InitialMap
           containerElement={<div style={{height: '100vh'}} />}
           mapElement={<div style={{height: '100vh'}} />}
           onMapClick={this.onMapClick}
-          selectedMarker={this.props.selectedMarker}
+          selectedMarker={this.state.selectedMarker}
           />
       </div>
     )
 	}
 }
 
-// CONTAINER
-
-const mapState = (state) => ({
-  selectedMarker: state.map.selectedMarker
-})
-
-
-export default connect(mapState, { setCoords })(MapContainer)
+export default MapContainer

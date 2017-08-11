@@ -10,7 +10,6 @@ const InitialMap = withGoogleMap(props => (
 
 	  >
 		<Marker
-
 			position={props.selectedMarker}
 			/>
 	  </GoogleMap>
