@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Row, Col } from 'react-materialize'
 
 import Filter from './Filter'
-import Map from './Map'
+import MapContainer from './MapContainer'
 import Nav from './Nav'
 
 const Main = (props) => {
@@ -17,10 +17,7 @@ const Main = (props) => {
 
       <Row>
         <Col l={8}>
-          <Map 
-            containerElement={<div style={{height:100+'%'}}/>}
-            mapElement={<div style={{height:100+'%'}}/>}
-          />
+          <MapContainer />
         </Col>
         <Col l={4}>
           <Filter />
