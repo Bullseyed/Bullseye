@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/Bullseyed/Bullseye.png?label=ready&title=Ready)](https://waffle.io/Bullseyed/Bullseye?utm_source=badge)
 # Bullseye
 
 ## Contribution guide
