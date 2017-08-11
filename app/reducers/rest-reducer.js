@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 const GET_RESTS = 'GET_RESTS'
 
 const getRests = (restList) => ({
