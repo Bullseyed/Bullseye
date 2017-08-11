@@ -1,4 +1,3 @@
-
 const router = require('express').Router();
 
 const yelp = require('yelp-fusion');
@@ -9,7 +8,6 @@ router.get('/', (req, res, next)=>{
 })
 
 router.post('/restaurants', (req, res, next) => {
-	console.log("************** route hit")
 	const fullQuery = Object.assign(req.body, {
 		term: 'restaurants',
 		location: 'new york',
@@ -20,5 +18,4 @@ router.post('/restaurants', (req, res, next) => {
 		.catch((e) => console.log(e))
 });
 
-// console.log(router)
 module.exports = router
