@@ -41,6 +41,6 @@
     "redux-thunk": "^2.2.0",
     "webpack": "^3.5.3",
     "yelp": "^1.0.2",
-    "yelp-fusion":"^1.0.3"
+    "yelp-fusion": "^1.0.3"
   }
 }

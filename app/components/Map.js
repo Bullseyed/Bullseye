@@ -7,8 +7,11 @@ const InitialMap = withGoogleMap(props => (
 	    defaultZoom={13}
 	    defaultCenter={{ lat: 40.753574, lng: -73.9835933 }}
 	    onClick={props.onMapClick}
+
 	  >
-		<Marker defaultPosition={{ lat: 1, lng: 1 }} />
+		<Marker
+			position={props.selectedMarker}
+			/>
 	  </GoogleMap>
 ));
 
