@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+if (process.env.NODE_ENV !== "production") require('../secret.js')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
