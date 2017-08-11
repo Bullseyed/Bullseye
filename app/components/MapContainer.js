@@ -15,6 +15,7 @@ class MapContainer extends React.Component {
   }
 
   onMapClick(e) {
+    console.log(e)
     this.props.setCoords(e.da.x, e.da.y)
   }
 

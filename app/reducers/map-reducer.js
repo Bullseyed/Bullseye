@@ -20,8 +20,8 @@ function mapReducer (state = {selectedMarker: {}, markers: []}, action) {
   const newState = Object.assign(state)
   switch (action.type){
     case SET_COORDS:
-      newState.selectedMarker.x = action.x;
-      newState.selectedMarker.y = action.y;
+      newState.selectedMarker.lat = action.x;
+      newState.selectedMarker.lng = action.y;
     default:
       return state
   }
