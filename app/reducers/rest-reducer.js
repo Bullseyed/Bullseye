@@ -7,13 +7,13 @@ const getRests = (restList) => ({
   restList,
 })
 
-const fetchRests = (locationReq) => dispatch => {
-  axios.post('/api/yelp/restaurants', locationReq)
+export const fetchRests = (locationObj) => dispatch => {
+  axios.post('/api/yelp/restaurants', locationObj)
   .then(res=>res.data)
   .then(restList => dispatch(getRests(restList)))
 }
 
-function restReducer (rests = {}, action) {
+function restReducer (rests = [], action) {
   switch(action.type){
     case GET_RESTS:
       return action.restList
