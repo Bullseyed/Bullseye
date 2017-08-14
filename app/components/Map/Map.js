@@ -22,6 +22,7 @@ const InitialMap = withGoogleMap(props => {
 					rest.distance <= props.radius
 						? <Marker
 							key={index}
+							icon= {'ic_place_black_24px.svg'}
 							onClick={() => props.onMarkerClick(rest, index)}
 							position={{ lat: rest.coordinates.latitude, lng: rest.coordinates.longitude }}>
 							{props.selectedRestIndex.includes(index) && (<InfoWindow>
