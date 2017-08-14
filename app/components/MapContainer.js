@@ -12,30 +12,42 @@ class MapContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedMarker: {}
+      selectedMarker: {},
+      radius: 1000
     }
     this.onMapClick = this.onMapClick.bind(this);
+    this.getMeters = this.getMeters.bind(this);
+    this.clickedCircle = this.clickedCircle.bind(this);
   }
-
+  clickedCircle(e) {
+    this.setState({
+      selectedMarker: { lat: e.latLng.lat(), lng: e.latLng.lng()
+      }
+    })
+  }
+  getMeters(i) {
+    return i * 1609.344;
+  }
   onMapClick(e) {
-    console.log(e)
-    this.setState({selectedMarker: {lat: e.latLng.lat(), lng: e.latLng.lng()}})
-    //this.props.setCoords(e.da.x, e.da.y)
+    this.setState({
+      selectedMarker: { lat: e.latLng.lat(), lng: e.latLng.lng() }
+    })
   }
 
-	render() {
-    console.log(this.state.selectedMarker)
-		return (
-      <div style={{height: '100vh'}}>
+  render() {
+    return (
+      <div style={{ height: '100vh' }}>
         <InitialMap
-          containerElement={<div style={{height: '100vh'}} />}
-          mapElement={<div style={{height: '100vh'}} />}
+          containerElement={<div style={{ height: '100vh' }} />}
+          mapElement={<div style={{ height: '100vh' }} />}
           onMapClick={this.onMapClick}
           selectedMarker={this.state.selectedMarker}
-          />
+          radius={this.state.radius}
+          clickedCircle={this.clickedCircle}
+        />
       </div>
     )
-	}
+  }
 }
 
 export default MapContainer
