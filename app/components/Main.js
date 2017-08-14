@@ -7,24 +7,16 @@ import Nav from './Nav'
 
 const Main = (props) => {
   return (
-    <div>
-
-      <Row>
-        <Col l={12}>
-          <Nav />
-        </Col>
-      </Row>
-
-      <Row>
-        <Col l={8}>
+    <Row>
+      <Col l={8} style={{paddingRight:0, paddingLeft: 0,}}>
           <MapContainer />
-        </Col>
-        <Col l={4}>
-          <Filter />
-        </Col>
-      </Row>
+      </Col>
 
-    </div>
+      <Col l={4} style={{paddingRight:0, paddingLeft: 0}}>
+        <Nav />
+        <Filter />
+      </Col>
+    </Row>
   )
 }
 
