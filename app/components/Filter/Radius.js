@@ -6,7 +6,7 @@ import { Input, Icon } from 'react-materialize'
 const radius = (props) => {
 	const addRadius = props.addRadius
 	const changeHandler = (event) => {
-		const newObj = {value: event.target.value, metric: 'imperial'}
+		const newObj = {value: +event.target.value, metric: 'imperial'}
 		addRadius(newObj)
 	}
 
