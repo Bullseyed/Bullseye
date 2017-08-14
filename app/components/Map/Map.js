@@ -17,12 +17,21 @@ const InitialMap = withGoogleMap(props => {
 				position={props.selectedMarker}
 			/>
 
-			{restList && restList.map(rest => {
+			{restList && restList.map((rest, index) => {
 				return (
 					rest.distance <= props.radius
 						? <Marker
-							position={{ lat: rest.coordinates.latitude, lng: rest.coordinates.longitude }}
-						/>
+							key={index}
+							onClick={() => props.onMarkerClick(rest, index)}
+							position={{ lat: rest.coordinates.latitude, lng: rest.coordinates.longitude }}>
+							{props.selectedRestIndex.includes(index) && (<InfoWindow>
+								<div>
+									<img style={{height:50, width:50}} src={rest.image_url}/>
+									<h6>{rest.name}</h6>
+									</div>
+							</InfoWindow>)
+							}
+						</Marker>
 						: null
 				)
 			})
