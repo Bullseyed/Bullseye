@@ -1,5 +1,6 @@
 import React from 'react'
 import { Input, Row, Icon } from 'react-materialize'
+import Radius from './Radius'
 
 const Filter = (props) => {
 	return (
@@ -9,7 +10,7 @@ const Filter = (props) => {
 				<option value='2'>Option 2</option>
 				<option value='3'>Option 3</option>
 			</Input>
-			<Input s={4} label="Radius" validate><Icon>track_changes</Icon></Input>
+			<Radius />
 		</Row>
 	)
 }
