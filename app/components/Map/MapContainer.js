@@ -42,7 +42,7 @@ class MapContainer extends React.Component {
           mapElement={<div style={{ height: '100vh' }} />}
           onMapClick={this.onMapClick}
           selectedMarker={this.state.selectedMarker}
-          radius={this.state.radius}
+          radius={this.props.radius.value || 0}
           clickedCircle={this.clickedCircle}
         />
       </div>
@@ -50,4 +50,8 @@ class MapContainer extends React.Component {
   }
 }
 
-export default MapContainer
+const mapStateToProps = storeState => ({
+	radius: storeState.radius
+})
+
+export default connect (mapStateToProps,null)(MapContainer)
