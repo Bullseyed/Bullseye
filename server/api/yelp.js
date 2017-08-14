@@ -11,6 +11,7 @@ router.post('/restaurants', (req, res, next) => {
 	const fullQuery = Object.assign(req.body, {
 		term: 'restaurants',
 		location: 'new york',
+		sort_by: 'distance',
 		limit: 50,
 	})
 	client.search(fullQuery)
