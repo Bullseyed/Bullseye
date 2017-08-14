@@ -1,0 +1,36 @@
+.switch label input[type=checkbox]:checked+.lever:after {
+    background-color: #f1f1f1;
+    left: 24px;
+}
+
+.switch label .lever:after {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    width: 21px;
+    height: 21px;
+    background-color: #F1F1F1;
+    border-radius: 21px;
+    box-shadow: 0 1px 3px 1px rgba(0,0,0,0.4);
+    left: -5px;
+    top: -3px;
+    transition: left 0.3s ease, background .3s ease, box-shadow 0.1s ease;
+}
+
+.switch label input[type=checkbox]:checked+.lever {
+    background-color: #818181;
+}
+
+.switch label .lever {
+    content: "";
+    display: inline-block;
+    position: relative;
+    width: 40px;
+    height: 15px;
+    background-color: #818181;
+    border-radius: 15px;
+    margin-right: 10px;
+    transition: background 0.3s ease;
+    vertical-align: middle;
+    margin: 0 16px;
+}
