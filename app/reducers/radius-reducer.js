@@ -5,8 +5,8 @@ const updateRadius = (radObj) => ({
 	radObj,
 })
 
-const fetchRadius = (radObj) => dispatch => {
-	dispatch(updateRadius(radObj))
+export const putRadius = (radObj) => dispatch => {
+	return dispatch(updateRadius(radObj))
 }
 
 const radiusReducer = (radius={}, action) => {
