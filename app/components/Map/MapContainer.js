@@ -4,6 +4,7 @@ import InitialMap from './Map'
 import { connect } from 'react-redux'
 
 import { setCoords } from '../../reducers/map-reducer'
+import { fetchRests } from '../../reducers/rest-reducer'
 
 
 
@@ -13,11 +14,13 @@ class MapContainer extends React.Component {
     super(props)
     this.state = {
       selectedMarker: {},
-      radius: 1000
+      restList: [],
+
     }
     this.onMapClick = this.onMapClick.bind(this);
     this.getMeters = this.getMeters.bind(this);
     this.clickedCircle = this.clickedCircle.bind(this);
+    this.makeYelpReq = this.makeYelpReq.bind(this);
   }
   clickedCircle(e) {
     this.setState({
@@ -32,8 +35,18 @@ class MapContainer extends React.Component {
     this.setState({
       selectedMarker: { lat: e.latLng.lat(), lng: e.latLng.lng() }
     })
+    this.makeYelpReq(this.state.selectedMarker.lat, this.state.selectedMarker.lng,this.props.radius.value)
   }
-
+  
+  makeYelpReq(lat,lng,rad){
+    const locationObj = {
+      latitude: lat,
+      longitude: lng,
+      radius: rad,
+    }
+    this.props.fetchRests(locationObj)
+  }
+    
   render() {
     return (
       <div style={{ height: '100vh' }}>
@@ -44,6 +57,7 @@ class MapContainer extends React.Component {
           selectedMarker={this.state.selectedMarker}
           radius={this.props.radius.value || 0}
           clickedCircle={this.clickedCircle}
+          restList = {this.props.rests}
         />
       </div>
     )
@@ -51,7 +65,12 @@ class MapContainer extends React.Component {
 }
 
 const mapStateToProps = storeState => ({
-	radius: storeState.radius
+  radius: storeState.radius,
+  rests: storeState.rests
 })
 
-export default connect (mapStateToProps,null)(MapContainer)
+const mapDispatchToProps = dispatch => ({
+  fetchRests: (locationObj) => dispatch(fetchRests(locationObj))
+})
+
+export default connect (mapStateToProps,mapDispatchToProps)(MapContainer)
