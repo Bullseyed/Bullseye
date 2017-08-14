@@ -3,7 +3,7 @@ import { withGoogleMap, GoogleMap, InfoWindow, Marker } from 'react-google-maps'
 import InitialMap from './Map'
 import { connect } from 'react-redux'
 
-import { setCoords } from '../reducers/map-reducer'
+import { setCoords } from '../../reducers/map-reducer'
 
 
 
