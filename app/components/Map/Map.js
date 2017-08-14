@@ -17,12 +17,16 @@ const InitialMap = withGoogleMap(props => {
 				position={props.selectedMarker}
 			/>
 
-		{restList && restList.map(rest => {return (
-			<Marker
-				position={{lat: rest.coordinates.latitude, lng: rest.coordinates.longitude}}
-			/>
-		)})
-		}
+			{restList && restList.map(rest => {
+				return (
+					rest.distance <= props.radius
+						? <Marker
+							position={{ lat: rest.coordinates.latitude, lng: rest.coordinates.longitude }}
+						/>
+						: null
+				)
+			})
+			}
 
 			<Circle
 				center={props.selectedMarker}
