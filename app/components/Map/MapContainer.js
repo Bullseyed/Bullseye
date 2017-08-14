@@ -14,17 +14,24 @@ class MapContainer extends React.Component {
     super(props)
     this.state = {
       selectedMarker: {},
-      restList: [],
+      restList: this.props.rests,
+      selectedRestIndex: []
 
     }
     this.onMapClick = this.onMapClick.bind(this);
     this.getMeters = this.getMeters.bind(this);
     this.clickedCircle = this.clickedCircle.bind(this);
     this.makeYelpReq = this.makeYelpReq.bind(this);
+    this.onMarkerClick = this.onMarkerClick.bind(this);
+  }
+  onMarkerClick(rest, index) {
+    this.setState({ selectedRestIndex: [...this.state.selectedRestIndex,index] })
+    console.log(this.state.selectedRestIndex)
   }
   clickedCircle(e) {
     this.setState({
-      selectedMarker: { lat: e.latLng.lat(), lng: e.latLng.lng()
+      selectedMarker: {
+        lat: e.latLng.lat(), lng: e.latLng.lng()
       }
     })
   }
@@ -35,18 +42,20 @@ class MapContainer extends React.Component {
     this.setState({
       selectedMarker: { lat: e.latLng.lat(), lng: e.latLng.lng() }
     })
-    this.makeYelpReq(this.state.selectedMarker.lat, this.state.selectedMarker.lng,this.props.radius.value)
+    this.makeYelpReq(this.state.selectedMarker.lat, this.state.selectedMarker.lng, this.props.radius.value)
   }
-  
-  makeYelpReq(lat,lng,rad){
+
+  makeYelpReq(lat, lng, rad) {
     const locationObj = {
       latitude: lat,
       longitude: lng,
       radius: rad,
     }
     this.props.fetchRests(locationObj)
+
+    this.state.restList.forEach(rest => { return rest.showInfo = false })
   }
-    
+
   render() {
     return (
       <div style={{ height: '100vh' }}>
@@ -57,7 +66,9 @@ class MapContainer extends React.Component {
           selectedMarker={this.state.selectedMarker}
           radius={this.props.radius.value || 0}
           clickedCircle={this.clickedCircle}
-          restList = {this.props.rests}
+          restList={this.props.rests}
+          onMarkerClick={this.onMarkerClick}
+          selectedRestIndex={this.state.selectedRestIndex}
         />
       </div>
     )
@@ -67,10 +78,11 @@ class MapContainer extends React.Component {
 const mapStateToProps = storeState => ({
   radius: storeState.radius,
   rests: storeState.rests
+
 })
 
 const mapDispatchToProps = dispatch => ({
   fetchRests: (locationObj) => dispatch(fetchRests(locationObj))
 })
 
-export default connect (mapStateToProps,mapDispatchToProps)(MapContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(MapContainer)
