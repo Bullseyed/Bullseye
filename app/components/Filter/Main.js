@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input, Row, Icon } from 'react-materialize'
+import { Input, Row, Icon, } from 'react-materialize'
 import Radius from './Radius'
 import BusinessDropdown from './BusinessDropdown'
 import Checkboxes from './Checkboxes'
@@ -11,6 +11,7 @@ const Filter = (props) => {
 			<BusinessDropdown />
 			<Radius />
 			<Checkboxes />
+			
 			{/* <Submit /> */}
 		</div>
 	)
