@@ -20,7 +20,6 @@ app.use('/api', require('./api')); // matches all requests to /api
 // (However, if you have middleware to serve up 404s, that go would before this as well)
 app.get('*', function (req, res, next) {
   res.sendFile(path.join(__dirname, '../public/index.html'));
-  next();
 });
 
 app.use(function (err, req, res, next) {

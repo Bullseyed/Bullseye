@@ -20,43 +20,43 @@ class MapContainer extends React.Component {
     }
     this.onMapClick = this.onMapClick.bind(this);
     this.getMeters = this.getMeters.bind(this);
-    this.clickedCircle = this.clickedCircle.bind(this);
     this.makeYelpReq = this.makeYelpReq.bind(this);
     this.onMarkerClick = this.onMarkerClick.bind(this);
+    this.markBullseye = this.markBullseye.bind(this);
   }
   onMarkerClick(rest, index) {
     if (!this.state.selectedRestIndex.includes(index)) {
-      this.setState({ selectedRestIndex: [...this.state.selectedRestIndex,index] })
+      this.setState({ selectedRestIndex: [...this.state.selectedRestIndex, index] })
     }
   }
-  clickedCircle(e) {
+
+  markBullseye(e){
     this.setState({
       selectedMarker: {
         lat: e.latLng.lat(), lng: e.latLng.lng()
       }
     })
   }
+
   getMeters(i) {
     return i * 1609.344;
   }
   onMapClick(e) {
     this.setState({
       selectedMarker: { lat: e.latLng.lat(), lng: e.latLng.lng() },
-      selectedRestIndex:[]
-    })
+      selectedRestIndex: []
+    }) 
     this.makeYelpReq(this.state.selectedMarker.lat, this.state.selectedMarker.lng, this.props.radius.value)
   }
 
-  makeYelpReq(lat, lng, rad) {
+  makeYelpReq(latitude, longitude, radius) {
     const locationObj = {
-      latitude: lat,
-      longitude: lng,
-      radius: rad,
+      latitude,
+      longitude,
+      radius,
       term: this.props.bType,
     }
     this.props.fetchRests(locationObj)
-
-    this.state.restList.forEach(rest => { return rest.showInfo = false })
   }
 
   render() {
@@ -68,22 +68,17 @@ class MapContainer extends React.Component {
           onMapClick={this.onMapClick}
           selectedMarker={this.state.selectedMarker}
           radius={this.props.radius.value || 0}
-          clickedCircle={this.clickedCircle}
-          restList={this.props.rests}
           onMarkerClick={this.onMarkerClick}
+          restList={this.props.rests}
           selectedRestIndex={this.state.selectedRestIndex}
+          markBullseye={this.markBullseye}
         />
       </div>
     )
   }
 }
 
-const mapStateToProps = storeState => ({
-  radius: storeState.radius,
-  rests: storeState.rests,
-  bType: storeState.bType,
-
-})
+const mapStateToProps = ({ radius, rests, bType }) => ({ radius, rests, bType })
 
 const mapDispatchToProps = dispatch => ({
   fetchRests: (locationObj) => dispatch(fetchRests(locationObj))

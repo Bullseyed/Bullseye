@@ -15,7 +15,7 @@ router.post('/restaurants', (req, res, next) => {
 	})
 	client.search(fullQuery)
 		.then(rests => res.send(rests.jsonBody.businesses))
-		.catch((e) => console.log(e))
+		.catch(next)
 });
 
 module.exports = router
