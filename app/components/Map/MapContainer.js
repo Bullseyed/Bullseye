@@ -53,6 +53,7 @@ class MapContainer extends React.Component {
       latitude: lat,
       longitude: lng,
       radius: rad,
+      term: this.props.bType,
     }
     this.props.fetchRests(locationObj)
 
@@ -80,7 +81,8 @@ class MapContainer extends React.Component {
 
 const mapStateToProps = storeState => ({
   radius: storeState.radius,
-  rests: storeState.rests
+  rests: storeState.rests,
+  bType: storeState.bType,
 
 })
 
