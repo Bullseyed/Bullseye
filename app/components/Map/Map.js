@@ -4,6 +4,18 @@ import { withGoogleMap, GoogleMap, InfoWindow, Marker, Circle } from 'react-goog
 const InitialMap = withGoogleMap(props => {
 
 	const restList = props.restList
+	const iconBullseye = {
+    url: '143958.png',
+    scaledSize: new google.maps.Size(22, 22),
+   	origin: new google.maps.Point(0,0), // origin
+   	anchor: new google.maps.Point(11, 11) // anchor
+  };
+  const iconBusiness = {
+    url: '249689.png',
+    scaledSize: new google.maps.Size(18, 18),
+   	origin: new google.maps.Point(0, 0), // origin
+   	anchor: new google.maps.Point(0, 9) // anchor
+};
 
 	return (
 		<GoogleMap
@@ -15,6 +27,7 @@ const InitialMap = withGoogleMap(props => {
 		>
 			<Marker
 				position={props.selectedMarker}
+				icon={iconBullseye}
 			/>
 
 			{restList && restList.map((rest, index) => {
@@ -22,14 +35,13 @@ const InitialMap = withGoogleMap(props => {
 					rest.distance <= props.radius
 						? <Marker
 							key={index}
-							icon= {'ic_place_black_24px.svg'}
+							icon={iconBusiness}
 							onClick={() => props.onMarkerClick(rest, index)}
 							position={{ lat: rest.coordinates.latitude, lng: rest.coordinates.longitude }}>
 							{props.selectedRestIndex.includes(index) && (<InfoWindow>
 								<div>
-									<img style={{height:50, width:50}} src={rest.image_url}/>
 									<h6>{rest.name}</h6>
-									</div>
+								</div>
 							</InfoWindow>)
 							}
 						</Marker>

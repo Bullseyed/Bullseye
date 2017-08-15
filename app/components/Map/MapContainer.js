@@ -25,7 +25,9 @@ class MapContainer extends React.Component {
     this.onMarkerClick = this.onMarkerClick.bind(this);
   }
   onMarkerClick(rest, index) {
-    this.setState({ selectedRestIndex: [...this.state.selectedRestIndex,index] })
+    if (!this.state.selectedRestIndex.includes(index)) {
+      this.setState({ selectedRestIndex: [...this.state.selectedRestIndex,index] })
+    }
     console.log(this.state.selectedRestIndex)
   }
   clickedCircle(e) {
