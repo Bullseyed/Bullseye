@@ -2,7 +2,6 @@ import React from 'react'
 import { Input } from 'react-materialize'
 import SubRest from './SubDropdowns/SubRest'
 import SubLaund from './SubDropdowns/SubLaund'
-import SubConv from './SubDropdowns/SubConv'
 
 class BusinessDropdown extends React.Component {
 	constructor(props){
@@ -28,7 +27,7 @@ class BusinessDropdown extends React.Component {
 	render(){
 	return (
 		<div>
-		
+
 		<Input s={12} type='select' label="Business Type" defaultValue='0' onChange={this.changeHandle}>
 			<option disabled='disabled' value='0'> Select Business </option>
 			<option value='2'>Restaurant</option>
@@ -37,7 +36,7 @@ class BusinessDropdown extends React.Component {
 
 		{ this.state.showSubRest && <SubRest /> }
 		{ this.state.showSubLaund && <SubLaund /> }
-		
+
 		</div>
 	)
 }
