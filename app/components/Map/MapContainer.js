@@ -28,7 +28,6 @@ class MapContainer extends React.Component {
     if (!this.state.selectedRestIndex.includes(index)) {
       this.setState({ selectedRestIndex: [...this.state.selectedRestIndex,index] })
     }
-    console.log(this.state.selectedRestIndex)
   }
   clickedCircle(e) {
     this.setState({
