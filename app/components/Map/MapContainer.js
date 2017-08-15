@@ -40,7 +40,8 @@ class MapContainer extends React.Component {
   }
   onMapClick(e) {
     this.setState({
-      selectedMarker: { lat: e.latLng.lat(), lng: e.latLng.lng() }
+      selectedMarker: { lat: e.latLng.lat(), lng: e.latLng.lng() },
+      selectedRestIndex:[]
     })
     this.makeYelpReq(this.state.selectedMarker.lat, this.state.selectedMarker.lng, this.props.radius.value)
   }
