@@ -33,6 +33,9 @@
     "express": "^4.15.4",
     "materialize-css": "^0.100.1",
     "morgan": "^1.8.2",
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^1.0.0",
+    "pg": "^7.1.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-google-maps": "^7.2.0",
@@ -43,6 +46,7 @@
     "redux-devtools-extension": "^2.13.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
+    "sequelize": "^4.5.0",
     "webpack": "^3.5.3",
     "yelp": "^1.0.2",
     "yelp-fusion": "^1.0.3"

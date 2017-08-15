@@ -1,44 +1,46 @@
 import React from 'react'
 import { withGoogleMap, GoogleMap, InfoWindow, Marker, Circle } from 'react-google-maps'
 
-const InitialMap = withGoogleMap(props => {
+const InitialMap = withGoogleMap(({ markBullseye, restList, onMapLoad, onMapClick, selectedMarker, radius, selectedRestIndex, onMarkerClick }) => { //destructer
 
-	const restList = props.restList
 	const iconBullseye = {
-    url: '143958.png',
-    scaledSize: new google.maps.Size(22, 22),
-   	origin: new google.maps.Point(0,0), // origin
-   	anchor: new google.maps.Point(11, 11) // anchor
-  };
-  const iconBusiness = {
-    url: '249689.png',
-    scaledSize: new google.maps.Size(18, 18),
-   	origin: new google.maps.Point(0, 0), // origin
-   	anchor: new google.maps.Point(0, 9) // anchor
-};
+		url: '143958.png',
+		scaledSize: new google.maps.Size(22, 22),
+		origin: new google.maps.Point(0, 0), // origin
+		anchor: new google.maps.Point(11, 11) // anchor
+	};
+	const iconBusiness = {
+		url: '249689.png',
+		scaledSize: new google.maps.Size(18, 18),
+		origin: new google.maps.Point(0, 0), // origin
+		anchor: new google.maps.Point(0, 9) // anchor
+	};
+
 
 	return (
 		<GoogleMap
-			ref={props.onMapLoad}
+			ref={onMapLoad}
 			defaultZoom={13}
 			defaultCenter={{ lat: 40.753574, lng: -73.9835933 }}
-			onClick={props.onMapClick}
+			onClick={onMapClick}
 
 		>
 			<Marker
-				position={props.selectedMarker}
+				position={selectedMarker}
 				icon={iconBullseye}
 			/>
 
 			{restList && restList.map((rest, index) => {
+				{/* do i need restlist && */ }
+				{/* good place for &&? line 36*/ }
 				return (
-					rest.distance <= props.radius
+					rest.distance <= radius
 						? <Marker
 							key={index}
 							icon={iconBusiness}
-							onClick={() => props.onMarkerClick(rest, index)}
+							onClick={() => onMarkerClick(rest, index)}
 							position={{ lat: rest.coordinates.latitude, lng: rest.coordinates.longitude }}>
-							{props.selectedRestIndex.includes(index) && (<InfoWindow>
+							{selectedRestIndex.includes(index) && (<InfoWindow>
 								<div>
 									<h6>{rest.name}</h6>
 								</div>
@@ -51,9 +53,9 @@ const InitialMap = withGoogleMap(props => {
 			}
 
 			<Circle
-				center={props.selectedMarker}
-				radius={props.radius}
-				onClick={props.clickedCircle}
+				center={selectedMarker}
+				radius={radius}
+				onClick={markBullseye}
 				options={{
 					fillColor: `red`,
 					fillOpacity: 0.20,
