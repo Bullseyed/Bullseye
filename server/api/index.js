@@ -1,6 +1,7 @@
 const router = require('express').Router();
 
-router.use('/yelp', require('./yelp'))
+router.use('/yelp', require('./yelp'));
+router.use('/auth', require('./auth'));
 
 router.use(function (req, res, next) {
   const err = new Error('Not found.');
