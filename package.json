@@ -27,6 +27,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "body-parser": "^1.17.2",
+    "d3": "3",
     "eslint-config-fullstack": "^3.0.0",
     "eslint-plugin-react": "^7.2.1",
     "express": "^4.15.4",
