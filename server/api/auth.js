@@ -10,19 +10,27 @@ passport.use(
     clientSecret: '-1w_cZuL1oZUhi30iAHx3Tvb',
     callbackURL: '/api/auth/verify'
   }, (token, refreshToken, profile, done) => {
-    const info = {
-      email: profile.emails[0].value
-    };
-    User.findOrCreate({
-      where: {googleID: profile.id},
-      defaults: info
+    User.findOne({
+      where: {googleID: profile.id}
     })
-    .spread(user => {
+    .then(foundUser => {
+      if (!foundUser) {
+        return User.create({googleID: profile.id, email: profile.emails[0].value});
+      } else {
+        return foundUser;
+      }
+    })
+    .then(user => {
       done(null, user);
     })
     .catch(done);
   })
 );
+
+router.get('/logout', (req, res, next) => {
+  req.logout();
+  res.sendStatus(204);
+});
 
 router.get('/', passport.authenticate('google', { scope: 'email' }));
 router.get('/verify', passport.authenticate('google', {
