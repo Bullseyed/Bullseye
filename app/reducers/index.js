@@ -7,7 +7,8 @@ const rootReducer = combineReducers({
   checkboxes: require('./checkbox-reducer').default,
   bType: require('./b-type-reducer').default,
   demographic: require('./demographic').default,
-  currentUser: require('./auth').default
+  currentUser: require('./auth').default,
+  zip: require('./zip-reducer').default
 });
 
 export default rootReducer;
