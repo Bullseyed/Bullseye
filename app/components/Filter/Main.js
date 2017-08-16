@@ -4,15 +4,19 @@ import Radius from './Radius'
 import BusinessDropdown from './BusinessDropdown'
 import Checkboxes from './Checkboxes'
 import SubmitRepBut from './SubmitRepBut'
+import BizList from './BizList'
 
 const Filter = (props) => {
 	return (
 		<div>
 			<Row>
-			<BusinessDropdown />
+				<BusinessDropdown />
 			</Row>
 			<Radius />
 			<Checkboxes />
+			<div style={{overflow: 'auto', height:200}}>
+				<BizList />
+			</div>
 			<SubmitRepBut />
 		</div>
 	)
