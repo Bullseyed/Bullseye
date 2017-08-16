@@ -4,8 +4,8 @@ const { FLOAT, INTEGER, STRING, BOOLEAN } = require('sequelize');
 var db = new Sequelize('postgres://localhost:5432/capstone');
 
 const User = db.define('user', {
-  email: Sequelize.STRING,
-  googleID: Sequelize.STRING
+  email: STRING,
+  googleID: STRING
 });
 
 const Report = db.define('report', {

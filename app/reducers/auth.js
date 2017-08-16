@@ -86,9 +86,9 @@ export const retrieveLoggedInUser = () => dispatch => {
   .catch(err => console.error('Problem fetching current user', err));
 };
 
-// optimistic
-// export const logout = () => dispatch => {
-//   dispatch(remove());
-//   axios.delete('/api/auth/me')
-//   .catch(err => console.error('logout unsuccessful', err));
-// };
+//optimistic
+export const logout = () => dispatch => {
+  dispatch(remove());
+  axios.get('/api/auth/logout')
+  .catch(err => console.error('logout unsuccessful', err));
+};

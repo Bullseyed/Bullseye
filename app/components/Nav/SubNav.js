@@ -2,6 +2,7 @@ import React from 'react';
 import { Navbar, NavItem } from 'react-materialize';
 import Login from './Login';
 import { connect } from 'react-redux';
+import { logout} from '../../reducers/auth';
 
 const SubNav = (props) => {
 	return (
@@ -9,7 +10,7 @@ const SubNav = (props) => {
 		<Navbar>
 			<NavItem> Saved Searches </NavItem>
 			<NavItem> Shared with me </NavItem>
-			<NavItem> Sign Out </NavItem>
+			<NavItem onClick={props.logout}> Sign Out </NavItem>
 		</Navbar>
 		:
 		<Navbar>
@@ -22,4 +23,6 @@ const mapState = ({ currentUser }) => ({
 	currentUser
 });
 
-export default connect(mapState)(SubNav);
+const mapDispatch = { logout };
+
+export default connect(mapState, mapDispatch)(SubNav);
