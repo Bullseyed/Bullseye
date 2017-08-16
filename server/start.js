@@ -55,7 +55,7 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500).send(err.message || 'Internal server error.');
 });
 
-db.sync({logging: false, force: true})
+db.sync({logging: false})
 .then(() => {
   app.listen(
      process.env.PORT || 1337,
