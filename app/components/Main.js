@@ -5,19 +5,19 @@ import Filter from './Filter/Main'
 import MapContainer from './Map/MapContainer'
 import Nav from './Nav/Nav'
 import { demographicThunk } from '../reducers/demographic'
+import { retrieveLoggedInUser } from '../reducers/auth'
 
 class Main extends React.Component {
 
   componentDidMount() {
-    console.log('component did mount')
-    console.log(this.props)
     this.props.demographicThunk()
-
+    this.props.retrieveUser()
   }
+  
   render() {
     return (
       <Row>
-        <Col l={8} style={{ paddingRight: 0, paddingLeft: 0, }}>
+        <Col l={8} style={{ paddingRight: 0, paddingLeft: 0}}>
           <MapContainer />
         </Col>
 
@@ -34,4 +34,13 @@ class Main extends React.Component {
 const mapState = ({ demographic }) => ({
   demographic
 })
-export default connect(mapState, { demographicThunk })(Main);
+
+const mapDispatch = dispatch => ({
+  demographicThunk,
+  retrieveUser: () => {
+    dispatch(retrieveLoggedInUser())
+  }
+
+})
+
+export default connect(mapState, mapDispatch)(Main);

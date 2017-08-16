@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 
 import { setCoords } from '../../reducers/map-reducer'
 import { fetchRests } from '../../reducers/rest-reducer'
+import { fetchZip } from '../../reducers/zip-reducer'
 
 
 
@@ -15,12 +16,18 @@ class MapContainer extends React.Component {
     this.state = {
       selectedMarker: {},
       restList: this.props.rests,
-      selectedRestIndex: []
+      selectedRestIndex: [],
+      selectedRestIndex: [],
+      zip:[]
+    }
+  }
+  onMarkerClick(rest, index) {
+    if (!this.state.selectedRestIndex.includes(index)) {
+      this.setState({ selectedRestIndex: [...this.state.selectedRestIndex, index] })
     }
   }
 
   render() {
-
     const onMarkerClick = (rest, index) => {
       !this.state.selectedRestIndex.includes(index)
         ? this.setState({ selectedRestIndex: [...this.state.selectedRestIndex, index] })
@@ -37,8 +44,10 @@ class MapContainer extends React.Component {
     const makeYelpReq = (latitude, longitude, radius) => {
       const locationObj = { latitude, longitude, radius, term: this.props.bType }
       this.props.fetchRests(locationObj)
+      this.props.fetchRests(locationObj)
+      this.props.fetchZip(locationObj)
     }
-
+    
     return (
       <div style={{ height: '100vh' }}>
         <InitialMap
@@ -57,10 +66,11 @@ class MapContainer extends React.Component {
   }
 }
 
-const mapStateToProps = ({ radius, rests, bType }) => ({ radius, rests, bType })
+const mapStateToProps = ({ radius, rests, bType, zip }) => ({ radius, rests, bType, zip })
 
 const mapDispatchToProps = dispatch => ({
-  fetchRests: (locationObj) => dispatch(fetchRests(locationObj))
+  fetchRests: (locationObj) => dispatch(fetchRests(locationObj)),
+  fetchZip: (locationObj) => dispatch(fetchZip(locationObj))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MapContainer)

@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
   //map: require('./map-reducer').default,
@@ -6,9 +6,9 @@ const rootReducer = combineReducers({
   radius: require('./radius-reducer').default,
   checkboxes: require('./checkbox-reducer').default,
   bType: require('./b-type-reducer').default,
-  demographic: require('./demographic').default
+  demographic: require('./demographic').default,
+  currentUser: require('./auth').default,
+  zip: require('./zip-reducer').default
+});
 
-})
-
-export default rootReducer
-
+export default rootReducer;
