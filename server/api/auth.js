@@ -2,7 +2,7 @@ const router = require('express').Router();
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
-const User = require('../../db');
+const User = require('../../db').models.user;
 
 passport.use(
   new GoogleStrategy({
@@ -10,12 +10,10 @@ passport.use(
     clientSecret: '-1w_cZuL1oZUhi30iAHx3Tvb',
     callbackURL: '/api/auth/verify'
   }, (token, refreshToken, profile, done) => {
-    console.log(profile);
-    console.log(profile.emails);
     const info = {
       email: profile.emails[0].value
     };
-    User.models.user.findOrCreate({
+    User.findOrCreate({
       where: {googleID: profile.id},
       defaults: info
     })
@@ -28,7 +26,7 @@ passport.use(
 
 router.get('/', passport.authenticate('google', { scope: 'email' }));
 router.get('/verify', passport.authenticate('google', {
-  successRedirect: '/',
+  successRedirect: '/success',
   failureRedirect: '/'
 }));
 
