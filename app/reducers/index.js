@@ -5,7 +5,8 @@ const rootReducer = combineReducers({
   rests: require('./rest-reducer').default,
   radius: require('./radius-reducer').default,
   checkboxes: require('./checkbox-reducer').default,
-  bType: require('./b-type-reducer').default
+  bType: require('./b-type-reducer').default,
+  demographic: require('./demographic').default
 
 })
 
