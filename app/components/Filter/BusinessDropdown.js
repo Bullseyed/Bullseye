@@ -18,11 +18,9 @@ class BusinessDropdown extends React.Component {
 		const val = +event.target.value
 		if (val === 2) {
 			this.setState({ showSubRest: true, showSubLaund: false })
-			this.props.addBType('resturants')
 		}
 		if (val === 3) {
 			this.setState({ showSubRest: false, showSubLaund: true })
-			props.addBType('laundry')
 		}
 	}
 
