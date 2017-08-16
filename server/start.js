@@ -24,16 +24,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.serializeUser((user, done) => {
-  console.log("SERIALIZE USER RUNNING", user);
   done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
-  console.log("DESERIALIZE USER RUNNING", id)
   User.findById(id)
   .then(user => {
-    console.log("DESERIALIZE USER RUNNING", user);
-    done(null, user)
+    done(null, user);
   }
     )
   .catch(done);
@@ -58,7 +55,7 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500).send(err.message || 'Internal server error.');
 });
 
-db.sync({logging: false})
+db.sync({logging: false, force: true})
 .then(() => {
   app.listen(
      process.env.PORT || 1337,

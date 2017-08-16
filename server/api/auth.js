@@ -26,7 +26,7 @@ passport.use(
 
 router.get('/', passport.authenticate('google', { scope: 'email' }));
 router.get('/verify', passport.authenticate('google', {
-  successRedirect: '/success',
+  successRedirect: '/',
   failureRedirect: '/'
 }));
 
