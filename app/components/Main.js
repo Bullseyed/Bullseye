@@ -17,7 +17,7 @@ class Main extends React.Component {
   render() {
     return (
       <Row>
-        <Col l={8} style={{ paddingRight: 0, paddingLeft: 0 }}>
+        <Col l={8} style={{ paddingRight: 0, paddingLeft: 0, }}>
           <MapContainer />
         </Col>
 

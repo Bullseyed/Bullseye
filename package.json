@@ -37,6 +37,7 @@
     "passport-google-oauth": "^1.0.0",
     "pg": "^7.1.2",
     "react": "^15.6.1",
+    "react-d3-basic": "^1.6.11",
     "react-dom": "^15.6.1",
     "react-google-maps": "^7.2.0",
     "react-materialize": "^1.0.8",
