@@ -5,23 +5,21 @@ import Filter from '../Filter/Main'
 import MapContainer from '../Map/MapContainer'
 import Nav from '../Nav/Nav'
 import HomeBut from './HomeBut'
+import Piechart from './PieChart'
+
 
 
 const ReportMain = () => {
 	return (
-		<Row>
-			<Col l={3} style={{ paddingRight: 0, paddingLeft: 0, }}>
-				<MapContainer />
-			</Col>
 
-			<Col l={9} style={{ paddingRight: 0, paddingLeft: 0 }}>
-				<Row>
-					<Nav />
-				</Row>
-				<HomeBut/>
-			</Col>
-		</Row>
+				<Piechart />
+
 	)
 }
 
-export default ReportMain
+
+const mapStateToProps = storeState => ({ bType: storeState.bType })
+
+const mapDispatchToProps = dispatch => ({ addBType: typeStr => dispatch(putBType(typeStr)) })
+
+export default connect(mapStateToProps, mapDispatchToProps)(ReportMain)
