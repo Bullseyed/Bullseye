@@ -21,7 +21,7 @@ class Main extends React.Component {
           <MapContainer />
         </Col>
 
-        <Col l={4} style={{ paddingRight: 0, paddingLeft: 0 }}>
+        <Col l={4} style={{ paddingRight: 0, paddingLeft: 0, height: '100%' }}>
           <Row>
             <Nav />
           </Row>
