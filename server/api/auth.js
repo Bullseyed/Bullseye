@@ -10,14 +10,13 @@ passport.use(
     clientSecret: '-1w_cZuL1oZUhi30iAHx3Tvb',
     callbackURL: '/api/auth/verify'
   }, (token, refreshToken, profile, done) => {
-    const info = {
-      email: profile.emails[0].value
-    };
+    console.log(profile)
     User.findOrCreate({
       where: {googleID: profile.id},
-      defaults: info
+      defaults: {email: profile.emails[0].value}
     })
     .spread(user => {
+      console.log("USER", user);
       done(null, user);
     })
     .catch(done);
