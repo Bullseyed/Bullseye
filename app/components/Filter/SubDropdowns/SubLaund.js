@@ -7,6 +7,7 @@ const SubLaund = (props) => {
 	const changeHandler = (event) => {
 		let value = event.target.value
 		let str = ''
+		if (value == 0) str = 'laundry'
 		if (value == 1) str = 'dry cleaning'
 		if (value == 2) str = 'laundromat'
 		props.addBType(str)
