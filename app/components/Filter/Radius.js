@@ -12,8 +12,9 @@ const radius = (props) => {
 
 	return (
 		<Row>
-			<Input s={4} label="Radius" validate onChange={changeHandler}>
-				<Icon>track_changes</Icon></Input>
+			<Col s={4}>
+			<Input label="Radius" validate onChange={changeHandler}></Input>
+			</Col>
 			<Col s={8} style={{ paddingTop: 25 }}>
 				<Input name='on' type='switch' value='1' onLabel='km' offLabel='miles' />
 			</Col>
