@@ -1,3 +1,6 @@
+import { checkboxesHandler } from './report';
+
+
 const UPDATE_CHECKBOX = 'UPDATE_CHECKBOX'
 
 const updateCheckbox = (event) => ({
@@ -6,6 +9,7 @@ const updateCheckbox = (event) => ({
 })
 
 export const putCheckbox = (event) => dispatch => {
+	checkboxesHandler(event, dispatch)
 	return dispatch(updateCheckbox(event))
 }
 
