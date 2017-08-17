@@ -8,7 +8,8 @@ const rootReducer = combineReducers({
   bType: require('./b-type-reducer').default,
   demographic: require('./demographic').default,
   currentUser: require('./auth').default,
-  zip: require('./zip-reducer').default
+  zip: require('./zip-reducer').default,
+  bullseye: require('./bullseye-reducer').default,
 });
 
 export default rootReducer;
