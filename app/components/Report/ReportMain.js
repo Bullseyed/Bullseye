@@ -5,6 +5,10 @@ import Filter from '../Filter/Main'
 import MapContainer from '../Map/MapContainer'
 import Nav from '../Nav/Nav'
 import HomeBut from './HomeBut'
+import BizList from './BizList'
+import Location from './Location'
+import Zips from './Zips'
+import SaveBut from './SaveBut'
 
 
 const ReportMain = () => {
@@ -15,11 +19,25 @@ const ReportMain = () => {
 			</Col>
 
 			<Col l={9} style={{ paddingRight: 0, paddingLeft: 0 }}>
+				<Row>  <Nav />  </Row>
+				<Row> <Col> <Location /> </Col> </Row>
+				<Row> <Col> <Zips /> </Col> </Row>
 				<Row>
-					<Nav />
-				</Row>
-				<HomeBut/>
-			</Col>
+					<Col s={4}>
+						<div style={{ overflow: 'auto', height: 400 }}>
+							<BizList />
+						</div>
+					</Col>
+					<Col s={8}>
+						<Row>
+							<div style={{fill: 'black', height: 400}}>
+								Charts
+							</div>
+						</Row>
+					</Col>
+				</Row> 
+				<Row> <Col> <HomeBut /> </Col> <Col> <SaveBut /> </Col> </Row>
+				</Col>
 		</Row>
 	)
 }

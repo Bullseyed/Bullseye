@@ -9,6 +9,7 @@ const rootReducer = combineReducers({
   demographic: require('./demographic').default,
   currentUser: require('./auth').default,
   zip: require('./zip-reducer').default,
+  bullseye: require('./bullseye-reducer').default,
   report: require('./report').default
 });
 
