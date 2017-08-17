@@ -75,7 +75,7 @@ const mapStateToProps = ({ radius, rests, bType, zip }) => ({ radius, rests, bTy
 const mapDispatchToProps = dispatch => ({
   fetchRests: (locationObj) => dispatch(fetchRests(locationObj)),
   fetchZip: (locationObj) => dispatch(fetchZip(locationObj)),
-  addBullseye: (coordsArr) => dispatch(markBullseye(coordsArr)) 
+  addBullseye: (coordsArr) => dispatch(markBullseye(coordsArr)),
   addLngLat: (longitude, latitude) => dispatch(addLngLat(longitude, latitude))
 })
 
