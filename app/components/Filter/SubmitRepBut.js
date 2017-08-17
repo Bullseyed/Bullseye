@@ -1,25 +1,33 @@
-import React from 'react'
-import { Button, Row } from 'react-materialize'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { connect } from 'react-redux';
+import { Button, Row } from 'react-materialize';
+import { Link } from 'react-router-dom';
+import { demographicThunk } from '../../reducers/demo-reducer';
 
 
 const SubmitRepBut = (props) => {
-  const fetchReports = () => {
 
-  }
+  const fetchReports =  () => {
+      props.demographicThunk(props.zip);
+  };
 
-  return (
-    <Row>
-			<Link to ='/report'>
-        <Button
-          waves='light'
-          onClick={() => fetchReports()}
-        >
-          Get Detailed Report
-        </Button>
-      </Link>
-    </Row>
-  )
-}
+    return (
+      <Row>
+  			<Link to ='/report'>
+          <Button
+            waves='light'
+            onClick={fetchReports}
+          >
+            Get Detailed Report
+          </Button>
+        </Link>
+      </Row>
+    );
+  };
 
-export default SubmitRepBut
+  const mapStateToProps = ({ demoData, zip }) => ({
+    demoData, zip
+  });
+
+export default connect(mapStateToProps, { demographicThunk })(SubmitRepBut);
+

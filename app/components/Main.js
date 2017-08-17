@@ -13,7 +13,7 @@ class Main extends React.Component {
     this.props.demographicThunk()
     this.props.retrieveUser()
   }
-  
+
   render() {
     return (
       <Row>
