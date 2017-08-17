@@ -7,6 +7,8 @@ import { setCoords } from '../../reducers/map-reducer'
 import { fetchRests } from '../../reducers/rest-reducer'
 import { fetchZip } from '../../reducers/zip-reducer'
 import { markBullseye } from '../../reducers/bullseye-reducer'
+import { addLngLat } from '../../reducers/report'
+
 
 class MapContainer extends React.Component {
 
@@ -25,7 +27,7 @@ class MapContainer extends React.Component {
       this.setState({ selectedRestIndex: [...this.state.selectedRestIndex, index] })
     }
   }
-
+  
   render() {
     const onMarkerClick = (rest, index) => {
       !this.state.selectedRestIndex.includes(index)
@@ -74,6 +76,7 @@ const mapDispatchToProps = dispatch => ({
   fetchRests: (locationObj) => dispatch(fetchRests(locationObj)),
   fetchZip: (locationObj) => dispatch(fetchZip(locationObj)),
   addBullseye: (coordsArr) => dispatch(markBullseye(coordsArr)) 
+  addLngLat: (longitude, latitude) => dispatch(addLngLat(longitude, latitude))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MapContainer)
