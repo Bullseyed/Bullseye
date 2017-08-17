@@ -4,13 +4,11 @@ import { connect } from 'react-redux'
 import Filter from './Filter/Main'
 import MapContainer from './Map/MapContainer'
 import Nav from './Nav/Nav'
-import { demographicThunk } from '../reducers/demographic'
 import { retrieveLoggedInUser } from '../reducers/auth'
 
 class Main extends React.Component {
 
   componentDidMount() {
-    this.props.demographicThunk()
     this.props.retrieveUser()
   }
 
@@ -31,16 +29,12 @@ class Main extends React.Component {
     )
   }
 }
-const mapState = ({ demographic }) => ({
-  demographic
-})
 
 const mapDispatch = dispatch => ({
-  demographicThunk,
   retrieveUser: () => {
     dispatch(retrieveLoggedInUser())
   }
 
 })
 
-export default connect(mapState, mapDispatch)(Main);
+export default connect(null, mapDispatch)(Main);

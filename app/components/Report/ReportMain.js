@@ -9,6 +9,7 @@ import BizList from './BizList'
 import Location from './Location'
 import Zips from './Zips'
 import SaveBut from './SaveBut'
+import Charts from './Charts'
 
 
 const ReportMain = () => {
@@ -31,7 +32,7 @@ const ReportMain = () => {
 					<Col s={8}>
 						<Row>
 							<div style={{fill: 'black', height: 400}}>
-								Charts
+                <Charts />
 							</div>
 						</Row>
 					</Col>
