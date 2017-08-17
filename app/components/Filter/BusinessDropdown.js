@@ -3,7 +3,7 @@ import { Input } from 'react-materialize'
 import SubRest from './SubDropdowns/SubRest'
 import SubLaund from './SubDropdowns/SubLaund'
 import { connect } from 'react-redux'
-import { putBType } from '../../reducers/b-type-reducer'
+import { addBType } from '../../reducers/b-type-reducer'
 
 class BusinessDropdown extends React.Component {
 	constructor(props) {
@@ -43,5 +43,5 @@ class BusinessDropdown extends React.Component {
 }
 
 const mapStateToProps = storeState => ({ bType: storeState.bType })
-const mapDispatchToProps = dispatch => ({ addBType: typeStr => dispatch(putBType(typeStr)) })
+const mapDispatchToProps = dispatch => ({addBType: typeStr => dispatch(addBType(typeStr))})
 export default connect(mapStateToProps, mapDispatchToProps)(BusinessDropdown)

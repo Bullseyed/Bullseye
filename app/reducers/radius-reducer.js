@@ -1,13 +1,9 @@
 const UPDATE_RADIUS = 'UPDATE_RADIUS'
 
-const updateRadius = (radObj) => ({
+export const updateRadius = (radObj) => ({
 	type: UPDATE_RADIUS,
 	radObj,
 })
-
-export const putRadius = (radObj) => dispatch => {
-	return dispatch(updateRadius(radObj))
-}
 
 const radiusReducer = (radius={}, action) => {
 	switch(action.type){

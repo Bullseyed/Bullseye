@@ -1,7 +1,7 @@
 import React from 'react'
 import { Input } from 'react-materialize'
 import { connect } from 'react-redux'
-import { putBType } from '../../../reducers/b-type-reducer'
+import { addBType } from '../../../reducers/b-type-reducer'
 
 const SubRest = (props) => {
 	const changeHandler = (event) => {
@@ -31,5 +31,5 @@ const SubRest = (props) => {
 	)
 }
 const mapStateToProps = storeState => ({ bType: storeState.bType })
-const mapDispatchToProps = dispatch => ({ addBType: typeStr => dispatch(putBType(typeStr)) })
+const mapDispatchToProps = dispatch => ({ addBType: typeStr => dispatch(addBType(typeStr)) })
 export default connect(mapStateToProps, mapDispatchToProps)(SubRest)
