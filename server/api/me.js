@@ -8,7 +8,6 @@ const User = require('../../db').models.user;
 // check currently-authenticated user, i.e. "who am I?"
 router.get('/', (req, res, next) => {
   // with Passport:
-  console.log("api/me get request running. req.user:", req.user);
   res.json(req.user);
   // // before, without Passport:
   // User.findById(req.session.userId)

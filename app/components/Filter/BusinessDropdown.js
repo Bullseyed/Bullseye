@@ -3,7 +3,7 @@ import { Input } from 'react-materialize'
 import SubRest from './SubDropdowns/SubRest'
 import SubLaund from './SubDropdowns/SubLaund'
 import { connect } from 'react-redux'
-import { putBType } from '../../reducers/b-type-reducer'
+import { addBType } from '../../reducers/b-type-reducer'
 
 class BusinessDropdown extends React.Component {
 	constructor(props) {
@@ -12,23 +12,22 @@ class BusinessDropdown extends React.Component {
 			showSubRest: false,
 			showSubLaund: false,
 		}
-		this.changeHandle = this.changeHandle.bind(this)
-	}
-	changeHandle(event) {
-		const val = +event.target.value
-		if (val === 2) {
-			this.setState({ showSubRest: true, showSubLaund: false })
-		}
-		if (val === 3) {
-			this.setState({ showSubRest: false, showSubLaund: true })
-		}
 	}
 
 	render() {
+		const changeHandle = (event) => {
+			const val = +event.target.value
+			if (val === 2) {
+				this.setState({ showSubRest: true, showSubLaund: false })
+			}
+			if (val === 3) {
+				this.setState({ showSubRest: false, showSubLaund: true })
+			}
+		}
 		return (
 			<div>
 
-				<Input s={12} type='select' label="Business Type" defaultValue='0' onChange={this.changeHandle}>
+				<Input s={12} type='select' label="Business Type" defaultValue='0' onChange={changeHandle}>
 					<option disabled='disabled' value='0'> Select Business </option>
 					<option value='2'>Restaurant</option>
 					<option value='3'>Laundry</option>
@@ -43,5 +42,5 @@ class BusinessDropdown extends React.Component {
 }
 
 const mapStateToProps = storeState => ({ bType: storeState.bType })
-const mapDispatchToProps = dispatch => ({ addBType: typeStr => dispatch(putBType(typeStr)) })
+const mapDispatchToProps = dispatch => ({addBType: typeStr => dispatch(addBType(typeStr))})
 export default connect(mapStateToProps, mapDispatchToProps)(BusinessDropdown)

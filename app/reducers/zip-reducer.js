@@ -12,9 +12,11 @@ export const fetchZip = (locationObj) => dispatch => {
     .then(res => res.data)
     .then(resdata => {
       let zips = [];
-      for (var i = 0; i < 15; i++) {
-        if (!zips.includes(resdata[i].location.zip_code) && zips.length < 4) {
-          zips.push(resdata[i].location.zip_code)
+
+      for (var i = 0; i < resdata.length; i++) {
+        if (!zips.includes(+resdata[i].location.zip_code)) {
+          if (i >= 15 || zips.length >= 3) break
+          zips.push(+resdata[i].location.zip_code)
         }
       }
       return zips

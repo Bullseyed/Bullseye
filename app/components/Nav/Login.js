@@ -11,9 +11,8 @@ const Login = () => {
 		<Modal
 			header='Log in with Gmail'
 			trigger={<h>Log in </h>}>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-			incididunt ut labore et dolore magna aliqua.</p>
-		<a href="/api/auth"><Button> Log in </Button></a>
+			<p></p>
+		<a href="/api/auth"><Button> Log in with Google </Button></a>
 		</Modal>
 	)
 }
