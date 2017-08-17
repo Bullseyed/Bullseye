@@ -6,8 +6,7 @@ import { connect } from 'react-redux'
 import { setCoords } from '../../reducers/map-reducer'
 import { fetchRests } from '../../reducers/rest-reducer'
 import { fetchZip } from '../../reducers/zip-reducer'
-
-
+import { addLngLat } from '../../reducers/report'
 
 class MapContainer extends React.Component {
 
@@ -26,7 +25,7 @@ class MapContainer extends React.Component {
       this.setState({ selectedRestIndex: [...this.state.selectedRestIndex, index] })
     }
   }
-
+  
   render() {
     const onMarkerClick = (rest, index) => {
       !this.state.selectedRestIndex.includes(index)
@@ -70,7 +69,8 @@ const mapStateToProps = ({ radius, rests, bType, zip }) => ({ radius, rests, bTy
 
 const mapDispatchToProps = dispatch => ({
   fetchRests: (locationObj) => dispatch(fetchRests(locationObj)),
-  fetchZip: (locationObj) => dispatch(fetchZip(locationObj))
+  fetchZip: (locationObj) => dispatch(fetchZip(locationObj)),
+  addLngLat: (longitude, latitude) => dispatch(addLngLat(longitude, latitude))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MapContainer)

@@ -7,7 +7,6 @@ const BizList = (props) => {
 		<Row>
 			<Collection>
 				{props.rests.map(rest=>{
-					console.log(rest)
 					return (
 						<CollectionItem key={rest.id}> {rest.name} {rest.price} {rest.rating} </CollectionItem>
 					)

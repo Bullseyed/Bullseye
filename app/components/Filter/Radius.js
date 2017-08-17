@@ -1,13 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { putRadius } from '../../reducers/radius-reducer'
-import { Input, Icon, Row, Col } from 'react-materialize'
+import { updateRadius } from '../../reducers/radius-reducer'
+import { Input, Row, Col } from 'react-materialize'
 
 const radius = (props) => {
-	const addRadius = props.addRadius
 	const changeHandler = (event) => {
+
 	  const newObj = { value: +event.target.value, metric: 'imperial' }
-		addRadius(newObj)
+		props.updateRadius(newObj)
 	}
 
 	return (
@@ -27,7 +27,7 @@ const mapStateToProps = storeState => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-	addRadius: (radObj) => dispatch(putRadius(radObj))
+	updateRadius: (radObj) => dispatch(updateRadius(radObj))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(radius)

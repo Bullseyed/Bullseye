@@ -13,7 +13,7 @@ const Report = db.define('report', {
   latitude: FLOAT,
   radius: INTEGER,
   businessType: STRING,
-  restaurantType: STRING,
+  businessSubtype: STRING,
   crimeChecked: BOOLEAN,
   demographicsChecked: BOOLEAN,
   incomeChecked: BOOLEAN,
