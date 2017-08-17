@@ -6,7 +6,7 @@ const rootReducer = combineReducers({
   radius: require('./radius-reducer').default,
   checkboxes: require('./checkbox-reducer').default,
   bType: require('./b-type-reducer').default,
-  demographic: require('./demographic').default,
+  demoData: require('./demo-reducer').default,
   currentUser: require('./auth').default,
   zip: require('./zip-reducer').default,
   bullseye: require('./bullseye-reducer').default,

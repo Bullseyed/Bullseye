@@ -9,14 +9,15 @@ import BizList from './BizList'
 import Location from './Location'
 import Zips from './Zips'
 import SaveBut from './SaveBut'
+import Charts from './Charts'
 
 
 const ReportMain = () => {
-	return (
-		<Row>
-			<Col l={3} style={{ paddingRight: 0, paddingLeft: 0, }}>
-				<MapContainer />
-			</Col>
+  return (
+    <Row>
+      <Col l={3} style={{ paddingRight: 0, paddingLeft: 0, }}>
+        <MapContainer />
+      </Col>
 
 			<Col l={9} style={{ paddingRight: 0, paddingLeft: 0 }}>
 				<Row>  <Nav />  </Row>
@@ -31,11 +32,11 @@ const ReportMain = () => {
 					<Col s={8}>
 						<Row>
 							<div style={{fill: 'black', height: 400}}>
-								Charts
+                <Charts />
 							</div>
 						</Row>
 					</Col>
-				</Row> 
+				</Row>
 				<Row> <Col> <HomeBut /> </Col> <Col> <SaveBut /> </Col> </Row>
 				</Col>
 		</Row>
