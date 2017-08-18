@@ -4,19 +4,31 @@ import { updateRadius } from '../../reducers/radius-reducer'
 import { Input, Row, Col } from 'react-materialize'
 
 const radius = (props) => {
+	// let metric = 'mile'
+	// const handleMetric = (event)=>{
+	// 	if (metric ==='mile') metric = 'km'
+	// 		else {
+	// 			metric = 'miles'
+	// 		}
+	// }
 	const changeHandler = (event) => {
-
-	  const newObj = { value: +event.target.value, metric: 'imperial' }
-		props.updateRadius(newObj)
+		function getMetersFromMiles(miles) {
+			return miles * 1609.344;
+		}
+		function getMetersFromKM(km) {
+			return km * 1000;
+		}
+		const metric = document.getElementById('metric-switch').checked ? getMetersFromKM(+event.target.value) : getMetersFromMiles(+event.target.value)
+		props.updateRadius(metric)
 	}
 
 	return (
 		<Row>
 			<Col s={4}>
-			<Input label="Radius" validate onChange={changeHandler}></Input>
+				<Input label="Radius" validate onChange={changeHandler}></Input>
 			</Col>
 			<Col s={8} style={{ paddingTop: 25 }}>
-				<Input name='on' type='switch' value='1' onLabel='km' offLabel='miles' />
+				<Input name='on' type='switch' id="metric-switch" value='1' onLabel='km' offLabel='miles' onChange={changeHandler} />
 			</Col>
 		</Row>
 	)

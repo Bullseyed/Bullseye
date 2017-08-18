@@ -1,14 +1,14 @@
 const UPDATE_RADIUS = 'UPDATE_RADIUS'
 
-export const updateRadius = (radObj) => ({
+export const updateRadius = (radInt) => ({
 	type: UPDATE_RADIUS,
-	radObj,
+	radInt,
 })
 
-const radiusReducer = (radius={}, action) => {
+const radiusReducer = (radius=0, action) => {
 	switch(action.type){
 		case UPDATE_RADIUS:
-			return action.radObj
+			return action.radInt
 		default:
 			return radius
 	}

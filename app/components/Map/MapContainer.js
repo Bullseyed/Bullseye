@@ -27,7 +27,7 @@ class MapContainer extends React.Component {
       this.setState({ selectedRestIndex: [...this.state.selectedRestIndex, index] })
     }
   }
-  
+
   render() {
     const onMarkerClick = (rest, index) => {
       !this.state.selectedRestIndex.includes(index)
@@ -51,7 +51,7 @@ class MapContainer extends React.Component {
       this.props.fetchRests(locationObj)
       this.props.fetchZip(locationObj)
     }
-    
+
     return (
       <div style={{ height: '100vh' }}>
         <InitialMap
@@ -59,7 +59,7 @@ class MapContainer extends React.Component {
           mapElement={<div style={{ height: '100vh' }} />}
           onMapClick={onMapClick}
           selectedMarker={this.state.selectedMarker}
-          radius={this.props.radius.value || 0}
+          radius={this.props.radius || 0}
           onMarkerClick={onMarkerClick}
           restList={this.props.rests}
           selectedRestIndex={this.state.selectedRestIndex}
