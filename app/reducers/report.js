@@ -41,7 +41,7 @@ export default function reducer (state = {
       state.latitude = action.latitude;
       break;
     case UPDATE_RADIUS:
-      state.radius = action.radObj.value;
+      state.radius = action.radInt;
       break;
     default:
       return state;
