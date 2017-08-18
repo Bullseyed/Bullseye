@@ -25,7 +25,7 @@ const BizList = (props) => {
 										<p> <b> Phone Number:</b> {rest.phone} </p>
 										<p> <b> Rating: </b>{rest.rating} </p>
 										<p> <b> Price Rating:</b> {rest.price} </p>
-										
+
 
 										</Col>
 									</Row>
