@@ -1,6 +1,22 @@
-node_modules
-bundle.js
-bundle.js.map
+yarn.lock
+
+# Ignore all node_modules
+node_modules/*
+
+# ...except the symlink to ourselves.
+!node_modules/APP
+
+# Compiled JS
+public/bundle.js
+public/bundle.js.map
+
+# NPM errors
+npm-debug.log
+
+.vscode
 .DS_Store
 
-yarn.lock
+*.log
+#secret
+secret.JS
+
