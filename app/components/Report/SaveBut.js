@@ -6,9 +6,8 @@ import { connect } from 'react-redux';
 import { Modal } from 'react-materialize'
 
 
-
-
 const SaveBut = (props) => {
+
   const saveReport = (props) => {
     console.log('saving report')
     axios.post('/api/reports', props.report)
@@ -16,8 +15,10 @@ const SaveBut = (props) => {
 
   return (
     <Row>
-      <Modal trigger = {<Button waves='light' onClick={saveReport}>Save Search</Button>}>
-      <p>Search Saved</p>
+      <Modal
+        onClick={saveReport}
+        trigger={<Button waves='light'>Save Search</Button>}>
+        <p>Search Saved</p>
       </Modal>
     </Row>
   )

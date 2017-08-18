@@ -62954,6 +62954,7 @@ var _reactRedux = __webpack_require__(19);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var SaveBut = function SaveBut(props) {
+
   var saveReport = function saveReport(props) {
     console.log('saving report');
     _axios2.default.post('/api/reports', props.report);
@@ -62964,9 +62965,11 @@ var SaveBut = function SaveBut(props) {
     null,
     _react2.default.createElement(
       _reactMaterialize.Modal,
-      { trigger: _react2.default.createElement(
+      {
+        onClick: saveReport,
+        trigger: _react2.default.createElement(
           _reactMaterialize.Button,
-          { waves: 'light', onClick: saveReport },
+          { waves: 'light' },
           'Save Search'
         ) },
       _react2.default.createElement(
