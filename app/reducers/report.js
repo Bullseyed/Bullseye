@@ -25,12 +25,7 @@ export default function reducer (state = {
   longitude: null,
   latitude: null,
   radius: null,
-  businessType: null,
-  businessSubtype: null,
-  crimeChecked: false,
-  demographicsChecked: false,
-  incomeChecked: false,
-  popDensityChecked: false
+  businessType: null
 }, action) {
   switch (action.type) {
     case ADD_B_TYPE:
