@@ -22,7 +22,7 @@ const Bargraph = (props) => {
         dependentAxis
         style={{
           parent: { border: "1px solid #ccc" },
-          axisLabel: {fontSize: 16, padding: 50}
+          axisLabel: {fontSize: 16, padding: 60}
         }}
         label={props.demoData && props.demoData.yLabel}
         //axisLabelComponent={<VictoryLabel text={props.demoData.yLabel} />}
