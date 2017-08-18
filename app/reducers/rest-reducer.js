@@ -8,6 +8,7 @@ const getRests = (restList) => ({
 })
 
 export const fetchRests = (locationObj) => dispatch => {
+  console.log('firing')
   axios.post('/api/yelp/restaurants', locationObj)
   .then(res=>res.data)
   .then(restList => dispatch(getRests(restList)))
@@ -16,7 +17,7 @@ export const fetchRests = (locationObj) => dispatch => {
 function restReducer (rests = [], action) {
   switch(action.type){
     case GET_RESTS:
-      return action.restList
+      return rests.concat(action.restList)
     default:
       return rests;
   }

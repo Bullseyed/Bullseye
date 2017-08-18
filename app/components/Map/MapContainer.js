@@ -45,10 +45,19 @@ class MapContainer extends React.Component {
       )
     }
 
-    const makeYelpReq = (latitude, longitude, radius) => {
-      const locationObj = { latitude, longitude, radius, term: this.props.bType }
-      this.props.fetchRests(locationObj)
-      this.props.fetchRests(locationObj)
+    const makeYelpReq = async (latitude, longitude, radius) => {
+      let offset = 0
+      let first = true
+      while (offset<950) {
+        const locationObj = { latitude, longitude, radius, term: this.props.bType, offset, }
+        await this.props.fetchRests(locationObj)
+        if (first) {
+          offset = offset + 51
+          first = false
+        }
+        else offset=offset+50
+
+      }
       this.props.fetchZip(locationObj)
     }
 
