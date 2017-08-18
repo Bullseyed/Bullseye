@@ -24648,10 +24648,6 @@ var _BusinessDropdown = __webpack_require__(639);
 
 var _BusinessDropdown2 = _interopRequireDefault(_BusinessDropdown);
 
-var _Checkboxes = __webpack_require__(642);
-
-var _Checkboxes2 = _interopRequireDefault(_Checkboxes);
-
 var _SubmitRepBut = __webpack_require__(643);
 
 var _SubmitRepBut2 = _interopRequireDefault(_SubmitRepBut);
@@ -24668,7 +24664,6 @@ var Filter = function Filter(props) {
 			_react2.default.createElement(_BusinessDropdown2.default, null)
 		),
 		_react2.default.createElement(_Radius2.default, null),
-		_react2.default.createElement(_Checkboxes2.default, null),
 		_react2.default.createElement(_SubmitRepBut2.default, null)
 	);
 };
@@ -52304,70 +52299,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(SubLaund);
 
 /***/ }),
-/* 642 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactMaterialize = __webpack_require__(16);
-
-var _reactRedux = __webpack_require__(19);
-
-var _checkboxReducer = __webpack_require__(317);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Checkboxes = function Checkboxes(props) {
-  return _react2.default.createElement(
-    'div',
-    null,
-    _react2.default.createElement(
-      _reactMaterialize.Row,
-      null,
-      _react2.default.createElement(
-        _reactMaterialize.Col,
-        { s: 4 },
-        _react2.default.createElement(_reactMaterialize.Input, { name: 'group1', type: 'checkbox', value: 'crime', label: 'Crime', onChange: props.putCheckbox })
-      ),
-      _react2.default.createElement(
-        _reactMaterialize.Col,
-        { s: 4 },
-        _react2.default.createElement(_reactMaterialize.Input, { name: 'group1', type: 'checkbox', value: 'demo', label: 'Demographic', onChange: props.putCheckbox })
-      ),
-      _react2.default.createElement(
-        _reactMaterialize.Col,
-        { s: 4 },
-        _react2.default.createElement(_reactMaterialize.Input, { name: 'group1', type: 'checkbox', value: 'income', label: 'Income Levels', onChange: props.putCheckbox })
-      ),
-      _react2.default.createElement(
-        _reactMaterialize.Col,
-        { s: 4 },
-        _react2.default.createElement(_reactMaterialize.Input, { name: 'group1', type: 'checkbox', value: 'population', label: 'Population Density', onChange: props.putCheckbox })
-      )
-    )
-  );
-};
-
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {
-    putCheckbox: function putCheckbox(checkboxObj) {
-      return dispatch((0, _checkboxReducer.putCheckbox)(checkboxObj));
-    }
-  };
-};
-
-exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)(Checkboxes);
-
-/***/ }),
+/* 642 */,
 /* 643 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -52399,18 +52331,22 @@ var SubmitRepBut = function SubmitRepBut(props) {
   };
 
   return _react2.default.createElement(
-    _reactMaterialize.Row,
-    null,
+    _reactMaterialize.Col,
+    { s: 12 },
     _react2.default.createElement(
-      _reactRouterDom.Link,
-      { to: '/report' },
+      _reactMaterialize.Row,
+      null,
       _react2.default.createElement(
-        _reactMaterialize.Button,
-        {
-          waves: 'light',
-          onClick: fetchReports
-        },
-        'Get Detailed Report'
+        _reactRouterDom.Link,
+        { to: '/report' },
+        _react2.default.createElement(
+          _reactMaterialize.Button,
+          {
+            waves: 'light',
+            onClick: fetchReports
+          },
+          'Get Detailed Report'
+        )
       )
     )
   );
@@ -62738,102 +62674,88 @@ var BizList = function BizList(props) {
 		_react2.default.createElement(
 			_reactMaterialize.Row,
 			null,
-			' Nearby Businesses '
+			' ',
+			_react2.default.createElement(
+				'b',
+				null,
+				' Nearby Businesses: '
+			),
+			' '
+		),
+		_react2.default.createElement(
+			_reactMaterialize.Row,
+			null,
+			_react2.default.createElement(
+				_reactMaterialize.Col,
+				{ s: 4 },
+				_react2.default.createElement(
+					'b',
+					null,
+					' Name '
+				)
+			),
+			_react2.default.createElement(
+				_reactMaterialize.Col,
+				{ s: 4 },
+				_react2.default.createElement(
+					'b',
+					null,
+					' Price Rating '
+				)
+			),
+			_react2.default.createElement(
+				_reactMaterialize.Col,
+				{ s: 4 },
+				_react2.default.createElement(
+					'b',
+					null,
+					' Rating '
+				)
+			)
 		),
 		props.rests && _react2.default.createElement(
 			_reactMaterialize.Collection,
 			null,
 			props.rests.map(function (rest) {
 				return rest.distance <= props.radius.value ? _react2.default.createElement(
-					_reactMaterialize.CollectionItem,
-					{ key: rest.id },
+					_reactMaterialize.Row,
+					null,
 					_react2.default.createElement(
-						_reactMaterialize.Modal,
-						{
-							header: rest.name,
-							trigger: _react2.default.createElement(
-								'h',
-								null,
-								rest.name
-							) },
-						_react2.default.createElement(
-							_reactMaterialize.Row,
-							null,
-							_react2.default.createElement(
-								_reactMaterialize.Col,
-								{ s: 6 },
-								_react2.default.createElement('img', { src: rest.image_url, style: { width: "100%", height: "100%" } })
-							),
-							_react2.default.createElement(
-								_reactMaterialize.Col,
-								{ s: 6 },
-								_react2.default.createElement(
-									'p',
-									null,
-									' ',
-									_react2.default.createElement(
-										'b',
-										null,
-										' Distance: '
-									),
-									' ',
-									rest.distance,
-									' '
-								),
-								_react2.default.createElement(
-									'p',
-									null,
-									' ',
-									_react2.default.createElement(
-										'b',
-										null,
-										' Address: '
-									),
-									rest.location.display_address.join(', '),
-									' '
-								),
-								_react2.default.createElement(
-									'p',
-									null,
-									' ',
-									_react2.default.createElement(
-										'b',
-										null,
-										' Phone Number:'
-									),
-									' ',
-									rest.phone,
-									' '
-								),
-								_react2.default.createElement(
-									'p',
-									null,
-									' ',
-									_react2.default.createElement(
-										'b',
-										null,
-										' Rating: '
-									),
-									rest.rating,
-									' '
-								),
-								_react2.default.createElement(
-									'p',
-									null,
-									' ',
-									_react2.default.createElement(
-										'b',
-										null,
-										' Price Rating:'
-									),
-									' ',
-									rest.price,
-									' '
-								)
-							)
-						)
+						_reactMaterialize.Col,
+						{ s: 4 },
+						rest.name
+					),
+					_react2.default.createElement(
+						_reactMaterialize.Col,
+						{ s: 4 },
+						rest.price
+					),
+					_react2.default.createElement(
+						_reactMaterialize.Col,
+						{ s: 4 },
+						rest.rating
 					)
 				) : null;
+
+				{/* ? <CollectionItem key={rest.id}>
+     	<Modal
+     		header={rest.name}
+     		trigger={<h>{rest.name}</h>}>
+     		<Row>
+     			<Col s={6}>
+     				<img src={rest.image_url} style={{width:"100%", height: "100%"}} />
+     			</Col>
+     			<Col s={6}>
+     			<p> <b> Distance: </b> {rest.distance} </p>
+     			<p> <b> Address: </b>{rest.location.display_address.join(', ')} </p>
+     			<p> <b> Phone Number:</b> {rest.phone} </p>
+     			<p> <b> Rating: </b>{rest.rating} </p>
+     			<p> <b> Price Rating:</b> {rest.price} </p>
+     					</Col>
+     		</Row>
+     	</Modal>
+     </CollectionItem>
+     : null */}
 			})
 		)
 	);
@@ -62875,7 +62797,13 @@ var Location = function Location(props) {
 		_react2.default.createElement(
 			'h',
 			null,
-			' Location: ',
+			' ',
+			_react2.default.createElement(
+				'b',
+				null,
+				'Location:'
+			),
+			' ',
 			props.bullseyeLocation.join(', ')
 		)
 	);
@@ -62917,7 +62845,13 @@ var Zips = function Zips(props) {
 		_react2.default.createElement(
 			'h',
 			null,
-			' Included Zipcodes: ',
+			' ',
+			_react2.default.createElement(
+				'b',
+				null,
+				'Included Zipcodes: '
+			),
+			' ',
 			props.zips.join(', ')
 		)
 	);

@@ -6,12 +6,39 @@ const BizList = (props) => {
 	// const radius = props.radius.value
 	return (
 		<Row>
-			<Row> Nearby Businesses </Row>
+			<Row> <b> Nearby Businesses: </b> </Row>
+			<Row>
+				<Col s={4}>
+					<b> Name </b>
+				</Col>
+				<Col s={4}>
+					<b> Price Rating </b>
+				</Col>
+				<Col s={4}>
+					<b> Rating </b>
+				</Col>
+			</Row>
 			{props.rests &&
 				<Collection>
 					{props.rests.map(rest => {
-						return rest.distance <= props.radius.value
-							? <CollectionItem key={rest.id}>
+						return rest.distance <= props.radius.value ?
+							< Row >
+								<Col s={4}>
+									{rest.name}
+								</Col>
+								<Col s={4}>
+									{rest.price}
+								</Col>
+								<Col s={4}>
+									{rest.rating}
+								</Col>
+							</Row>
+
+							: null
+
+
+
+						{/* ? <CollectionItem key={rest.id}>
 								<Modal
 									header={rest.name}
 									trigger={<h>{rest.name}</h>}>
@@ -31,7 +58,7 @@ const BizList = (props) => {
 									</Row>
 								</Modal>
 							</CollectionItem>
-							: null
+							: null */}
 					})}
 				</Collection>
 			}
