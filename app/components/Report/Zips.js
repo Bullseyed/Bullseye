@@ -6,7 +6,7 @@ import { Row } from 'react-materialize'
 const Zips = (props) => {
 	return (
 		<Row>
-		<h> Included Zipcodes: {props.zips.join(', ')}</h>
+		<h> <b>Included Zipcodes: </b> {props.zips.join(', ')}</h>
 		</Row>
 	)
 }

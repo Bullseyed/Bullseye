@@ -6,7 +6,7 @@ import { Row } from 'react-materialize'
 const Location = (props) => {
 	return (
 		<Row>
-		<h> Location: {props.bullseyeLocation.join(', ')}</h>
+		<h> <b>Location:</b> {props.bullseyeLocation.join(', ')}</h>
 		</Row>
 	)
 }
