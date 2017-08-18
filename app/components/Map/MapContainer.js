@@ -4,11 +4,10 @@ import InitialMap from './Map'
 import { connect } from 'react-redux'
 
 import { setCoords } from '../../reducers/map-reducer'
-import { fetchRests } from '../../reducers/rest-reducer'
+import { fetchRests, clearRests } from '../../reducers/rest-reducer'
 import { fetchZip } from '../../reducers/zip-reducer'
 import { markBullseye } from '../../reducers/bullseye-reducer'
 import { addLngLat } from '../../reducers/report'
-
 
 class MapContainer extends React.Component {
 
@@ -37,6 +36,7 @@ class MapContainer extends React.Component {
     const markBullseye = (e) => this.setState({ selectedMarker: { lat: e.latLng.lat(), lng: e.latLng.lng() } })
 
     const onMapClick = (e) => {
+      clearRests()
       this.setState({ selectedMarker: { lat: e.latLng.lat(), lng: e.latLng.lng() }, selectedRestIndex: [] },
         () => {
           makeYelpReq(this.state.selectedMarker.lat, this.state.selectedMarker.lng, this.props.radius.value)
@@ -45,11 +45,17 @@ class MapContainer extends React.Component {
       )
     }
 
+    const clearRests = async () => {
+      await this.props.clearRests()
+    }
+
     const makeYelpReq = async (latitude, longitude, radius) => {
       let offset = 0
       let first = true
+      const locationObj = { latitude, longitude, radius, term: this.props.bType, }
+      this.props.fetchZip(locationObj)
       while (offset<950) {
-        const locationObj = { latitude, longitude, radius, term: this.props.bType, offset, }
+        locationObj.offset = offset
         await this.props.fetchRests(locationObj)
         if (first) {
           offset = offset + 51
@@ -58,7 +64,6 @@ class MapContainer extends React.Component {
         else offset=offset+50
 
       }
-      this.props.fetchZip(locationObj)
     }
 
     return (
@@ -85,7 +90,8 @@ const mapDispatchToProps = dispatch => ({
   fetchRests: (locationObj) => dispatch(fetchRests(locationObj)),
   fetchZip: (locationObj) => dispatch(fetchZip(locationObj)),
   addBullseye: (coordsArr) => dispatch(markBullseye(coordsArr)),
-  addLngLat: (longitude, latitude) => dispatch(addLngLat(longitude, latitude))
+  addLngLat: (longitude, latitude) => dispatch(addLngLat(longitude, latitude)),
+  clearRests: () => dispatch(clearRests())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MapContainer)

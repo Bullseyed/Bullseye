@@ -25544,17 +25544,30 @@ var MapContainer = function (_React$Component) {
       };
 
       var onMapClick = function onMapClick(e) {
+        clearRests();
         _this2.setState({ selectedMarker: { lat: e.latLng.lat(), lng: e.latLng.lng() }, selectedRestIndex: [] }, function () {
           makeYelpReq(_this2.state.selectedMarker.lat, _this2.state.selectedMarker.lng, _this2.props.radius.value);
           _this2.props.addBullseye([_this2.state.selectedMarker.lat, _this2.state.selectedMarker.lng]);
         });
       };
 
-      var makeYelpReq = function makeYelpReq(latitude, longitude, radius) {
+      var clearRests = async function clearRests() {
+        await _this2.props.clearRests();
+      };
+
+      var makeYelpReq = async function makeYelpReq(latitude, longitude, radius) {
+        var offset = 0;
+        var first = true;
         var locationObj = { latitude: latitude, longitude: longitude, radius: radius, term: _this2.props.bType };
-        _this2.props.fetchRests(locationObj);
-        _this2.props.fetchRests(locationObj);
         _this2.props.fetchZip(locationObj);
+        while (offset < 950) {
+          locationObj.offset = offset;
+          await _this2.props.fetchRests(locationObj);
+          if (first) {
+            offset = offset + 51;
+            first = false;
+          } else offset = offset + 50;
+        }
       };
 
       return _react2.default.createElement(
@@ -25599,6 +25612,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     },
     addLngLat: function addLngLat(longitude, latitude) {
       return dispatch((0, _report.addLngLat)(longitude, latitude));
+    },
+    clearRests: function clearRests() {
+      return dispatch((0, _restReducer.clearRests)());
     }
   };
 };
@@ -27487,7 +27503,7 @@ module.exports = hasIn;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.fetchRests = undefined;
+exports.fetchRests = exports.clearRests = undefined;
 
 var _axios = __webpack_require__(78);
 
@@ -27496,6 +27512,7 @@ var _axios2 = _interopRequireDefault(_axios);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var GET_RESTS = 'GET_RESTS';
+var CLEAR_RESTS = 'CLEAR_RESTS';
 
 var getRests = function getRests(restList) {
   return {
@@ -27504,8 +27521,15 @@ var getRests = function getRests(restList) {
   };
 };
 
+var clearRests = exports.clearRests = function clearRests() {
+  return {
+    type: CLEAR_RESTS
+  };
+};
+
 var fetchRests = exports.fetchRests = function fetchRests(locationObj) {
   return function (dispatch) {
+    console.log('firing');
     _axios2.default.post('/api/yelp/restaurants', locationObj).then(function (res) {
       return res.data;
     }).then(function (restList) {
@@ -27520,7 +27544,9 @@ function restReducer() {
 
   switch (action.type) {
     case GET_RESTS:
-      return action.restList;
+      return rests.concat(action.restList);
+    case CLEAR_RESTS:
+      return [];
     default:
       return rests;
   }
