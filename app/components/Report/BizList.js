@@ -3,29 +3,47 @@ import { Row, Col, Collection, CollectionItem, Modal, Icon } from 'react-materia
 import { connect } from 'react-redux'
 
 const BizList = (props) => {
-	// const radius = props.radius.value
 	return (
 		<Row>
 			<Row> <b> Nearby Businesses: </b> </Row>
-			<Row>
-				<Col s={4}>
+			<Row style={{ paddingTop: 0, paddingBottom: 0 }}>
+				<Col s={6}>
 					<b> Name </b>
 				</Col>
-				<Col s={4}>
-					<b> Price Rating </b>
+				<Col s={2}>
+					<b> Price </b>
 				</Col>
-				<Col s={4}>
+				<Col s={2}>
 					<b> Rating </b>
+				</Col>
+				<Col s={2}>
+					<b> Distance </b>
 				</Col>
 			</Row>
 			{props.rests &&
 				<div>
 					{props.rests.map(rest => {
 						return rest.distance <= props.radius ?
-							<Row key={rest.id}>
+							<Row key={rest.id} style={{ paddingTop: 0, paddingBottom: 0, marginBottom: 0 }}>
 								<Modal
 									header={rest.name}
-									trigger={<h > {rest.name}</h>}>
+									trigger={
+										<Row>
+											<Col s={6}>
+												{rest.name}
+											</Col>
+											<Col s={2}>
+											 {rest.price}
+											</Col>
+											<Col s={2}>
+											 {rest.rating}
+											</Col>
+											<Col s={2}>
+											 {+rest.distance.toFixed(2)}
+											</Col>
+										</Row>
+
+									}>
 									<Row>
 										<Col s={6}>
 											<img src={rest.image_url} style={{ width: "100%", height: "100%" }} />
