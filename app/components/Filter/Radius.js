@@ -18,14 +18,14 @@ const radius = (props) => {
 		function getMetersFromKM(km) {
 			return km * 1000;
 		}
-		const metric = document.getElementById('metric-switch').checked ? getMetersFromKM(+event.target.value) : getMetersFromMiles(+event.target.value)
+		const metric = document.getElementById('metric-switch').checked ? getMetersFromKM(+document.getElementById('radiusField').value) : getMetersFromMiles(+document.getElementById('radiusField').value)
 		props.updateRadius(metric)
 	}
 
 	return (
 		<Row>
 			<Col s={4}>
-				<Input label="Radius" validate onChange={changeHandler}></Input>
+				<Input id='radiusField' label="Radius" validate onChange={changeHandler}></Input>
 			</Col>
 			<Col s={8} style={{ paddingTop: 25 }}>
 				<Input name='on' type='switch' id="metric-switch" value='1' onLabel='km' offLabel='miles' onChange={changeHandler} />

@@ -3,17 +3,22 @@ import { Button, Row } from 'react-materialize'
 import { Link } from 'react-router-dom'
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { Modal } from 'react-materialize'
+
 
 
 
 const SaveBut = (props) => {
   const saveReport = (props) => {
+    console.log('saving report')
     axios.post('/api/reports', props.report)
   }
 
   return (
     <Row>
-			<Link to ='/'><Button waves='light'>Save Search</Button></Link>
+      <Modal trigger = {<Button waves='light' onClick={saveReport}>Save Search</Button>}>
+      <p>Search Saved</p>
+      </Modal>
     </Row>
   )
 }
