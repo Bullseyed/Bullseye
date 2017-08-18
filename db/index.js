@@ -12,12 +12,7 @@ const Report = db.define('report', {
   longitude: FLOAT,
   latitude: FLOAT,
   radius: INTEGER,
-  businessType: STRING,
-  businessSubtype: STRING,
-  crimeChecked: BOOLEAN,
-  demographicsChecked: BOOLEAN,
-  incomeChecked: BOOLEAN,
-  popDensityChecked: BOOLEAN
+  businessType: STRING
 });
 
 Report.belongsTo(User);

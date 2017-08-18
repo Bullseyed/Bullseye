@@ -19,48 +19,30 @@ const BizList = (props) => {
 				</Col>
 			</Row>
 			{props.rests &&
-				<Collection>
+				<div>
 					{props.rests.map(rest => {
-						return rest.distance <= props.radius.value ?
-							< Row >
-								<Col s={4}>
-									{rest.name}
-								</Col>
-								<Col s={4}>
-									{rest.price}
-								</Col>
-								<Col s={4}>
-									{rest.rating}
-								</Col>
-							</Row>
-
-							: null
-
-
-
-						{/* ? <CollectionItem key={rest.id}>
+						return rest.distance <= props.radius ?
+							<Row key={rest.id}>
 								<Modal
 									header={rest.name}
-									trigger={<h>{rest.name}</h>}>
+									trigger={<h > {rest.name}</h>}>
 									<Row>
 										<Col s={6}>
-											<img src={rest.image_url} style={{width:"100%", height: "100%"}} />
+											<img src={rest.image_url} style={{ width: "100%", height: "100%" }} />
 										</Col>
 										<Col s={6}>
-										<p> <b> Distance: </b> {rest.distance} </p>
-										<p> <b> Address: </b>{rest.location.display_address.join(', ')} </p>
-										<p> <b> Phone Number:</b> {rest.phone} </p>
-										<p> <b> Rating: </b>{rest.rating} </p>
-										<p> <b> Price Rating:</b> {rest.price} </p>
-
-
+											<p> <b> Distance: </b> {rest.distance} </p>
+											<p> <b> Address: </b>{rest.location.display_address.join(', ')} </p>
+											<p> <b> Phone Number:</b> {rest.phone} </p>
+											<p> <b> Rating: </b>{rest.rating} </p>
+											<p> <b> Price Rating:</b> {rest.price} </p>
 										</Col>
 									</Row>
 								</Modal>
-							</CollectionItem>
-							: null */}
+							</Row>
+							: null
 					})}
-				</Collection>
+				</div>
 			}
 		</Row>
 	)

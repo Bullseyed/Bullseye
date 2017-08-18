@@ -27601,12 +27601,7 @@ function reducer() {
     longitude: null,
     latitude: null,
     radius: null,
-    businessType: null,
-    businessSubtype: null,
-    crimeChecked: false,
-    demographicsChecked: false,
-    incomeChecked: false,
-    popDensityChecked: false
+    businessType: null
   };
   var action = arguments[1];
 
@@ -52291,12 +52286,15 @@ var _reactRouterDom = __webpack_require__(141);
 
 var _demoReducer = __webpack_require__(320);
 
+var _report = __webpack_require__(385);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var SubmitRepBut = function SubmitRepBut(props) {
 
   var fetchReports = function fetchReports() {
     props.demographicThunk(props.zip);
+    props.addLngLat(props.bullseye[0], props.bullseye[1]);
   };
 
   return _react2.default.createElement(
@@ -52323,13 +52321,14 @@ var SubmitRepBut = function SubmitRepBut(props) {
 
 var mapStateToProps = function mapStateToProps(_ref) {
   var demoData = _ref.demoData,
-      zip = _ref.zip;
+      zip = _ref.zip,
+      bullseye = _ref.bullseye;
   return {
-    demoData: demoData, zip: zip
+    demoData: demoData, zip: zip, bullseye: bullseye
   };
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps, { demographicThunk: _demoReducer.demographicThunk })(SubmitRepBut);
+exports.default = (0, _reactRedux.connect)(mapStateToProps, { demographicThunk: _demoReducer.demographicThunk, addLngLat: _report.addLngLat })(SubmitRepBut);
 
 /***/ }),
 /* 642 */
@@ -62725,48 +62724,100 @@ var BizList = function BizList(props) {
 			)
 		),
 		props.rests && _react2.default.createElement(
-			_reactMaterialize.Collection,
+			'div',
 			null,
 			props.rests.map(function (rest) {
-				return rest.distance <= props.radius.value ? _react2.default.createElement(
+				return rest.distance <= props.radius ? _react2.default.createElement(
 					_reactMaterialize.Row,
-					null,
+					{ key: rest.id },
 					_react2.default.createElement(
-						_reactMaterialize.Col,
-						{ s: 4 },
-						rest.name
-					),
-					_react2.default.createElement(
-						_reactMaterialize.Col,
-						{ s: 4 },
-						rest.price
-					),
-					_react2.default.createElement(
-						_reactMaterialize.Col,
-						{ s: 4 },
-						rest.rating
+						_reactMaterialize.Modal,
+						{
+							header: rest.name,
+							trigger: _react2.default.createElement(
+								'h',
+								null,
+								' ',
+								rest.name
+							) },
+						_react2.default.createElement(
+							_reactMaterialize.Row,
+							null,
+							_react2.default.createElement(
+								_reactMaterialize.Col,
+								{ s: 6 },
+								_react2.default.createElement('img', { src: rest.image_url, style: { width: "100%", height: "100%" } })
+							),
+							_react2.default.createElement(
+								_reactMaterialize.Col,
+								{ s: 6 },
+								_react2.default.createElement(
+									'p',
+									null,
+									' ',
+									_react2.default.createElement(
+										'b',
+										null,
+										' Distance: '
+									),
+									' ',
+									rest.distance,
+									' '
+								),
+								_react2.default.createElement(
+									'p',
+									null,
+									' ',
+									_react2.default.createElement(
+										'b',
+										null,
+										' Address: '
+									),
+									rest.location.display_address.join(', '),
+									' '
+								),
+								_react2.default.createElement(
+									'p',
+									null,
+									' ',
+									_react2.default.createElement(
+										'b',
+										null,
+										' Phone Number:'
+									),
+									' ',
+									rest.phone,
+									' '
+								),
+								_react2.default.createElement(
+									'p',
+									null,
+									' ',
+									_react2.default.createElement(
+										'b',
+										null,
+										' Rating: '
+									),
+									rest.rating,
+									' '
+								),
+								_react2.default.createElement(
+									'p',
+									null,
+									' ',
+									_react2.default.createElement(
+										'b',
+										null,
+										' Price Rating:'
+									),
+									' ',
+									rest.price,
+									' '
+								)
+							)
+						)
 					)
 				) : null;
-
-				{/* ? <CollectionItem key={rest.id}>
-     	<Modal
-     		header={rest.name}
-     		trigger={<h>{rest.name}</h>}>
-     		<Row>
-     			<Col s={6}>
-     				<img src={rest.image_url} style={{width:"100%", height: "100%"}} />
-     			</Col>
-     			<Col s={6}>
-     			<p> <b> Distance: </b> {rest.distance} </p>
-     			<p> <b> Address: </b>{rest.location.display_address.join(', ')} </p>
-     			<p> <b> Phone Number:</b> {rest.phone} </p>
-     			<p> <b> Rating: </b>{rest.rating} </p>
-     			<p> <b> Price Rating:</b> {rest.price} </p>
-     					</Col>
-     		</Row>
-     	</Modal>
-     </CollectionItem>
-     : null */}
 			})
 		)
 	);
@@ -62894,9 +62945,19 @@ var _reactMaterialize = __webpack_require__(17);
 
 var _reactRouterDom = __webpack_require__(141);
 
+var _axios = __webpack_require__(96);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+var _reactRedux = __webpack_require__(22);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var SaveBut = function SaveBut(props) {
+  var saveReport = function saveReport(props) {
+    _axios2.default.post('/api/reports', props.report);
+  };
+
   return _react2.default.createElement(
     _reactMaterialize.Row,
     null,
@@ -62912,7 +62973,14 @@ var SaveBut = function SaveBut(props) {
   );
 };
 
-exports.default = SaveBut;
+var mapState = function mapState(_ref) {
+  var report = _ref.report;
+  return {
+    report: report
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapState, null)(SaveBut);
 
 /***/ }),
 /* 854 */
