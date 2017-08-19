@@ -4,7 +4,6 @@ const Report = require('../../db').models.report;
 const User = require('../../db').models.user;
 
 router.post('/', (req, res, next) => {
-  console.log('hello', req.user)
    Report.create(req.body)
   .then(createdReport => {
     return createdReport.setUser(req.user)

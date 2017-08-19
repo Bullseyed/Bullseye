@@ -17,7 +17,7 @@ class Nav extends React.Component {
 
 		return (
 			<div>
-				<Navbar style={{color:'purple'}}brand={<div><Icon large>gps_fixed</Icon> <h> Bullseye </h></div>} right>
+				<Navbar brand={<div><Icon large>gps_fixed</Icon> <h> Bullseye </h></div>} right>
 					<NavItem onClick={reload}>
 						<Icon small> cached </Icon>
 					</NavItem>
