@@ -10,7 +10,8 @@ const rootReducer = combineReducers({
   currentUser: require('./auth').default,
   zip: require('./zip-reducer').default,
   bullseye: require('./bullseye-reducer').default,
-  report: require('./report').default
+  report: require('./report').default,
+  threadList: require('./thread-reducer').default
 });
 
 export default rootReducer;
