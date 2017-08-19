@@ -1,8 +1,7 @@
 import React from 'react'
-import { withGoogleMap, GoogleMap, InfoWindow, Marker } from 'react-google-maps'
-import InitialMap from './Map'
 import { connect } from 'react-redux'
 
+import InitialMap from './Map'
 import { setCoords } from '../../reducers/map-reducer'
 import { fetchRests, clearRests } from '../../reducers/rest-reducer'
 import { fetchZip } from '../../reducers/zip-reducer'
@@ -17,15 +16,10 @@ class MapContainer extends React.Component {
       selectedMarker: {},
       restList: this.props.rests,
       selectedRestIndex: [],
-      selectedRestIndex: [],
       zip:[]
-    }
+      }
   }
-  onMarkerClick(rest, index) {
-    if (!this.state.selectedRestIndex.includes(index)) {
-      this.setState({ selectedRestIndex: [...this.state.selectedRestIndex, index] })
-    }
-  }
+
 
   render() {
     const onMarkerClick = (rest, index) => {
@@ -33,14 +27,13 @@ class MapContainer extends React.Component {
         ? this.setState({ selectedRestIndex: [...this.state.selectedRestIndex, index] })
         : null
     }
-    const markBullseye = (e) => this.setState({ selectedMarker: { lat: e.latLng.lat(), lng: e.latLng.lng() } })
 
     const onMapClick = (e) => {
-      clearRests()
-      this.setState({ selectedMarker: { lat: e.latLng.lat(), lng: e.latLng.lng() }, selectedRestIndex: [] },
+      this.props.addBullseye([e.latLng.lat(), e.latLng.lng()])
+      this.setState({ selectedMarker: { lat: e.latLng.lat(), lng: e.latLng.lng() }, selectedRestIndex: []},
         () => {
+          clearRests()
           makeYelpReq(this.state.selectedMarker.lat, this.state.selectedMarker.lng, this.props.radius.value)
-          this.props.addBullseye([this.state.selectedMarker.lat, this.state.selectedMarker.lng])
         }
       )
     }
@@ -78,18 +71,19 @@ class MapContainer extends React.Component {
           restList={this.props.rests}
           selectedRestIndex={this.state.selectedRestIndex}
           markBullseye={markBullseye}
+          zoom={this.props.map.zoom}
         />
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ radius, rests, bType, zip }) => ({ radius, rests, bType, zip })
+const mapStateToProps = ({ radius, rests, bType, zip, map }) => ({ radius, rests, bType, zip, map })
 
 const mapDispatchToProps = dispatch => ({
   fetchRests: (locationObj) => dispatch(fetchRests(locationObj)),
   fetchZip: (locationObj) => dispatch(fetchZip(locationObj)),
-  addBullseye: (coordsArr) => dispatch(markBullseye(coordsArr)),
+  addBullseye: (coordsArr, callback) => dispatch(markBullseye(coordsArr, callback)),
   addLngLat: (longitude, latitude) => dispatch(addLngLat(longitude, latitude)),
   clearRests: () => dispatch(clearRests())
 })
