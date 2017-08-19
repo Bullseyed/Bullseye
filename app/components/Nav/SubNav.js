@@ -1,6 +1,5 @@
 import React from 'react';
-import { Navbar, NavItem } from 'react-materialize';
-import Login from './Login';
+import { Navbar, NavItem, Button } from 'react-materialize';
 import { connect } from 'react-redux';
 import { logout} from '../../reducers/auth';
 
@@ -14,7 +13,7 @@ const SubNav = (props) => {
 		</Navbar>
 		:
 		<Navbar>
-			<NavItem> <Login /> </NavItem>
+			<NavItem href="/api/auth"><Button> Log in with Google </Button> </NavItem>
 		</Navbar>
 	);
 };

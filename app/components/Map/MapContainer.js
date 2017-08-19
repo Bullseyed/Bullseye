@@ -24,7 +24,7 @@ class MapContainer extends React.Component {
   render() {
     const onMarkerClick = (rest, index) => {
       !this.state.selectedRestIndex.includes(index)
-        ? this.setState({ selectedRestIndex: [...this.state.selectedRestIndex, index] })
+        ? this.setState({ selectedRestIndex: [index] })
         : null
     }
 
