@@ -10,6 +10,7 @@ import { AddBType } from './b-type-reducer';
 const ADD_B_TYPE = 'ADD_B_TYPE';
 const ADD_LNG_LAT = 'ADD_LNG_LAT';
 const UPDATE_RADIUS = 'UPDATE_RADIUS';
+const SWITCH_MEASUREMENT = 'SWITCH_MEASUREMENT';
 
 /* --------------    ACTION CREATORS    ----------------- */
 
@@ -19,13 +20,20 @@ export const addLngLat = (longitude, latitude) => ({
   latitude
 });
 
+export const switchMeasurement = measurement => ({
+  type: SWITCH_MEASUREMENT,
+  measurement
+});
+
+
 /* ------------------    REDUCER    --------------------- */
 
 export default function reducer (state = {
   longitude: null,
   latitude: null,
   radius: null,
-  businessType: null
+  businessType: null,
+  distanceMeasurement: 'miles'
 }, action) {
   switch (action.type) {
     case ADD_B_TYPE:
@@ -37,6 +45,9 @@ export default function reducer (state = {
       break;
     case UPDATE_RADIUS:
       state.radius = action.radInt;
+      break;
+    case SWITCH_MEASUREMENT:
+      state.distanceMeasurement = action.measurement;
       break;
     default:
       return state;

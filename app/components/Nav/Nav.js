@@ -11,13 +11,13 @@ class Nav extends React.Component {
 	}
 
 	render() {
-		
+
 		const toggleSubNav = () => this.state.showSubNav ? this.setState({ showSubNav: false }) : this.setState({ showSubNav: true })
 		const reload = () => location.reload()
-		
+
 		return (
 			<div>
-				<Navbar brand={<div><Icon large>gps_fixed</Icon> <h> Bullseye </h></div>} right>
+				<Navbar style={{color:'purple'}}brand={<div><Icon large>gps_fixed</Icon> <h> Bullseye </h></div>} right>
 					<NavItem onClick={reload}>
 						<Icon small> cached </Icon>
 					</NavItem>

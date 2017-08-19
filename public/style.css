@@ -1,5 +1,5 @@
 .switch label input[type=checkbox]:checked+.lever:after {
-    background-color: #f1f1f1;
+    background-color: #26a69a;
     left: 24px;
 }
 

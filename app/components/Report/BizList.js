@@ -36,10 +36,10 @@ const BizList = (props) => {
 											 {rest.price}
 											</Col>
 											<Col s={2}>
-											 {rest.rating}
+											 {`${rest.rating}/5`}
 											</Col>
 											<Col s={2}>
-											 {+rest.distance.toFixed(2)}
+											 { props.report.distanceMeasurement === 'miles' ? `${(+rest.distance / 1609.344).toFixed(2)} mi` : `${(+rest.distance / 1000).toFixed(2)} km`}
 											</Col>
 										</Row>
 
@@ -66,6 +66,6 @@ const BizList = (props) => {
 	)
 }
 
-const mapStateToProps = ({ rests, radius }) => ({ rests, radius })
+const mapStateToProps = ({ rests, radius, report }) => ({ rests, radius, report })
 
 export default connect(mapStateToProps, null)(BizList)
