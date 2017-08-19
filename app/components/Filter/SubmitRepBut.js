@@ -1,24 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button, Row } from 'react-materialize';
+import { Button, Row, Col } from 'react-materialize';
 import { Link } from 'react-router-dom';
 import { demographicThunk } from '../../reducers/demo-reducer';
 import { addLngLat } from '../../reducers/report';
-import { Col } from 'react-materialize'
+import fipsDict from '../../../fips-codes.js';
 
 const SubmitRepBut = (props) => {
 
+  const getFips = (state) => {
+    return fipsDict[state];
+  };
+
   const fetchReports = () => {
-    props.demographicThunk(props.zip);
-    props.addLngLat(props.bullseye[0], props.bullseye[1])
+    props.demographicThunk(props.zip, getFips(props.rests[0].location.state));
+    props.addLngLat(props.bullseye[0], props.bullseye[1]);
   };
 
   return (
     <Col s={12}>
       <Row>
-        <Link to='/report'>
+        <Link to="/report">
           <Button
-            waves='light'
+            waves="light"
             onClick={fetchReports}
           >
             Get Detailed Report
@@ -29,8 +33,8 @@ const SubmitRepBut = (props) => {
   );
 };
 
-const mapStateToProps = ({ demoData, zip, bullseye }) => ({
-  demoData, zip, bullseye
+const mapStateToProps = ({ demoData, zip, rests, bullseye }) => ({
+  demoData, zip, rests, bullseye
 });
 
 export default connect(mapStateToProps, { demographicThunk, addLngLat })(SubmitRepBut);
