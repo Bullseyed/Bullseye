@@ -23,7 +23,7 @@ export const demographicThunk = (zipsArr, fipsCode = 36) => dispatch => {
     idx === 0 ? zips += zip : zips += ',' + zip;
   });
 
-  axios.get(`http://api.census.gov/data/2010/sf1?get=P0010001,P0030002,P0030003,P0030005,P0120002,P0120026,P0280001,P0280002,P0280003,P0280004,P0280005,P0310001,P0180003,P0280009,P0280010,P0280011,P0280012,P0280013,P0040001&for=zip+code+tabulation+area:${zips}&in=state:${fipsCode}&key=4541d7f2abfdc605f0ab64e713a7c987585398ff`)
+  axios.get(`http://api.census.gov/data/2010/sf1?get=P0010001,P0030002,P0030003,P0030005,P0120002,P0120026,P0280001,P0280002,P0280003,P0280004,P0280005,P0310001,P0180003,P0280009,P0280010,P0280011,P0280012,P0280013,P0040003,P0030006,P0030006,P0030006&for=zip+code+tabulation+area:${zips}&in=state:${fipsCode}&key=4541d7f2abfdc605f0ab64e713a7c987585398ff`)
     .then(res => {
       let combArr = []; //for combining various zipcodes
       for (let i = 0; i < res.data[1].length; i++) {
@@ -57,7 +57,7 @@ export const demographicThunk = (zipsArr, fipsCode = 36) => dispatch => {
             y: combArr[18]
           }, {
             x: 'other',
-            y: combArr[0] - combArr[1] - combArr[2] - combArr[3] - combArr[18]
+            y: combArr[19] + combArr[20] + combArr[21]
           }]
         }, {
           graphTitle: 'Sex Breakdown',
