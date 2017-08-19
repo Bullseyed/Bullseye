@@ -1,9 +1,11 @@
 const MARK_BULLSEYE = "MARK_BULLSEYE"
 
-export const markBullseye = (coordsArr) => ({
-	type: MARK_BULLSEYE,
-	coordsArr
-})
+export const markBullseye = (coordsArr) => {
+	return {
+		type: MARK_BULLSEYE,
+		coordsArr
+	}
+}
 
 const bullseyeReducer = (coords=[], action) => {
 	switch(action.type){

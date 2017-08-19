@@ -1,7 +1,7 @@
 import React from 'react'
 import { withGoogleMap, GoogleMap, InfoWindow, Marker, Circle } from 'react-google-maps'
 
-const InitialMap = withGoogleMap(({ markBullseye, restList, onMapLoad, onMapClick, selectedMarker, radius, selectedRestIndex, onMarkerClick }) => { //destructer
+const InitialMap = withGoogleMap(({ markBullseye, restList, onMapLoad, onMapClick, selectedMarker, radius, selectedRestIndex, onMarkerClick, zoom }) => { //destructer
 
 	const iconBullseye = {
 		url: '143958.png',
@@ -20,7 +20,7 @@ const InitialMap = withGoogleMap(({ markBullseye, restList, onMapLoad, onMapClic
 	return (
 		<GoogleMap
 			ref={onMapLoad}
-			defaultZoom={13}
+			zoom={zoom}
 			defaultCenter={{ lat: 40.753574, lng: -73.9835933 }}
 			onClick={onMapClick}
 
