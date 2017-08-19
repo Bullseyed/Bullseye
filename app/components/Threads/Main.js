@@ -2,7 +2,6 @@ import React from 'react';
 import { Row, Col } from 'react-materialize';
 import MapContainer from '../Map/MapContainer';
 import Nav from '../Nav/Nav';
-import ThreadContainer from './ThreadContainer';
 import AddNew from './AddNew';
 import Threads from './Threads';
 
