@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { updateRadius } from '../../reducers/radius-reducer'
 import { Input, Row, Col } from 'react-materialize'
+import { switchMeasurement } from '../../reducers/report'
 
 const radius = (props) => {
 	// let metric = 'mile'
@@ -11,6 +12,8 @@ const radius = (props) => {
 	// 			metric = 'miles'
 	// 		}
 	// }
+	console.log(document.getElementById('metric-switch'))
+
 	const changeHandler = (event) => {
 		function getMetersFromMiles(miles) {
 			return miles * 1609.344;
@@ -19,7 +22,9 @@ const radius = (props) => {
 			return km * 1000;
 		}
 		const metric = document.getElementById('metric-switch').checked ? getMetersFromKM(+document.getElementById('radiusField').value) : getMetersFromMiles(+document.getElementById('radiusField').value)
-		props.updateRadius(metric)
+		props.updateRadius(metric);
+		document.getElementById('metric-switch').checked ? props.switchMeasurement('km') : props.switchMeasurement('miles');
+
 	}
 
 	return (
@@ -39,7 +44,8 @@ const mapStateToProps = storeState => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-	updateRadius: (radObj) => dispatch(updateRadius(radObj))
+	updateRadius: (radObj) => dispatch(updateRadius(radObj)),
+	switchMeasurement: (str) => dispatch(switchMeasurement(str))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(radius)
