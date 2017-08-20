@@ -8,13 +8,13 @@ const SubLaund = (props) => {
 		let value = event.target.value
 		let str = ''
 		if (value == 0) str = 'laundry'
-		if (value == 1) str = 'dry cleaning'
+		if (value == 1) str = 'dryclean'
 		if (value == 2) str = 'laundromat'
 		props.addBType(str)
 	}
 	return (
 		<Input s={12} type='select' label="Laundry Type" defaultValue='0' onChange={changeHandler}>
-			<option disabled='disabled' value='0'> All </option>
+			<option value='0'> All </option>
 			<option value='1'>Dry Cleaning</option>
 			<option value='2'>Laundromat</option>
 		</Input>

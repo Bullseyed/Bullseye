@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 const SubmitRepBut = (props) => {
   return (
     <Row>
-			<Link to ='/'><Button waves='light'>Back</Button></Link>
+			<Link to ='/business'><Button waves='light'>Back</Button></Link>
     </Row>
   )
 }
