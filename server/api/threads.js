@@ -12,13 +12,11 @@ router.post('/', (req, res, next) => {
 
 //for upvoting
 router.put('/', (req, res, next) => {
-  Thread.findOne(req.body)
-    .then(foundThread => {
-      foundThread.increment('score', {
-        by: 1
-      });
-      res.status(200);
-    })
+  Thread.update(req.body, {
+    where: {id: req.body.id},
+    returning: true
+  })
+    .then(updatedThread => res.json(updatedThread))
     .catch(next);
 });
 

@@ -5,6 +5,7 @@ router.use('/auth', require('./auth'));
 router.use('/me', require('./me'));
 router.use('/reports', require('./reports'));
 router.use('/threads', require('./threads'));
+router.use('/comments', require('./comments'))
 
 router.use(function (req, res, next) {
   const err = new Error('Not found.');
