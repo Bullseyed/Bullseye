@@ -16,9 +16,11 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(session({
-  secret: 'keyboard cat'
-}));
+app.use(
+  session({
+    secret: 'keyboard cat'
+  })
+);
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -29,11 +31,10 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser((id, done) => {
   User.findById(id)
-  .then(user => {
-    done(null, user);
-  }
-    )
-  .catch(done);
+    .then(user => {
+      done(null, user);
+    })
+    .catch(done);
 });
 
 // you'll of course want static middleware so your browser can request things like your 'bundle.js'
@@ -45,21 +46,20 @@ app.use('/api', require('./api')); // matches all requests to /api
 // Make sure this is right at the end of your server logic!
 // The only thing after this might be a piece of middleware to serve up 500 errors for server problems
 // (However, if you have middleware to serve up 404s, that go would before this as well)
-app.get('*', function (req, res, next) {
+app.get('*', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
-app.use(function (err, req, res, next) {
+app.use(function(err, req, res, next) {
   console.error(err);
   console.error(err.stack);
   res.status(err.status || 500).send(err.message || 'Internal server error.');
 });
 
-db.sync({logging: false, force: true})
-.then(() => {
-  app.listen(
-     process.env.PORT || 1337,
-     () => {
-         console.log('server started');
+db.sync({ logging: false })
+  .then(() => {
+    app.listen(process.env.PORT || 1337, () => {
+      console.log('server started');
+    })
+    .catch(console.error);
   });
-});
