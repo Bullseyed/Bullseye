@@ -26,7 +26,6 @@ class BusinessDropdown extends React.Component {
 		}
 		return (
 			<div>
-
 				<Input s={12} type='select' label="Business Type" defaultValue='0' onChange={changeHandle}>
 					<option disabled='disabled' value='0'> Select Business </option>
 					<option value='2'>Restaurant</option>
