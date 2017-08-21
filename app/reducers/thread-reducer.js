@@ -32,7 +32,8 @@ export const postThread = (threadObj) => dispatch => {
 };
 
 export const upvoteThread = (threadObj) => dispatch => {
-  axios.put('/api/threads', threadObj)
+  const upvoted = Object.assign({}, threadObj, {score: threadObj.score+1})
+  axios.put('/api/threads', upvoted)
   .then(res=>res.data)
   .then(updatedThreadObj => dispatch(upvote(updatedThreadObj)))
 }
@@ -42,7 +43,7 @@ function threadReducer(threads = [], action) {
     case GET_THREADS:
       return action.threadList;
     case MAKE_THREAD:
-      return threads.concat([action.threadObj])
+      return threads.concat(action.threadObj)
     case UPVOTE:
       return threads.map(thread=>(
         action.threadObj.id === thread.id ? action.threadObj : thread

@@ -6,26 +6,27 @@ import Comments from './Comments'
 import AddComment from './AddComment'
 
 const SingleThread = props => {
-	
+
 	const thread = props.thread;
 	const upvoteHandler = () => {
-		thread.score = thread.score + 1;
-		console.log(thread)
 		props.upvote(thread)
 	}
-	
+
 	return (
 		<div>
 			<Row>
-				<Col l={3} offset='l9'>
+				<Col l={3}>
+					<Row> <b> Description: </b> </Row>
+					<Row> {thread.description} </Row>
+				</Col>
+				<Col l={3} offset='l6'>
 					<Button onClick={upvoteHandler}> Upvote </Button>
 				</Col>
+
 			</Row>
-			<Row> <b> Description: </b> </Row>
-			<Row> {thread.description} </Row>
-			<Row> <b> Comments: </b> </Row>
-			<Row> <Comments thread={thread}/> </Row>
-			<Row> <AddComment thread={thread}/> </Row>
+			<Row> <b> Comments </b> </Row>
+			<Row> <Comments thread={thread} /> </Row>
+			<Row> <AddComment thread={thread} /> </Row>
 
 		</div>
 	)

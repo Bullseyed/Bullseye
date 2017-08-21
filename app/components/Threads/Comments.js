@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Collection, CollectionItem } from 'react-materialize'
 
 const Comments = props => {
 	
@@ -7,7 +8,7 @@ const Comments = props => {
 		<div>
 			{props.comments.map(comment=>{
 				return comment.threadId===props.thread.id 
-				? <div key={comment.id}> <b>- </b> {comment.comment} </div> 
+				? <div> <div key={comment.id}> {comment.comment}  </div><hr/> </div>
 				: null
 			})}
 		</div>
