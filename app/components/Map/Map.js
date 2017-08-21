@@ -1,7 +1,8 @@
 import React from 'react'
 import { withGoogleMap, GoogleMap, InfoWindow, Marker, Circle } from 'react-google-maps'
+import { Modal } from 'react-materialize'
 
-const InitialMap = withGoogleMap(({ markBullseye, restList, onMapLoad, onMapClick, selectedMarker, radius, selectedRestIndex, onMarkerClick, zoom }) => { //destructer
+const InitialMap = withGoogleMap(({ markBullseye, restList, onMapLoad, onMapClick, selectedMarker, radius, selectedRestIndex, onMarkerClick, zoom, threadList }) => { //destructer
 
 	const iconBullseye = {
 		url: '143958.png',
@@ -15,7 +16,13 @@ const InitialMap = withGoogleMap(({ markBullseye, restList, onMapLoad, onMapClic
 		origin: new google.maps.Point(0, 0), // origin
 		anchor: new google.maps.Point(0, 9) // anchor
 	};
+	const proposedBusiness = {
+		url: 'proposedmarker.png',
+		scaledSize: new google.maps.Size(18, 18),
+		origin: new google.maps.Point(0, 0), // origin
+		anchor: new google.maps.Point(0, 9) // anchor
 
+	};
 
 	return (
 		<GoogleMap
@@ -36,7 +43,7 @@ const InitialMap = withGoogleMap(({ markBullseye, restList, onMapLoad, onMapClic
 				return (
 					rest.distance <= radius
 						? <Marker
-							key={index}
+							key={rest.id}
 							icon={iconBusiness}
 							onClick={() => onMarkerClick(rest, index)}
 							position={{ lat: rest.coordinates.latitude, lng: rest.coordinates.longitude }}>
@@ -51,6 +58,33 @@ const InitialMap = withGoogleMap(({ markBullseye, restList, onMapLoad, onMapClic
 				)
 			})
 			}
+
+			{threadList && threadList.map((thread, index) => {
+				return (
+					<Marker
+						key={thread.id}
+						icon={proposedBusiness}
+						onClick={() => onMarkerClick(thread, index)}
+						position={{ lat: thread.latitude, lng: thread.longitude }}>
+						{selectedRestIndex.includes(index) &&
+						(<InfoWindow>
+							<Modal
+								trigger={
+									<div>
+										<h5>{thread.idea}</h5>
+										<h6>{thread.description}</h6>
+										<h7>click for details</h7>
+									</div>
+								}>
+								{/* <SingleThread /> */}
+								</Modal>
+						</InfoWindow>)
+						}
+					</Marker>
+				)
+			})
+			}
+
 
 			<Circle
 				center={selectedMarker}
@@ -70,4 +104,4 @@ const InitialMap = withGoogleMap(({ markBullseye, restList, onMapLoad, onMapClic
 }
 )
 
-export default InitialMap
+export default InitialMap;
