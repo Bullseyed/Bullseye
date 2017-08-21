@@ -1,29 +1,43 @@
-import React, { Component } from 'react'
-import { Row, Col } from 'react-materialize'
-import { connect } from 'react-redux'
-import Filter from '../Filter/Main'
-import MapContainer from '../Map/MapContainer'
-import Nav from '../Nav/Nav'
-import HomeBut from './HomeBut'
-import BizList from './BizList'
-import Location from './Location'
-import Zips from './Zips'
-import SaveBut from './SaveBut'
-import Charts from './Charts'
-import ChartModal from './ChartModal'
+import React from 'react';
+import { Row, Col } from 'react-materialize';
+import { connect } from 'react-redux';
+import MapContainer from '../Map/MapContainer';
+import Nav from '../Nav/Nav';
+import HomeBut from './HomeBut';
+import BizList from './BizList';
+import Location from './Location';
+import Zips from './Zips';
+import Density from './Density';
+import SaveBut from './SaveBut';
+import ChartModal from './ChartModal';
 
 
-const ReportMain = () => {
+const ReportMain = (props) => {
 	return (
 		<Row>
-			<Col l={3} style={{ paddingRight: 0, paddingLeft: 0, }}>
+			<Col l={3} style={{ paddingRight: 0, paddingLeft: 0 }}>
 				<MapContainer />
 			</Col>
 
 			<Col l={9} style={{ paddingRight: 0, paddingLeft: 0 }}>
-				<Row>  <Nav />  </Row>
-				<Row> <Col> <Location /> </Col> </Row>
-				<Row> <Col> <Zips /> </Col> </Row>
+				<Row>
+					<Nav />
+				</Row>
+				<Row>
+					<Col>
+						<Location />
+					</Col>
+				</Row>
+				<Row>
+					<Col>
+						<Zips zips = { props.zips.join(', ') } />
+					</Col>
+				</Row>
+				<Row>
+					<Col>
+						<Density zipsCount = { props.zips.length } demoData = { props.demoData } />
+					</Col>
+				</Row>
 				<Row>
 					<Col s={7}>
 						<div style={{ overflow: 'auto', height: 400 }}>
@@ -33,15 +47,28 @@ const ReportMain = () => {
 					<Col s={5}>
 						<Row>
 							<div style={{ overflow: 'auto', height: 400 }}>
-								<ChartModal />
+								<ChartModal demoData = { props.demoData } />
 							</div>
 						</Row>
 					</Col>
 				</Row>
-				<Row> <Col> <HomeBut /> </Col> <Col> <SaveBut /> </Col> </Row>
+				<Row>
+					<Col>
+						<HomeBut />
+					</Col>
+					<Col>
+						<SaveBut />
+					</Col>
+				</Row>
 			</Col>
 		</Row>
-	)
-}
+	);
+};
 
-export default ReportMain
+
+const mapStateToProps = storeState => ({
+	zips: storeState.zip,
+	demoData: storeState.demoData
+});
+
+export default connect(mapStateToProps, null)(ReportMain);
