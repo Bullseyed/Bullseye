@@ -5,11 +5,15 @@ import Filter from './Filter/Main'
 import MapContainer from './Map/MapContainer'
 import Nav from './Nav/Nav'
 import { retrieveLoggedInUser } from '../reducers/auth'
+import { fetchThreads } from '../reducers/thread-reducer'
+import { fetchComments } from '../reducers/comment-reducer'
 
 class Main extends React.Component {
 
   componentDidMount() {
-    this.props.retrieveUser()
+    this.props.retrieveUser();
+    this.props.fetchThreads();
+    this.props.fetchComments();
   }
 
   render() {
@@ -31,9 +35,9 @@ class Main extends React.Component {
 }
 
 const mapDispatch = dispatch => ({
-  retrieveUser: () => {
-    dispatch(retrieveLoggedInUser())
-  }
+  retrieveUser: () => dispatch(retrieveLoggedInUser()),
+  fetchThreads: () => dispatch(fetchThreads()),
+  fetchComments: () => dispatch(fetchComments())
 
 })
 
