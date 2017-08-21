@@ -73,13 +73,14 @@ class MapContainer extends React.Component {
           selectedRestIndex={this.state.selectedRestIndex}
           markBullseye={markBullseye}
           zoom={this.props.map.zoom}
+          threadList = {this.props.threadList}
         />
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ radius, rests, bType, zip, map }) => ({ radius, rests, bType, zip, map })
+const mapStateToProps = ({ radius, rests, bType, zip, map, threadList }) => ({ radius, rests, bType, zip, map, threadList })
 
 const mapDispatchToProps = dispatch => ({
   fetchRests: (locationObj) => dispatch(fetchRests(locationObj)),

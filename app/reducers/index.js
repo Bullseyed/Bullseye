@@ -11,7 +11,9 @@ const rootReducer = combineReducers({
   zip: require('./zip-reducer').default,
   bullseye: require('./bullseye-reducer').default,
   report: require('./report').default,
-  threadList: require('./thread-reducer').default
+  threadList: require('./thread-reducer').default,
+  address: require('./address-reducer').default,
+  comments: require('./comment-reducer').default
 });
 
 export default rootReducer;
