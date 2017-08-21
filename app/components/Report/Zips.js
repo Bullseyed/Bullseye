@@ -1,17 +1,14 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { Row } from 'react-materialize'
+import React from 'react';
+import { Row } from 'react-materialize';
 
-
-const Zips = (props) => {
+const Zips = ({zips}) => {
 	return (
 		<Row>
-		<h> <b>Included Zipcodes: </b> {props.zips.join(', ')}</h>
+		  <h>
+        <b>Included Zipcodes: </b> {zips}
+      </h>
 		</Row>
-	)
-}
+	);
+};
 
-const mapStateToProps = storeState => ({
-	zips: storeState.zip
-})
-export default connect (mapStateToProps,null)(Zips)
+export default Zips;

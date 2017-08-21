@@ -2,7 +2,6 @@ import React from 'react';
 import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme, VictoryLabel } from 'victory';
 
 const Bargraph = (props) => {
-  console.log(props)
     return (
       <VictoryChart
         //theme={VictoryTheme.material}
