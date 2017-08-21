@@ -1,5 +1,6 @@
 import React from 'react'
 import { withGoogleMap, GoogleMap, InfoWindow, Marker, Circle } from 'react-google-maps'
+// import { SearchBox } from '../../../node_modules/react-google-maps/src/lib/places/SearchBox'
 
 const InitialMap = withGoogleMap(({ markBullseye, restList, onMapLoad, onMapClick, selectedMarker, radius, selectedRestIndex, onMarkerClick, zoom }) => { //destructer
 
@@ -16,6 +17,20 @@ const InitialMap = withGoogleMap(({ markBullseye, restList, onMapLoad, onMapClic
 		anchor: new google.maps.Point(0, 9) // anchor
 	};
 
+	const inputStyle = {
+	  boxSizing: `border-box`,
+	  MozBoxSizing: `border-box`,
+	  border: `1px solid transparent`,
+	  width: `240px`,
+	  height: `32px`,
+	  marginTop: `27px`,
+	  padding: `0 12px`,
+	  borderRadius: `1px`,
+	  boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
+	  fontSize: `14px`,
+	  outline: `none`,
+	  textOverflow: `ellipses`,
+	};
 
 	return (
 
@@ -24,8 +39,11 @@ const InitialMap = withGoogleMap(({ markBullseye, restList, onMapLoad, onMapClic
 			zoom={zoom}
 			defaultCenter={{ lat: 40.753574, lng: -73.9835933 }}
 			onClick={onMapClick}
-
 		>
+		{/*<SearchBox
+			inputPlaceholder="Search here..."
+			inputStyle={inputStyle}
+		/>*/}
 			<Marker
 				position={selectedMarker}
 				icon={iconBullseye}
