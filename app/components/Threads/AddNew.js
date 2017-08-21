@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Row, Col, Collapsible, CollapsibleItem, Input, Button } from 'react-materialize';
 import axios from 'axios';
+import { postThread } from '../../reducers/thread-reducer'
+import { Link } from 'react-router-dom'
 
 class AddNew extends Component {
   constructor() {
@@ -19,7 +21,7 @@ class AddNew extends Component {
       description: document.getElementById('desc').value
     };
 
-    axios.post('/api/threads', postObj);
+    this.props.postThread(postObj)
   }
 
   render() {
@@ -44,13 +46,16 @@ class AddNew extends Component {
               label="Description"
             />
           </Row>
-          <Button waves="light" onClick={this.handleSubmitClick}>Submit</Button>
+          <Link to='/threads'> <Button waves="light" onClick={this.handleSubmitClick}>Submit</Button> </Link>
         </CollapsibleItem>
      </Collapsible>
     );
   }
 }
 
-const mapStateToProps = ({bullseye}) => ({bullseye})
+const mapStateToProps = ({bullseye, threads}) => ({bullseye, threads})
+const mapDispatchToProps = dispatch => ({
+  postThread: (threadObj) => dispatch(postThread(threadObj))
+})
 
-export default connect(mapStateToProps, null)(AddNew);
+export default connect(mapStateToProps, mapDispatchToProps)(AddNew);

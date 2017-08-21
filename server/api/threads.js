@@ -4,10 +4,8 @@ const Thread = require('../../db').models.thread;
 router.post('/', (req, res, next) => {
   Thread.create(req.body)
     .then(createdThread => {
-      return createdThread.setUser(req.user);
-    })
-    .then(() => {
-      res.status(200);
+      createdThread.setUser(req.user)
+      res.json(createdThread)
     })
     .catch(next);
 });

@@ -4,8 +4,8 @@ import { Row, Col, Collapsible, CollapsibleItem, Icon } from 'react-materialize'
 import { fetchThreads } from '../../reducers/thread-reducer'
 
 class Threads extends Component {
-  constructor (props) {
-    super (props)
+  constructor(props) {
+    super(props)
   }
 
   componentDidMount() {
@@ -16,23 +16,34 @@ class Threads extends Component {
   render() {
     console.log(this.props);
     return (
-     <div style={{paddingLeft: 23, paddingRight: 23}}>
-     <Collapsible accordion>
-        <CollapsibleItem header='sddsd' icon='track_changes'>
-          Lorem ipsum dolor sit amet.
-        </CollapsibleItem>
-        <CollapsibleItem header='Fresh Fish Mongering' icon='track_changes'>
-          Lorem ipsum dolor sit amet.
-        </CollapsibleItem>
-        <CollapsibleItem header='Cleaning Supplies Broker' icon='track_changes'>
-          Lorem ipsum dolor sit amet.
-        </CollapsibleItem>
-     </Collapsible>
-     </div>
+      <div style={{ paddingLeft: 23, paddingRight: 23 }}>
+        <Collapsible accordion>
+          {this.props.threadList.map(thread => {
+            return (
+              <CollapsibleItem key={thread.id} 
+              header={
+                <Row>
+                  <Col l={3}>
+                  {thread.idea}
+                  </Col> 
+                  <Col l={3} offset='l4'>
+                  <font color ='green'> {thread.score} </font>
+                  </Col>
+                </Row>
+                } 
+              icon='track_changes'>
+                <p> <b> Description </b> </p>
+                <p> {thread.description} </p>
+              </CollapsibleItem>
+            )
+          })
+          }
+        </Collapsible>
+      </div>
     );
   }
 }
 
-const mapStateToProps = ({threads}) => ({threads});
+const mapStateToProps = ({ threadList }) => ({ threadList });
 
-export default connect(mapStateToProps, {fetchThreads})(Threads);
+export default connect(mapStateToProps, { fetchThreads })(Threads);
