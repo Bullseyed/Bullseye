@@ -9,7 +9,7 @@ router.post('/', (req, res, next) => {
 
 router.get('/', (req, res, next) => {
   Comments.findAll()
-    .then(allComments => res.send(allComments))
+    .then(allComments => res.json(allComments))
     .catch(next);
 });
 
