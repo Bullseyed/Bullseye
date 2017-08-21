@@ -16,7 +16,7 @@ router.put('/', (req, res, next) => {
     where: {id: req.body.id},
     returning: true
   })
-    .then(updatedThread => res.json(updatedThread))
+    .then(result => res.json(result[1][0]))
     .catch(next);
 });
 

@@ -4,6 +4,7 @@ import MapContainer from '../Map/MapContainer';
 import Nav from '../Nav/Nav';
 import AddNew from './AddNew';
 import Threads from './Threads';
+import HowToUseBut from './HowToUseBut';
 
 
 const ThreadsMain = () => {
@@ -16,6 +17,9 @@ const ThreadsMain = () => {
       <Col l={7} style={{ paddingRight: 0, paddingLeft: 0 }}>
         <Row>
           <Nav />
+        </Row>
+        <Row>
+          <HowToUseBut/>
         </Row>
         <Row>
           <AddNew />
