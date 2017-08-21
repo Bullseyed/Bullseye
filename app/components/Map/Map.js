@@ -25,6 +25,7 @@ const InitialMap = withGoogleMap(({ markBullseye, restList, onMapLoad, onMapClic
 	};
 
 	return (
+
 		<GoogleMap
 			ref={onMapLoad}
 			zoom={zoom}

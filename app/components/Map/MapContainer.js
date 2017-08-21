@@ -30,6 +30,7 @@ class MapContainer extends React.Component {
 
     const onMapClick = (e) => {
       this.props.addBullseye([e.latLng.lat(), e.latLng.lng()])
+      this.props.setCoords(e.latLng.lat(), e.latLng.lng())
       this.setState({ selectedMarker: { lat: e.latLng.lat(), lng: e.latLng.lng() }, selectedRestIndex: []},
         () => {
           clearRests()
@@ -86,7 +87,8 @@ const mapDispatchToProps = dispatch => ({
   fetchZip: (locationObj) => dispatch(fetchZip(locationObj)),
   addBullseye: (coordsArr, callback) => dispatch(markBullseye(coordsArr, callback)),
   addLngLat: (longitude, latitude) => dispatch(addLngLat(longitude, latitude)),
-  clearRests: () => dispatch(clearRests())
+  clearRests: () => dispatch(clearRests()),
+  setCoords: (x, y) => dispatch(setCoords(x, y))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MapContainer)
