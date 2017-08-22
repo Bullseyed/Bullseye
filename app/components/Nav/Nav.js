@@ -1,6 +1,8 @@
 import React from 'react'
 import { Navbar, NavItem, Icon } from 'react-materialize'
+import { connect } from 'react-redux'
 import SubNav from './SubNav'
+import { retrieveLoggedInUser } from '../../reducers/auth'
 
 class Nav extends React.Component {
 	constructor(props) {
@@ -9,6 +11,10 @@ class Nav extends React.Component {
 			showSubNav: false,
 		}
 	}
+
+	componentDidMount() {
+   this.props.retrieveUser();
+  }
 
 	render() {
 
@@ -37,4 +43,9 @@ class Nav extends React.Component {
 	}
 }
 
-export default Nav
+
+const mapDispatch = dispatch => ({
+  retrieveUser: () => dispatch(retrieveLoggedInUser()),
+})
+
+export default connect(null, mapDispatch)(Nav);
