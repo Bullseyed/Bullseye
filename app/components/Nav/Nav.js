@@ -1,6 +1,7 @@
 import React from 'react'
 import { Navbar, NavItem, Icon } from 'react-materialize'
 import { connect } from 'react-redux'
+
 import SubNav from './SubNav'
 import { retrieveLoggedInUser } from '../../reducers/auth'
 
@@ -27,12 +28,12 @@ class Nav extends React.Component {
 					<NavItem onClick={reload}>
 						<Icon small> cached </Icon>
 					</NavItem>
-					<NavItem onClick={reload}>
-						Business View |
-					</NavItem>
-					<NavItem onClick={reload}>
-						Resident View
-					</NavItem>
+						<NavItem href="/business">
+							Business View
+						</NavItem>
+						<NavItem href="threads">
+							Resident View
+						</NavItem>
 					<NavItem onClick={toggleSubNav}>
 						<Icon small> account_circle </Icon>
 					</NavItem>
