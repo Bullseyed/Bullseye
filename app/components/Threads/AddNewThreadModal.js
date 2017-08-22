@@ -4,9 +4,8 @@ import { connect } from 'react-redux'
 import { postThread } from '../../reducers/thread-reducer'
 
 const AddNewThreadModal = (props) => {
-	
+
 	const handleSubmitClick = () => {
-		console.log('firing')
 		const postObj = {
       latitude: props.bullseye[0],
       longitude: props.bullseye[1],
@@ -14,10 +13,11 @@ const AddNewThreadModal = (props) => {
       description: document.getElementById('desc').value
     };
     props.postThread(postObj)
+
   }
-	
+
 	return (
-		<div>
+    <div>
 			<Row>
 				<Input
 					id='busIdea'
