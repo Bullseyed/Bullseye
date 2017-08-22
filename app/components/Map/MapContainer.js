@@ -61,7 +61,6 @@ class MapContainer extends React.Component {
     }
 
     return (
-      <div style={{ height: '100vh' }}>
         <InitialMap
           containerElement={<div style={{ height: '100vh' }} />}
           mapElement={<div style={{ height: '100vh' }} />}
@@ -75,7 +74,6 @@ class MapContainer extends React.Component {
           zoom={this.props.map.zoom}
           threadList = {this.props.threadList}
         />
-      </div>
     )
   }
 }

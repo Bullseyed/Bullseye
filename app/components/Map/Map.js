@@ -2,8 +2,7 @@ import React from 'react'
 import { withGoogleMap, GoogleMap, InfoWindow, Marker, Circle } from 'react-google-maps'
 import { Modal, Row, Col } from 'react-materialize'
 import SingleThread from '../Threads/SingleThread'
-
-const InitialMap = withGoogleMap(({ markBullseye, restList, onMapLoad, onMapClick, selectedMarker, radius, selectedRestIndex, onMarkerClick, zoom, threadList }) => { //destructer
+import SearchBox from 'react-google-maps/lib/places/SearchBox'
 
 	const iconBullseye = {
 		url: '143958.png',
@@ -30,19 +29,22 @@ const InitialMap = withGoogleMap(({ markBullseye, restList, onMapLoad, onMapClic
 	  border: `1px solid transparent`,
 	  width: `240px`,
 	  height: `32px`,
-	  marginTop: `27px`,
+	  marginTop: `9px`,
 	  padding: `0 12px`,
 	  borderRadius: `1px`,
 	  boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
 	  fontSize: `14px`,
 	  outline: `none`,
 	  textOverflow: `ellipses`,
+		backgroundColor: 'white'
 	};
 
-	return (
+	console.log(SearchBox)
 
+const InitialMap = withGoogleMap(({ markBullseye, restList, onMapClick, selectedMarker, radius, selectedRestIndex, onMarkerClick, zoom, threadList }) => { //destructer
+
+	return (
 		<GoogleMap
-			ref={onMapLoad}
 			zoom={zoom}
 			defaultCenter={{ lat: 40.753574, lng: -73.9835933 }}
 			onClick={onMapClick}
@@ -50,6 +52,8 @@ const InitialMap = withGoogleMap(({ markBullseye, restList, onMapLoad, onMapClic
 		<SearchBox
 			inputPlaceholder="Search here..."
 			inputStyle={INPUT_STYLE}
+			className="searchbar"
+			controlPosition={google.maps.ControlPosition.TOP_LEFT}
 		/>
 			<Marker
 				position={selectedMarker}
@@ -118,7 +122,6 @@ const InitialMap = withGoogleMap(({ markBullseye, restList, onMapLoad, onMapClic
 				}}
 			/>
 		</GoogleMap>
-
 	)
 }
 )
