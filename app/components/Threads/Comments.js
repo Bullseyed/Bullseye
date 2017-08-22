@@ -5,7 +5,7 @@ import { Col, Row } from 'react-materialize';
 const Comments = props => {
 	return (
 		<div>
-			{props.thread.comments.map(comment => {
+			{props.comments.length && props.comments.map(comment => {
 				return (
 					<div key={comment.id}>
 						<Row>

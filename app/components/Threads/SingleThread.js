@@ -26,7 +26,7 @@ class SingleThread extends Component {
 
 	upvoteHandler() {
 		this.setState({votingDisabled: true});
-		this.props.upvote(this.props.thread);
+		this.props.upvote(this.props.thread, this.props.currentUser.id);
 	}
 
 	render() {
@@ -62,7 +62,7 @@ class SingleThread extends Component {
 const mapStateToProps = ({ currentUser }) => ({ currentUser });
 
 const mapDispatchToProps = dispatch => ({
-	upvote: (threadObj) => dispatch(upvoteThread(threadObj))
+	upvote: (threadObj, userId) => dispatch(upvoteThread(threadObj, userId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleThread);
