@@ -38,3 +38,8 @@
 #howtouse {
   margin: 0 auto;
 }
+
+.landingCard .card-content {
+    padding: 5px 5px;
+    height: 80px;
+}
