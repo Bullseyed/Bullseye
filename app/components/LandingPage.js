@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Nav from './Nav/Nav'
-import { Row, Col, Button, Card, CardTitle } from 'react-materialize'
+import { Row, Col, CardPanel, Card, CardTitle } from 'react-materialize'
 import { Link } from 'react-router-dom'
 
 class LandingPage extends Component {
@@ -8,28 +8,27 @@ class LandingPage extends Component {
 		super()
 		this.state = {
 			hovered: false,
+			hovered2: false,
 			hoverText: ''
 		};
 
 		this.handleMouseEnter = this.handleMouseEnter.bind(this);
+		this.handleMouseEnter2 = this.handleMouseEnter2.bind(this);
 		this.handleMouseLeave = this.handleMouseLeave.bind(this);
 	}
 
-	handleMouseEnter(whichCard) {
-		this.setState({hovered: true}, () => { console.log('done1') })
-		if (whichCard === 'biz') {
-			this.setState({hoverText:
-				"Get information of all similar businesses in a select area. Use these statistics to increase the likelihood of your business' success!"
-			}, () => { console.log('done2') })
-		}
-		else {
-			this.setState({hoverText: 'Vote and request business ideas. Collaborate with other residents!'});
-		}
+	handleMouseEnter() {
+		this.setState({hovered: true, hoverText:
+				"Find competitive business data and neighborhood statistics for areas of interest"});
+	}
+
+	handleMouseEnter2() {
+		this.setState({hovered2: true, hoverText:
+				'Collaborate with neighbors, request new businesses and vote on your favorite ideas'});
 	}
 
 	handleMouseLeave() {
-		console.log('hello222')
-		this.setState({hovered: false})
+		this.setState({hovered: false, hovered2: false});
 	}
 
 	render() {
@@ -38,61 +37,70 @@ class LandingPage extends Component {
 				<Row>
 					<Nav />
 				</Row>
-				<Row style={{textAlign:'center'}}>
-					<h>  Welcome To Bullseye </h>
+
+				<Row style={{textAlign:'center', paddingTop: '20px', marginBottom: '10px'}}>
+					<h style={{fontSize: 50, color: '#039be5'}}> I WANT TO </h>
 				</Row>
-				<Row style={{textAlign:'center'}}>
-					<h> I am a... </h>
-				</Row>
+
 				<Row>
+
 					<Col l={3} offset='l3'>
-						<Link to='/business'>
+						<Link to='/business' >
 							<Card
-								onMouseEnter={() => this.handleMouseEnter('biz')}
+								className='landingCard'
+								onMouseEnter={() => this.handleMouseEnter()}
 								onMouseLeave={() => this.handleMouseLeave()}
 								header={
 									<CardTitle
-										reveal
-										image='https://www.labitax.com/wp-content/uploads/2016/08/business_entities_labi.jpg'
+										image='BizCard.png'
 										waves='light'
-
-									>
-									{ this.state.hovered && <p style={{color: 'blue', backgroundColor: 'rgba(0,0,0,0.5)'}}>{this.state.hoverText}</p> }
-									</CardTitle>
+										style={{ height: 200, width: '100%', opacity: this.state.hovered ? '.4' : '1'}}
+									/>
 								}
 							>
-								LOOKING TO OPEN A BUSINESS?
+								{ this.state.hovered
+									? <p style={{ fontSize:16, paddingTop: '8px' }} className='center-align'>{this.state.hoverText}</p>
+									: <p style={{ fontSize:18, paddingTop: '20px' }} className='center-align'>OPEN A BUSINESS</p>
+								}
 							</Card>
 						</Link>
 					</Col>
-					{// 	<Card header={<CardTitle reveal image='https://www.labitax.com/wp-content/uploads/2016/08/business_entities_labi.jpg' waves='light' style={{ height: 200, width: '100%' }} />}
-					// 		title="Business Owner"
-					// 		reveal={
-					// 			<div>
-					// 				<p> Get information of all similar businesses in a select area. </p>
-					// 				<p> Use these statistics to increase the likelihood of your business' success! </p>
-					// 			</div>
-					// 			}>
-					// 		<p><Link to='/business'> <Button> Go </Button> </Link></p>
-					// 	</Card>
-					// </Col>
-				}
+
 					<Col l={3}>
-						<Card header={<CardTitle reveal image={'http://cdn.playbuzz.com/cdn/8f185be4-47d8-446b-83aa-2b72c8fcee20/28679a5c-371f-4e43-821a-6ae9a935325d.jpg'} waves='light' style={{ height: 200, width: '100%' }} />}
-							title="Resident"
-							reveal={
-								<div>
-								<p> Vote and request business ideas. </p>
-								<p> Collaborate with other residents!  </p>
-								</div>
-								}>
-							<p><Link to='/threads'> <Button> Go </Button> </Link></p>
-						</Card>
+						<Link to='/threads'>
+							<Card
+								className='landingCard'
+								onMouseEnter={() => this.handleMouseEnter2()}
+								onMouseLeave={() => this.handleMouseLeave()}
+								header={
+									<CardTitle
+										image='ResCard.png'
+										waves='light'
+										style={{ height: 200, width: '100%', opacity: this.state.hovered2 ? '.4' : '1'}}
+									/>
+								}
+							>
+								{ this.state.hovered2
+									? <p style={{ fontSize:16, paddingTop: '8px' }} className='center-align'>{this.state.hoverText}</p>
+									: <p style={{ fontSize:18, paddingTop: '20px' }} className='center-align'>SUGGEST A BUSINESS</p>
+								}
+							</Card>
+						</Link>
+					</Col>
+
+				</Row>
+
+				<Row style={{textAlign:'center', margin: 'auto', width: '75%', marginTop: '60px'}}>
+					<Col l={12} >
+							<span style={{fontSize: 28}}>
+								Bullseye helps small business owners find the perfect location for their venture. With a unique mix of business intelligence and crowdsourced data, making informed decisions has never been easier.
+							</span>
 					</Col>
 				</Row>
+
 			</div>
 		)
-}
+	}
 }
 
 export default LandingPage

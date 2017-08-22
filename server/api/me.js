@@ -38,7 +38,8 @@ router.post('/', function (req, res, next) {
     } else {
       res.sendStatus(401); // this user already exists, you cannot sign up
     }
-  });
+  })
+  .catch(next);
 });
 
 // login, i.e. "you remember `me`, right?"
@@ -70,6 +71,7 @@ router.delete('/', function (req, res, next) {
   // // before, without Passport
   // req.session.destroy();
   res.sendStatus(204);
+
 });
 
 module.exports = router;
