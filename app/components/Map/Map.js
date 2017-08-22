@@ -39,8 +39,6 @@ import SearchBox from 'react-google-maps/lib/places/SearchBox'
 		backgroundColor: 'white'
 	};
 
-	console.log(SearchBox)
-
 const InitialMap = withGoogleMap(({ markBullseye, restList, onMapClick, selectedMarker, radius, selectedRestIndex, onMarkerClick, zoom, threadList }) => { //destructer
 
 	return (
