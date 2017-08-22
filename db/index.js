@@ -16,6 +16,12 @@ const Report = db.define('report', {
   latitude: FLOAT,
   radius: FLOAT,
   businessType: STRING
+}, {
+    getterMethods: {
+      date() {
+        return new Date(this.createdAt).toLocaleDateString('en-US');
+      }
+    }
 });
 
 const Thread = db.define('thread', {
@@ -27,14 +33,27 @@ const Thread = db.define('thread', {
   },
   idea: STRING,
   description: TEXT
+}, {
+  getterMethods: {
+    date() {
+      return new Date(this.createdAt).toLocaleDateString('en-US');
+    }
+  }
 });
 
 const Comment = db.define('comment', {
   comment: TEXT
+}, {
+    getterMethods: {
+      date() {
+        return new Date(this.createdAt).toLocaleDateString('en-US');
+      }
+  }
 });
 
 Report.belongsTo(User);
 Thread.belongsTo(User);
 Comment.belongsTo(Thread);
+Thread.hasMany(Comment);
 
 module.exports = db;

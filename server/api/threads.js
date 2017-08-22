@@ -1,11 +1,12 @@
 const router = require('express').Router();
 const Thread = require('../../db').models.thread;
+const Comment = require('../../db').models.comment;
 
 router.post('/', (req, res, next) => {
   Thread.create(req.body)
     .then(createdThread => {
-      createdThread.setUser(req.user)
-      res.json(createdThread)
+      createdThread.setUser(req.user);
+      res.json(createdThread);
     })
     .catch(next);
 });
@@ -21,7 +22,7 @@ router.put('/', (req, res, next) => {
 });
 
 router.get('/', (req, res, next) => {
-  Thread.findAll()
+  Thread.findAll({include: [{model: Comment}]})
     .then(allThreads => {
       res.send(allThreads);
     })

@@ -22,11 +22,14 @@ import SingleThread from './SingleThread'
               <CollapsibleItem key={thread.id}
                 header={
                   <Row>
-                    <Col l={5}>
+                    <Col l={1}>
+                      <font color='green'> {thread.score} </font>
+                    </Col>
+                    <Col l={9}>
                       {thread.idea}
                     </Col>
-                    <Col l={1} offset='l4'>
-                      <font color='green'> {thread.score} </font>
+                    <Col l={1}>
+                      {thread.date}
                     </Col>
                   </Row>
                 }
