@@ -1,6 +1,8 @@
+/* global google */
+
 import React from 'react'
 import { withGoogleMap, GoogleMap, InfoWindow, Marker, Circle } from 'react-google-maps'
-import { Modal, Row, Col } from 'react-materialize'
+import { Modal } from 'react-materialize'
 import SingleThread from '../Threads/SingleThread'
 import SearchBox from 'react-google-maps/lib/places/SearchBox'
 
@@ -39,19 +41,25 @@ import SearchBox from 'react-google-maps/lib/places/SearchBox'
 		backgroundColor: 'white'
 	};
 
-const InitialMap = withGoogleMap(({ markBullseye, restList, onMapClick, selectedMarker, radius, selectedRestIndex, onMarkerClick, zoom, threadList }) => { //destructer
+const InitialMap = withGoogleMap(({ bounds, onPlacesChanged, onSearchBoxMounted, onMapMounted, onBoundsChanged, markBullseye, restList, onMapClick, selectedMarker, radius, selectedRestIndex, onMarkerClick, center, zoom, threadList }) => { //destructer
 
 	return (
 		<GoogleMap
+			ref={onMapMounted}
 			zoom={zoom}
-			defaultCenter={{ lat: 40.753574, lng: -73.9835933 }}
+			center={center}
 			onClick={onMapClick}
+			onBoundsChanged={onBoundsChanged}
+			onMapMounted={onMapMounted}
 		>
 		<SearchBox
-			inputPlaceholder="Search here..."
-			inputStyle={INPUT_STYLE}
-			className="searchbar"
+			ref={onSearchBoxMounted}
+			bounds={bounds}
 			controlPosition={google.maps.ControlPosition.TOP_LEFT}
+			onPlacedChanged={onPlacesChanged}
+			inputPlaceholder="Search here..."
+			className="searchbar"
+			inputStyle={INPUT_STYLE}
 		/>
 			<Marker
 				position={selectedMarker}
@@ -59,8 +67,6 @@ const InitialMap = withGoogleMap(({ markBullseye, restList, onMapClick, selected
 			/>
 
 			{restList && restList.map((rest, index) => {
-				{/* do i need restlist && */ }
-				{/* good place for &&? line 36*/ }
 				return (
 					rest.distance <= radius
 						? <Marker
