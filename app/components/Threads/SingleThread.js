@@ -1,39 +1,56 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Row, Col, Button } from 'react-materialize';
 import { connect } from 'react-redux';
 import { upvoteThread } from '../../reducers/thread-reducer';
-import Comments from './Comments'
-import AddComment from './AddComment'
+import Comments from './Comments';
+import AddComment from './AddComment';
 
-const SingleThread = props => {
-
-	const thread = props.thread;
-	const upvoteHandler = () => {
-		props.upvote(thread)
+class SingleThread extends Component {
+	constructor() {
+		super();
+		this.state = {
+			alreadyVoted: false
+		};
+		this.upvoteHandler = this.upvoteHandler.bind(this);
 	}
 
-	return (
-		<div>
-			<Row>
-				<Col l={3}>
-					<Row> <b> Description: </b> </Row>
-					<Row> {thread.description} </Row>
-				</Col>
-				<Col l={3} offset='l6'>
-					<Button onClick={upvoteHandler}> Upvote </Button>
-				</Col>
+	upvoteHandler() {
+		this.setState({alreadyVoted: true});
+		this.props.upvote(this.props.thread);
+	}
 
-			</Row>
-			<Row> <b> Comments </b> </Row>
-			<Row> <Comments thread={thread} /> </Row>
-			<Row> <AddComment thread={thread} /> </Row>
-
-		</div>
-	)
+	render() {
+		return (
+			<div>
+				<Row>
+					<Col l={9} style={{padding: 0}}>
+						<Row>
+							<b> Description: </b>
+						</Row>
+						<Row style={{fontSize: 16}}>
+							{this.props.thread.description}
+						</Row>
+					</Col>
+					<Col l={1} style={{float: 'right'}}>
+						<Button floating large className='green' waves='light' icon='thumb_up' onClick={this.upvoteHandler} disabled={this.state.alreadyVoted ? true : false}> Upvote </Button>
+					</Col>
+				</Row>
+				<Row>
+					<b> Comments: </b>
+				</Row>
+				<Row  style={{fontSize: 12}}>
+					<Comments thread={this.props.thread} />
+				</Row>
+				<Row>
+					<AddComment thread={this.props.thread} />
+				</Row>
+			</div>
+		);
+	}
 }
 
 const mapDispatchToProps = dispatch => ({
 	upvote: (threadObj) => dispatch(upvoteThread(threadObj))
-})
+});
 
 export default connect(null, mapDispatchToProps)(SingleThread);

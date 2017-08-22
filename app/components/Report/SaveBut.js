@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Button, Row } from 'react-materialize'
 import { Link } from 'react-router-dom'
-import axios from 'axios';
 import { connect } from 'react-redux';
+import { postReport } from '../../reducers/saved-report-reducer' 
 
 class SaveBut extends Component {
   constructor(props) {
@@ -15,11 +15,11 @@ class SaveBut extends Component {
 
   saveReport() {
     this.setState({reportSaved: true})
-    axios.post('/api/reports', this.props.report)
+    const newReport = Object.assign({},this.props.report,{userId: this.props.currentUser.id})
+    this.props.postReport(newReport)
   }
 
   render() {
-    console.log(this.props.currentUser,this.state.reportSaved)
     return (
       (this.props.currentUser && !this.state.reportSaved) ?
       (
@@ -41,7 +41,10 @@ class SaveBut extends Component {
 const mapState = ({ report, currentUser }) => ({
   report,
   currentUser,
-
 })
 
-export default connect(mapState, null)(SaveBut)
+const mapDispatchToProps = dispatch => ({
+  postReport: (reportObj) => dispatch(postReport(reportObj))
+})
+
+export default connect(mapState, mapDispatchToProps)(SaveBut)

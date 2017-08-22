@@ -1,22 +1,31 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { Collection, CollectionItem } from 'react-materialize'
+import React from 'react';
+import { connect } from 'react-redux';
+import { Col, Row } from 'react-materialize';
 
 const Comments = props => {
-	
 	return (
 		<div>
-			{props.comments.map(comment=>{
-				return comment.threadId===props.thread.id 
-				? <div> <div key={comment.id}> {comment.comment}  </div><hr/> </div>
-				: null
+			{props.thread.comments.map(comment => {
+				return (
+					<div key={comment.id}>
+						<Row>
+							<Col l={10} style={{ padding: 0 }}>
+								{comment.comment}
+							</Col>
+							<Col l={1} style={{ padding: 0, float: 'right'}}>
+								{comment.date}
+							</Col>
+						</Row>
+						<hr />
+					</div>
+				);
 			})}
 		</div>
-	)
-}
+	);
+};
 
 const mapStateToProps = storeState => ({
 	comments: storeState.comments
-})
+});
 
-export default connect(mapStateToProps,null)(Comments)
+export default connect(mapStateToProps, null)(Comments);

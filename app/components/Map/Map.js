@@ -1,7 +1,7 @@
 import React from 'react'
 import { withGoogleMap, GoogleMap, InfoWindow, Marker, Circle } from 'react-google-maps'
-import SearchBox from 'react-google-maps/lib/places/SearchBox'
-import { Modal } from 'react-materialize'
+import { Modal, Row, Col } from 'react-materialize'
+import SingleThread from '../Threads/SingleThread'
 
 const InitialMap = withGoogleMap(({ markBullseye, restList, onMapLoad, onMapClick, selectedMarker, radius, selectedRestIndex, onMarkerClick, zoom, threadList }) => { //destructer
 
@@ -86,18 +86,18 @@ const InitialMap = withGoogleMap(({ markBullseye, restList, onMapLoad, onMapClic
 						onClick={() => onMarkerClick(thread, index)}
 						position={{ lat: thread.latitude, lng: thread.longitude }}>
 						{selectedRestIndex.includes(index) &&
-						(<InfoWindow>
-							<Modal
-								trigger={
-									<div>
-										<h5>{thread.idea}</h5>
-										<h6>{thread.description}</h6>
-										<h7>click for details</h7>
-									</div>
-								}>
-								{/* <SingleThread /> */}
-								</Modal>
-						</InfoWindow>)
+							(<InfoWindow>
+								<Modal
+									trigger={
+										<div>
+												<h5>{thread.idea}</h5>
+												<h6>{thread.description}</h6>
+												<h6>click for details</h6>
+										</div>
+									}>
+									<SingleThread thread={thread}/>
+									</Modal>
+							</InfoWindow>)
 						}
 					</Marker>
 				)
