@@ -19,11 +19,14 @@ import SingleThread from './SingleThread'
         <Collapsible accordion>
           {this.props.threadList.map(thread => {
             return (
-              <CollapsibleItem key={thread.id}
+              <CollapsibleItem
+                key={thread.id}
                 header={
                   <Row>
                     <Col l={1}>
-                      <font color='green'> {thread.score} </font>
+                      <span className="new badge green">
+                        {thread.score}
+                      </span>
                     </Col>
                     <Col l={9}>
                       {thread.idea}
@@ -33,7 +36,7 @@ import SingleThread from './SingleThread'
                     </Col>
                   </Row>
                 }
-                icon='track_changes'>
+              >
                 <SingleThread thread={thread} />
               </CollapsibleItem>
             )

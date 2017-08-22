@@ -9,13 +9,23 @@ class SingleThread extends Component {
 	constructor() {
 		super();
 		this.state = {
-			alreadyVoted: false
+			votingDisabled: false
 		};
 		this.upvoteHandler = this.upvoteHandler.bind(this);
 	}
 
+	componentWillMount() {
+		console.log(this.props);
+		if (!this.props.currentUser) {
+			this.setState({votingDisabled: true});
+		} else if (this.props.thread.scoreAuthors &&
+		    (this.props.thread.scoreAuthors.includes(this.props.currentUser.id))) {
+					this.setState({votingDisabled: true});
+		    }
+	}
+
 	upvoteHandler() {
-		this.setState({alreadyVoted: true});
+		this.setState({votingDisabled: true});
 		this.props.upvote(this.props.thread);
 	}
 
@@ -32,7 +42,7 @@ class SingleThread extends Component {
 						</Row>
 					</Col>
 					<Col l={1} style={{float: 'right'}}>
-						<Button floating large className='green' waves='light' icon='thumb_up' onClick={this.upvoteHandler} disabled={this.state.alreadyVoted ? true : false}> Upvote </Button>
+						<Button floating large className='green' waves='light' icon='thumb_up' onClick={this.upvoteHandler} disabled={this.state.votingDisabled ? true : false}> Upvote </Button>
 					</Col>
 				</Row>
 				<Row>
@@ -49,8 +59,10 @@ class SingleThread extends Component {
 	}
 }
 
+const mapStateToProps = ({ currentUser }) => ({ currentUser });
+
 const mapDispatchToProps = dispatch => ({
 	upvote: (threadObj) => dispatch(upvoteThread(threadObj))
 });
 
-export default connect(null, mapDispatchToProps)(SingleThread);
+export default connect(mapStateToProps, mapDispatchToProps)(SingleThread);

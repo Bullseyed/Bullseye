@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { FLOAT, INTEGER, STRING, BOOLEAN, TEXT } = require('sequelize');
+const { FLOAT, INTEGER, STRING, BOOLEAN, TEXT, DataTypes } = require('sequelize');
 
 var db = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost:5432/capstone');
 
@@ -31,6 +31,9 @@ const Thread = db.define('thread', {
   score: {
     type: INTEGER,
     defaultValue: 0
+  },
+  scoreAuthors: {
+    type: DataTypes.ARRAY(DataTypes.INTEGER)
   },
   idea: STRING,
   description: TEXT
