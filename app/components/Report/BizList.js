@@ -3,6 +3,7 @@ import { Row, Col, Collection, CollectionItem, Modal, Icon } from 'react-materia
 import { connect } from 'react-redux'
 
 const BizList = (props) => {
+	console.log(props.rests)
 	return (
 		<Row>
 			<Row> <b> Nearby Businesses: </b> </Row>
@@ -20,7 +21,7 @@ const BizList = (props) => {
 					<b> Distance </b>
 				</Col>
 			</Row>
-			{props.rests &&
+			{props.rests.length &&
 				<div>
 					{props.rests.map(rest => {
 						return rest.distance <= props.radius ?

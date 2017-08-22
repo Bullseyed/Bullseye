@@ -12,11 +12,11 @@ export const clearRests = () => ({
   type: CLEAR_RESTS
 })
 
-export const fetchRests = (locationObj) => dispatch => {
+export const fetchRests = (locationObj) => dispatch => (
   axios.post('/api/yelp/restaurants', locationObj)
   .then(res=>res.data)
   .then(restList => dispatch(getRests(restList)))
-}
+)
 
 function restReducer (rests = [], action) {
   switch(action.type){
