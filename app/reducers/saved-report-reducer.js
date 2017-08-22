@@ -21,7 +21,6 @@ export const fetchReports = (currentUserId) => dispatch => {
 }
 
 export const postReport = (reportsObj) => dispatch => {
-	console.log('firing')
 	axios.post('/api/reports', reportsObj)
 		.then(res=>res.data)
 		.then(newReport=>dispatch(addReport(newReport)))
@@ -30,7 +29,7 @@ export const postReport = (reportsObj) => dispatch => {
 const reportReducer = (reports=[], action) => {
 	switch (action.type){
 		case GET_REPORTS:
-			return reports.concat(action.reportsList)
+			return action.reportsList
 		default:
 			return reports
 	}

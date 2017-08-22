@@ -1,34 +1,30 @@
 import React from 'react'
-import { fetchReports } from '../../reducers/saved-report-reducer'
-import { connect } from 'react-redux'
+import { Button, Row, Col } from 'react-materialize';
 
-class SavedRepModalContents extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state={}
-	}
-	componentWillMount() {
-		this.props.fetchReports(this.props.currentUser.id)
-	}
-	render() {
-		return (
-			<div>
-				{this.props.reports.map(report => {
-					return (
-						<div> {report.radius} </div>
-					)
-				})}
-			</div>
-		)
-	}
+
+const SavedRepModalContents = (props) => {
+	return (
+		<div>
+			{props.reports && props.reports.map(report => {
+				return (
+					<div>
+						<Row>
+							<Col s={9}>
+								{report.address}
+							</Col>
+							<Col s={3}>
+								<Button>Rerun</Button>
+							</Col>
+						</Row>
+						<hr />
+					</div>
+
+				)
+			})}
+		</div>
+	)
 }
 
-const mapStateToProps = storeState => ({
-	reports: storeState.reports,
-	currentUser: storeState.currentUser,
-})
-const mapDispatchToProps = dispatch => ({
-	fetchReports: (currentUserId) => dispatch(fetchReports(currentUserId))
-})
-export default connect(mapStateToProps, mapDispatchToProps)(SavedRepModalContents)
+
+export default SavedRepModalContents
 

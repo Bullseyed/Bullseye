@@ -15,7 +15,8 @@ const Report = db.define('report', {
   longitude: FLOAT,
   latitude: FLOAT,
   radius: FLOAT,
-  businessType: STRING
+  businessType: STRING,
+  address: STRING
 }, {
     getterMethods: {
       date() {
