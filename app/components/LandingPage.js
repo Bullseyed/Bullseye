@@ -37,20 +37,11 @@ class LandingPage extends Component {
 				<Row>
 					<Nav />
 				</Row>
-					<div style={{margin: 'auto', width: '75%'}}>
-						<Row style={{textAlign:'center'}}>
-							<Col l={12} >
-								<CardPanel className="black-text">
-									<span style={{fontSize: 20}}>
-										Bullseye helps small business owners find the perfect location for their business. With a unique mix of business intelligence and crowdsourced data, making informed decisions has never been easier.
-									</span>
-								</CardPanel>
-							</Col>
-						</Row>
-					</div>
-				<Row style={{textAlign:'center', paddingTop: '20px', marginBottom: '0px'}}>
-					<h style={{fontSize: 50, color: '#039be5', paddingTop: '0px'}}> I WANT TO </h>
+
+				<Row style={{textAlign:'center', paddingTop: '20px', marginBottom: '10px'}}>
+					<h style={{fontSize: 50, color: '#039be5'}}> I WANT TO </h>
 				</Row>
+
 				<Row>
 
 					<Col l={3} offset='l3'>
@@ -98,6 +89,15 @@ class LandingPage extends Component {
 					</Col>
 
 				</Row>
+
+				<Row style={{textAlign:'center', margin: 'auto', width: '75%', marginTop: '60px'}}>
+					<Col l={12} >
+							<span style={{fontSize: 28}}>
+								Bullseye helps small business owners find the perfect location for their venture. With a unique mix of business intelligence and crowdsourced data, making informed decisions has never been easier.
+							</span>
+					</Col>
+				</Row>
+
 			</div>
 		)
 	}
