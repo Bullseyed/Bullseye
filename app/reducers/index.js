@@ -12,7 +12,8 @@ const rootReducer = combineReducers({
   report: require('./report').default,
   threadList: require('./thread-reducer').default,
   address: require('./address-reducer').default,
-  comments: require('./comment-reducer').default
+  comments: require('./comment-reducer').default,
+  reports: require('./saved-report-reducer').default
 });
 
 export default rootReducer;
