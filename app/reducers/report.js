@@ -14,10 +14,10 @@ const SWITCH_MEASUREMENT = 'SWITCH_MEASUREMENT';
 
 /* --------------    ACTION CREATORS    ----------------- */
 
-export const addLngLat = (longitude, latitude) => ({
+export const addLngLat = (latitude, longitude) => ({
   type: ADD_LNG_LAT,
-  longitude,
-  latitude
+  latitude,
+  longitude
 });
 
 export const switchMeasurement = measurement => ({
@@ -29,8 +29,8 @@ export const switchMeasurement = measurement => ({
 /* ------------------    REDUCER    --------------------- */
 
 export default function reducer (state = {
-  longitude: null,
   latitude: null,
+  longitude: null,
   radius: null,
   businessType: null,
   distanceMeasurement: 'miles'
@@ -40,8 +40,8 @@ export default function reducer (state = {
       state.businessType = action.typeStr;
       break;
     case ADD_LNG_LAT:
-      state.longitude = action.longitude;
       state.latitude = action.latitude;
+      state.longitude = action.longitude;
       break;
     case UPDATE_RADIUS:
       state.radius = action.radInt;
