@@ -13,7 +13,6 @@ export const clearRests = () => ({
 })
 
 export const fetchRests = (locationObj) => dispatch => {
-  console.log("*(!@#(*!@&#(@!&#(*!&#*(!@&#*(!@&#*(&!(#&!@(&#(")
   axios.post('/api/yelp/restaurants', locationObj)
   .then(res=>res.data)
   .then(restList => dispatch(getRests(restList)))

@@ -33,8 +33,8 @@ class MapContainer extends React.Component {
       this.props.setCoords(e.latLng.lat(), e.latLng.lng())
       this.setState({ selectedMarker: { lat: e.latLng.lat(), lng: e.latLng.lng() }, selectedRestIndex: []},
         () => {
-          clearRests()
-          makeYelpReq(this.state.selectedMarker.lat, this.state.selectedMarker.lng, this.props.radius.value)
+          clearRests().then(makeYelpReq(this.state.selectedMarker.lat, this.state.selectedMarker.lng, Math.floor(this.props.radius))
+        )
         }
       )
     }
