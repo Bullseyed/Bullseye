@@ -16,15 +16,27 @@ import SingleThread from './SingleThread'
   render() {
     return (
       <div style={{ paddingLeft: 23, paddingRight: 23 }}>
+        <Row style={{marginBottom: 5}}>
+                    <Col l={1} style={{marginLeft: 5, marginRight: 5}}>
+                      SCORE
+                    </Col>
+                    <Col l={9} style={{paddingRight: 0}}>
+                      IDEA
+                    </Col>
+                    <Col l={1} style={{paddingLeft: 0}}>
+                      POSTED
+                    </Col>
+          </Row>
+
         <Collapsible accordion>
           {this.props.threadList.map(thread => {
             return (
               <CollapsibleItem
                 key={thread.id}
                 header={
-                  <Row>
+                  <Row style={{marginBottom: 0}}>
                     <Col l={1}>
-                      <span className="new badge green">
+                      <span className="badge green" style={{color: 'white', borderRadius: '20%', fontSize: 12}}>
                         {thread.score}
                       </span>
                     </Col>
