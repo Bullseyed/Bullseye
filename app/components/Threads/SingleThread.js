@@ -15,7 +15,6 @@ class SingleThread extends Component {
 	}
 
 	componentWillMount() {
-		console.log(this.props);
 		if (!this.props.currentUser) {
 			this.setState({votingDisabled: true});
 		} else if (this.props.thread.scoreAuthors &&
@@ -34,7 +33,7 @@ class SingleThread extends Component {
 			<div>
 				<Row>
 					<Col l={9} style={{padding: 0}}>
-						<Row>
+						<Row style={{marginBottom: 0}}>
 							<b> Description: </b>
 						</Row>
 						<Row style={{fontSize: 16}}>
@@ -45,7 +44,7 @@ class SingleThread extends Component {
 						<Button floating large className='green' waves='light' icon='thumb_up' onClick={this.upvoteHandler} disabled={this.state.votingDisabled ? true : false}> Upvote </Button>
 					</Col>
 				</Row>
-				<Row>
+				<Row style={{marginBottom: 0}}>
 					<b> Comments: </b>
 				</Row>
 				<Row  style={{fontSize: 12}}>

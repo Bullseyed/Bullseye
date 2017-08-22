@@ -33,7 +33,8 @@ const Thread = db.define('thread', {
     defaultValue: 0
   },
   scoreAuthors: {
-    type: DataTypes.ARRAY(DataTypes.INTEGER)
+    type: DataTypes.ARRAY(DataTypes.INTEGER),
+    defaultValue: []
   },
   idea: STRING,
   description: TEXT

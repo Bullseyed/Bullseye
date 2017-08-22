@@ -30,7 +30,7 @@ function commentReducer(comments=[], action) {
 		case GET_COMMENTS:
 			return action.commentsList
 		case ADD_COMMENT:
-			return comments.concat([action.commentObj])
+			return comments.concat(action.commentObj)
 		default:
 			return comments;
 	}

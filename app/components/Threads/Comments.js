@@ -5,24 +5,28 @@ import { Col, Row } from 'react-materialize';
 const Comments = props => {
 	return (
 		<div>
-			{props.thread.comments.length && props.thread.comments.map(comment => {
-				return (
-					<div key={comment.id}>
-						<Row>
-							<Col l={10} style={{ padding: 0 }}>
-								{comment.comment}
-							</Col>
-							<Col l={1} style={{ padding: 0, float: 'right'}}>
-								{comment.date}
-							</Col>
-						</Row>
-						<hr />
-					</div>
-				);
-			})}
+			{props.comments.map(comment => {
+				return (comment.threadId === props.thread.id)
+				? (
+						<div key={comment.id}>
+							<Row>
+								<Col l={10} style={{ padding: 0 }}>
+									{comment.comment}
+								</Col>
+								<Col l={1} style={{ padding: 0, float: 'right'}}>
+									{comment.date}
+								</Col>
+							</Row>
+							<hr />
+						</div>
+					)
+				: null;
+			})
+		}
 		</div>
 	);
 };
+
 
 const mapStateToProps = storeState => ({
 	comments: storeState.comments
