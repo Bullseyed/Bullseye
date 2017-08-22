@@ -31,12 +31,12 @@ export const postThread = (threadObj) => dispatch => {
   .then(newThreadObj => dispatch(makeThread(newThreadObj)))
 };
 
-export const upvoteThread = (threadObj) => dispatch => {
-  const upvoted = Object.assign({}, threadObj, {score: threadObj.score+1})
+export const upvoteThread = (threadObj, userId) => dispatch => {
+  const upvoted = Object.assign({}, threadObj, {score: threadObj.score+1}, {scoreAuthors: threadObj.scoreAuthors.concat(+userId)});
   axios.put('/api/threads', upvoted)
   .then(res=>res.data)
   .then(updatedThreadObj => dispatch(upvote(updatedThreadObj)))
-}
+};
 
 function threadReducer(threads = [], action) {
   switch (action.type) {
