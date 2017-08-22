@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Row, Col } from 'react-materialize';
+import RerunModal from './RerunModal'
 
 
 const SavedRepModalContents = (props) => {
@@ -13,7 +14,7 @@ const SavedRepModalContents = (props) => {
 								{report.address}
 							</Col>
 							<Col s={3}>
-								<Button>Rerun</Button>
+								<RerunModal report={report}/>
 							</Col>
 						</Row>
 						<hr />
