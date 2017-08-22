@@ -5,11 +5,17 @@ import { fetchAddress } from '../../reducers/address-reducer'
 
 
 const Location = (props) => {
-  const locObject = {
-          latitude: +props.bullseyeLocation[0],
-          longitude: +props.bullseyeLocation[1]
-        };
-  props.fetchAddress(locObject);
+  const locObj = {}
+  if (props.bullseyeLocation[0]) {
+    locObj.latitude = +props.bullseyeLocation[0]
+    locObj.longitude = +props.bullseyeLocation[1]
+  }
+  else {
+    locObj.latitude = props.report.latitude
+    locObj.longitude = +props.report.longitude
+  }
+
+  props.fetchAddress(locObj);
 
   return (
 		<Row>
@@ -23,7 +29,8 @@ const Location = (props) => {
 
 const mapStateToProps = storeState => ({
 	bullseyeLocation: storeState.bullseye,
-  address:  storeState.address
+  address:  storeState.address,
+  report: storeState.report
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -7,7 +7,7 @@ const getZip = (zip) => ({
   zip,
 })
 
-export const fetchZip = (locationObj) => dispatch => {
+export const fetchZip = (locationObj) => dispatch => (
   axios.post('/api/yelp/restaurants', locationObj)
     .then(res => res.data)
     .then(resdata => {
@@ -22,7 +22,7 @@ export const fetchZip = (locationObj) => dispatch => {
       return zips
     })
     .then(zips => dispatch(getZip(zips)))
-}
+  )
 
 
 function zipReducer(zips = [], action) {
