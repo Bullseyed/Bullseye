@@ -61,5 +61,4 @@ db.sync({ logging: false, force: true })
     app.listen(process.env.PORT || 1337, () => {
       console.log('server started');
     })
-    .catch(console.error);
   });

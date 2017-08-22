@@ -2,12 +2,13 @@ import React from 'react';
 import { Navbar, NavItem, Button } from 'react-materialize';
 import { connect } from 'react-redux';
 import { logout} from '../../reducers/auth';
+import SavedRepModal from '../User/SavedRepModal';
 
 const SubNav = (props) => {
 	return (
 		props.currentUser ?
 		<Navbar>
-			<NavItem> Saved Searches </NavItem>
+			<NavItem> <SavedRepModal/> </NavItem>
 			<NavItem> Shared with me </NavItem>
 			<NavItem onClick={props.logout}> Sign Out </NavItem>
 		</Navbar>
