@@ -22,10 +22,10 @@ class Nav extends React.Component {
 						<Icon small> cached </Icon>
 					</NavItem>
 					<NavItem onClick={reload}>
-						<Icon small> cached </Icon>
+						Business View |
 					</NavItem>
 					<NavItem onClick={reload}>
-						<Icon small> cached </Icon>
+						Resident View
 					</NavItem>
 					<NavItem onClick={toggleSubNav}>
 						<Icon small> account_circle </Icon>
