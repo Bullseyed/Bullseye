@@ -4,14 +4,17 @@ const { FLOAT, INTEGER, STRING, BOOLEAN, TEXT } = require('sequelize');
 var db = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost:5432/capstone');
 
 const User = db.define('user', {
-  email: STRING,
+  email: {
+    type: STRING,
+    unique: true
+  },
   googleID: STRING
 });
 
 const Report = db.define('report', {
   longitude: FLOAT,
   latitude: FLOAT,
-  radius: INTEGER,
+  radius: FLOAT,
   businessType: STRING
 });
 
