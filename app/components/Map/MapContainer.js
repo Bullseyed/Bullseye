@@ -50,6 +50,7 @@ class MapContainer extends React.Component {
       this.props.fetchZip(locationObj)
       while (offset<950) {
         locationObj.offset = offset
+        console.log('in map container location obj', locationObj)
         await this.props.fetchRests(locationObj)
         if (first) {
           offset = offset + 51
@@ -84,7 +85,7 @@ const mapDispatchToProps = dispatch => ({
   fetchRests: (locationObj) => dispatch(fetchRests(locationObj)),
   fetchZip: (locationObj) => dispatch(fetchZip(locationObj)),
   addBullseye: (coordsArr, callback) => dispatch(markBullseye(coordsArr, callback)),
-  addLngLat: (longitude, latitude) => dispatch(addLngLat(longitude, latitude)),
+  addLngLat: (latitude, longitude) => dispatch(addLngLat(latitude, longitude)),
   clearRests: () => dispatch(clearRests()),
   setCoords: (x, y) => dispatch(setCoords(x, y))
 })
