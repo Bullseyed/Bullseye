@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Button, Row } from 'react-materialize'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
-import { postReport } from '../../reducers/saved-report-reducer' 
+import { postReport } from '../../reducers/saved-report-reducer'
 
 class SaveBut extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class SaveBut extends Component {
 
   saveReport() {
     this.setState({reportSaved: true})
-    const newReport = Object.assign({},this.props.report,{userId: this.props.currentUser.id})
+    const newReport = Object.assign({},this.props.report,{userId: this.props.currentUser.id, address: this.props.address[0]})
     this.props.postReport(newReport)
   }
 
@@ -38,9 +38,10 @@ class SaveBut extends Component {
 }
 
 
-const mapState = ({ report, currentUser }) => ({
+const mapState = ({ report, currentUser,address }) => ({
   report,
   currentUser,
+  address
 })
 
 const mapDispatchToProps = dispatch => ({
