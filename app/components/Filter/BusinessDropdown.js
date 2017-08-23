@@ -13,6 +13,7 @@ class BusinessDropdown extends React.Component {
 			showSubRest: false,
 			showSubLaund: false,
 			showSubNight: false,
+			showSubSalon: false,
 		}
 	}
 
@@ -20,13 +21,16 @@ class BusinessDropdown extends React.Component {
 		const changeHandle = (event) => {
 			const val = +event.target.value
 			if (val === 2) {
-				this.setState({ showSubRest: true, showSubLaund: false, showSubNight: false })
+				this.setState({ showSubRest: true, showSubLaund: false, showSubNight: false, showSubSalon: false })
 			}
 			if (val === 3) {
-				this.setState({ showSubRest: false, showSubLaund: true, showSubNight: false, })
+				this.setState({ showSubRest: false, showSubLaund: true, showSubNight: false, showSubSalon: false})
 			}
 			if (val === 4) {
-				this.setState({ showSubRest: false, showSubLaund: false, showSubNight: true })
+				this.setState({ showSubRest: false, showSubLaund: false, showSubNight: true, showSubSalon: false })
+			}
+			if (val === 5) {
+				this.setState({ showSubRest: false, showSubLaund: false, showSubNight: false, showSubSalon: true })
 			}
 		}
 		return (
@@ -36,11 +40,13 @@ class BusinessDropdown extends React.Component {
 					<option value='2'>Restaurant</option>
 					<option value='3'>Laundry</option>
 					<option value='4'>Nightlife</option>
+					<option value='5'>Salon</option>
 				</Input>
 
 				{this.state.showSubRest && <SubRest />}
 				{this.state.showSubLaund && <SubLaund />}
 				{this.state.showSubNight && <SubNight />}
+				{this.state.showSubSalon && <SubSalon />}
 
 			</div>
 		)
