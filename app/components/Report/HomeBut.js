@@ -8,7 +8,6 @@ const SubmitRepBut = (props) => {
   const backClickReset = () => {
     props.clearRests()
   }
-  console.log("!#(*!@#(!#(!@&#!&@*(#&!@#(!&@", props)
   return (
     <Row>
       <Link to='/business'>
