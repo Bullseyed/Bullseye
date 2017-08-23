@@ -7,8 +7,8 @@ const SubRest = (props) => {
 	const changeHandler = (event) => {
 		let value = event.target.value
 		let str = ''
-		let restStr = 'resturants'
-		if (value == 0) str = 'resturants'
+		let restStr = 'restaurants'
+		if (value == 0) str = 'restaurants'
 		if (value == 1) str = 'american ' + restStr
 		if (value == 2) str = 'carribean ' + restStr
 		if (value == 3) str = 'chinese ' + restStr
