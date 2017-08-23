@@ -42,7 +42,7 @@ class MapContainer extends React.Component {
 
   handleSearchBoxMounted(searchBox) {
     this._searchBox = searchBox;
-    console.log(this._searchBox.getPlaces)
+    // console.log(this._searchBox.getPlaces)
   }
 
   handlePlacesChanged() {

@@ -13,7 +13,6 @@ export const fetchAddress = (latLongObj) => dispatch => {
     if (err) {
         console.log(err);
     } else {
-      console.log(data.results)
       const address = data.results[0].formatted_address;
       const neighborhood  = data.results[0].address_components[2].long_name;
       dispatch(getAddress([address, neighborhood]));

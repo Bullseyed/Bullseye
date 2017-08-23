@@ -4,32 +4,39 @@ import { Row } from 'react-materialize';
 import { fetchAddress } from '../../reducers/address-reducer'
 
 
-const Location = (props) => {
-  const locObj = {}
-  if (props.bullseyeLocation[0]) {
-    locObj.latitude = +props.bullseyeLocation[0]
-    locObj.longitude = +props.bullseyeLocation[1]
+class Location extends React.Component {
+  constructor(props) {
+    super(props)
   }
-  else {
-    locObj.latitude = props.report.latitude
-    locObj.longitude = +props.report.longitude
+  componentWillMount() {
+    const locObj = {}
+    if (this.props.bullseyeLocation[0]) {
+      locObj.latitude = +this.props.bullseyeLocation[0]
+      locObj.longitude = +this.props.bullseyeLocation[1]
+    }
+    else {
+      locObj.latitude = this.props.report.latitude
+      locObj.longitude = +this.props.report.longitude
+    }
+
+    this.props.fetchAddress(locObj);
   }
 
-  props.fetchAddress(locObj);
-
-  return (
-		<Row>
-			<h>
-        <b>Location: </b>
-        { `(${props.address[1]}) ${props.address[0]}` }
-			</h>
-		</Row>
-	);
-};
+  render() {
+    return (
+      <Row>
+        <h>
+          <b>Location: </b>
+          {`(${this.props.address[1]}) ${this.props.address[0]}`}
+        </h>
+      </Row>
+    );
+  }
+}
 
 const mapStateToProps = storeState => ({
-	bullseyeLocation: storeState.bullseye,
-  address:  storeState.address,
+  bullseyeLocation: storeState.bullseye,
+  address: storeState.address,
   report: storeState.report
 });
 
