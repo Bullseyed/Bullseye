@@ -14,9 +14,8 @@ class MapContainer extends React.Component {
     super(props)
     this.state = {
       bounds: null,
-      center: { lat: 40.753574, lng: -73.9835933 },
-      markers: [],
-      selectedMarker: {},
+      center: props.map.selectedMarker || { lat: 40.753574, lng: -73.9835933 },
+      selectedMarker: props.map.selectedMarker || { lat: 40.753574, lng: -73.9835933 },
       restList: this.props.rests,
       selectedRestIndex: [],
       selectedGreenIndex: [],
@@ -57,8 +56,8 @@ class MapContainer extends React.Component {
 
     this.setState({
       center: mapCenter,
+      selectedMarker: mapCenter
     });
-
   }
 
   render() {
