@@ -22,7 +22,8 @@ router.put('/', (req, res, next) => {
 });
 
 router.get('/', (req, res, next) => {
-  Thread.findAll({include: [{model: Comment}]})
+  Thread.findAll({include:
+    [{model: Comment}], order: [['updatedAt', 'DESC']]})
     .then(allThreads => {
       res.send(allThreads);
     })

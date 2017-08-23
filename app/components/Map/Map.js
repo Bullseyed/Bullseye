@@ -73,7 +73,7 @@ const InitialMap = withGoogleMap(({ bounds, onPlacesChanged, onSearchBoxMounted,
 							key={rest.id}
 							icon={iconBusiness}
 							onClick={() => onMarkerClick(rest, index)}
-							position={{ lat: rest.coordinates.latitude, lng: rest.coordinates.longitude }}>
+							position={{ lat: parseFloat(rest.coordinates.latitude), lng: parseFloat(rest.coordinates.longitude) }}>
 							{selectedRestIndex.includes(index) && (<InfoWindow>
 								<div>
 									<h6>{rest.name}</h6>
@@ -92,7 +92,7 @@ const InitialMap = withGoogleMap(({ bounds, onPlacesChanged, onSearchBoxMounted,
 						key={thread.id}
 						icon={proposedBusiness}
 						onClick={() => onMarkerClick(thread, index)}
-						position={{ lat: thread.latitude, lng: thread.longitude }}>
+						position={{ lat: parseFloat(thread.latitude), lng: parseFloat(thread.longitude) }}>
 						{selectedRestIndex.includes(index) &&
 							(<InfoWindow>
 								<Modal
