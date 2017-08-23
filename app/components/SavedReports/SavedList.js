@@ -1,8 +1,15 @@
 import React, { Component } from 'react'
 import { Col, Row, Button } from 'react-materialize'
 import { fetchReports } from '../../reducers/saved-report-reducer'
-import { fetchRests } from '../../reducers/rest-reducer'
+import { fetchRests, clearRests } from '../../reducers/rest-reducer'
+import { fetchZip } from '../../reducers/zip-reducer'
+import { demographicThunk } from '../../reducers/demo-reducer'
 import { connect } from 'react-redux'
+import fipsDict from '../../../fips-codes.js'
+import { Link } from 'react-router-dom'
+import { addLngLat } from '../../reducers/report'
+import { fetchAddress } from '../../reducers/address-reducer'
+import { updateRadius } from '../../reducers/radius-reducer'
 
 class SavedList extends React.Component {
 	constructor(props) {
@@ -12,13 +19,9 @@ class SavedList extends React.Component {
 		this.props.fetchReports(this.props.currentUser.id)
 	}
 	render() {
-		const clickHandler = (event) => {
-
+		const clickHandler = async (event) => {
 			const reportId = event.target.value;
-
 			const matchedReport = this.props.reports.filter(report => { return report.id == reportId })[0]
-			console.log(matchedReport)
-
 			const getFips = (state) => fipsDict[state]
 			const yelpObj = {
 				latitude: +matchedReport.latitude,
@@ -27,9 +30,14 @@ class SavedList extends React.Component {
 				term: matchedReport.businessType,
 				offset: 0,
 			}
-			console.log(yelpObj)
 
-			this.props.fetchRests(yelpObj)
+			this.props.clearRests();
+			this.props.fetchAddress({latitude: matchedReport.latitude, longitude: matchedReport.longitude})
+			this.props.addLngLat(matchedReport.latitude, matchedReport.longitude)
+			this.props.updateRadius(Math.floor(+matchedReport.radius))
+			const rests = await this.props.fetchRests(yelpObj)
+			const zips = await this.props.fetchZip(yelpObj)
+			this.props.demographicThunk(zips.zip, getFips(rests.restList[0].location.state))
 		}
 		return (
 			<div>
@@ -41,7 +49,7 @@ class SavedList extends React.Component {
 									{report.address}
 								</Col>
 								<Col s={3}>
-									<Button value={report.id} onClick={clickHandler}> Rerun </Button>
+									<Link to='/report'><Button value={report.id} onClick={clickHandler}> Rerun </Button></Link>
 								</Col>
 							</Row>
 							<hr />
@@ -65,5 +73,9 @@ const mapDispatchToProps = dispatch => ({
 	demographicThunk: (zipArr, fipsCode) => dispatch(demographicThunk(zipArr, fipsCode)),
 	fetchZip: (locationObj) => dispatch(fetchZip(locationObj)),
 	fetchRests: (locationObj) => dispatch(fetchRests(locationObj)),
+	clearRests: () => dispatch(clearRests()),
+	addLngLat: (Lat, Lng) => dispatch(addLngLat(Lat,Lng)),
+	fetchAddress: (locationObj) => dispatch(fetchAddress(locationObj)),
+	updateRadius: (int) => dispatch(updateRadius(int))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(SavedList)
