@@ -2,7 +2,6 @@ import React from 'react';
 import { Navbar, NavItem, Button } from 'react-materialize';
 import { connect } from 'react-redux';
 import { logout} from '../../reducers/auth';
-import SavedRepModal from '../User/SavedRepModal';
 import { Link } from 'react-router-dom'
 
 const SubNav = (props) => {
