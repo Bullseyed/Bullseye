@@ -7,13 +7,12 @@ import { Link } from 'react-router-dom'
 const SubNav = (props) => {
 	return (
 		props.currentUser ?
-		<Navbar>
+		<Navbar style={{backgroundColor:'red'}}>
 			<Link to='/savedReports'><NavItem> Saved Reports </NavItem></Link>
-			<NavItem> Shared with me </NavItem>
 			<NavItem onClick={props.logout}> Sign Out </NavItem>
 		</Navbar>
 		:
-		<Navbar>
+		<Navbar style={{backgroundColor:'red'}}>
 			<NavItem href="/api/auth"><Button> Log in with Google </Button> </NavItem>
 		</Navbar>
 	);

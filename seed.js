@@ -30,7 +30,7 @@ const report = [
     longitude: -73.994637,
     address: '229 W 28th St, New York, NY 10001, USA',
     radius: 1600,
-    businessType: 'american resturants',
+    businessType: 'american restaurants',
     userId: 1
   },
   {
@@ -38,7 +38,7 @@ const report = [
     longitude: -73.985538,
     address: '318 E 11th St, New York, NY 10003, USA',
     radius: 1200,
-    businessType: 'chinese resturants',
+    businessType: 'chinese restaurants',
     userId: 1
   },
   {
@@ -46,7 +46,7 @@ const report = [
     longitude: -74.005623,
     address: '148-150 Varick St, New York, NY 10013, USA',
     radius: 1600,
-    businessType: 'american resturants',
+    businessType: 'american restaurants',
     userId: 2
   },
   {
@@ -54,7 +54,7 @@ const report = [
     longitude: -73.981247,
     address: '1219-1227 6th Ave, New York, NY 10020, USA',
     radius: 1200,
-    businessType: 'chinese resturants',
+    businessType: 'chinese restaurants',
     userId: 2
   },
   {
@@ -62,7 +62,7 @@ const report = [
     longitude: -73.951893,
     address: '1622 3rd Ave, New York, NY 10128, USA',
     radius: 1600,
-    businessType: 'american resturants',
+    businessType: 'american restaurants',
     userId: 3
   },
   {
@@ -70,7 +70,7 @@ const report = [
     longitude: -73.950005,
     address: '10-20 10th St, Long Island City, NY 11101, USA',
     radius: 1800,
-    businessType: 'chinese resturants',
+    businessType: 'chinese restaurants',
     userId: 3
   },
   {
@@ -78,7 +78,7 @@ const report = [
     longitude: -73.983307,
     address: '300-308 E 17th St, New York, NY 10003, USA',
     radius: 1000,
-    businessType: 'american resturants',
+    businessType: 'american restaurants',
     userId: 4
   },
   {
@@ -86,7 +86,7 @@ const report = [
     longitude: -73.998241,
     address: '601 W 43rd St, New York, NY 10036, USA',
     radius: 1600,
-    businessType: 'chinese resturants',
+    businessType: 'chinese restaurants',
     userId: 4
   },
 
@@ -129,6 +129,33 @@ const thread = [
     description: 'I love having yard sales, but dont have a place to go get my labels, sticker, signs, bags, etc. Would love to have something like this near me',
     userId: 4
   },
+  {
+    latitude: 40.7286572,
+    longitude: -73.980216,
+    score: 12,
+    scoreAuthors: [],
+    idea: 'Some Place That Will Not Look At Me With Disgust',
+    description: "I'm so tired of walking into an establishment and being met with dirty looks. I don't care what business it is, I just want to be treated with respect",
+    userId: 4
+  },
+  {
+    latitude: 40.74998795,
+    longitude: -73.987770,
+    score: 87,
+    scoreAuthors: [],
+    idea: 'A Licorice Liquor Store',
+    description: 'Have you ever wondered why there are so many licorice flavored spirits from all over the world? Absinthe, Sambuca, Jaegermeister, etc... I have too! Would love to try them all right at home',
+    userId: 2
+  },
+  {
+    latitude: 40.76247107,
+    longitude: -73.97386550,
+    score: 544,
+    scoreAuthors: [],
+    idea: 'Trump Paraphernalia',
+    description: "I need a one stop shop for all things Trump in my life. Can't beat the location",
+    userId: 2
+  },
 ];
 
 const comment = [
@@ -159,7 +186,37 @@ const comment = [
   },{
     comment: 'This is a terrible idea. Just go to a 99 cents store, gosh!',
     threadId: 4,
-  },
+  },{
+    comment: ':c',
+    threadId: 5,
+  },{
+    comment: ':/',
+    threadId: 5,
+  },{
+    comment: ':((((',
+    threadId: 5,
+  },{
+    comment: 'D:',
+    threadId: 5,
+  },{
+    comment: 'I hate licorice. EWWWWWW',
+    threadId: 6,
+  },{
+    comment: "You forgot absinthe!",
+    threadId: 6,
+  },{
+    comment: "Absinthe is the first on the list, idiot...",
+    threadId: 6,
+  },{
+    comment: "Heck Yes. I know where I'd be spending my Christmas bonus",
+    threadId: 7,
+  },{
+    comment: "Not my president",
+    threadId: 7,
+  },{
+    comment: "I think I'd post right outside and just people watch. Only in NY amirite?",
+    threadId: 7,
+  }
 ];
 
 db
