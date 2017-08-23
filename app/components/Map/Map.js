@@ -41,7 +41,7 @@ import SearchBox from 'react-google-maps/lib/places/SearchBox'
 		backgroundColor: 'white'
 	};
 
-const InitialMap = withGoogleMap(({ bounds, onPlacesChanged, onSearchBoxMounted, onMapMounted, onBoundsChanged, markBullseye, restList, onMapClick, selectedMarker, radius, selectedRestIndex, onMarkerClick, center, zoom, threadList }) => { //destructer
+const InitialMap = withGoogleMap(({ bounds, onPlacesChanged, onSearchBoxMounted, onMapMounted, onBoundsChanged, markBullseye, restList, onMapClick, selectedMarker, radius, selectedRestIndex, onMarkerClick, center, zoom, threadList, selectedGreenIndex, onGreenMarkerClick }) => { //destructer
 
 	return (
 		<GoogleMap
@@ -91,9 +91,9 @@ const InitialMap = withGoogleMap(({ bounds, onPlacesChanged, onSearchBoxMounted,
 					<Marker
 						key={thread.id}
 						icon={proposedBusiness}
-						onClick={() => onMarkerClick(thread, index)}
+						onClick={() => onGreenMarkerClick(thread, index)}
 						position={{ lat: parseFloat(thread.latitude), lng: parseFloat(thread.longitude) }}>
-						{selectedRestIndex.includes(index) &&
+						{selectedGreenIndex.includes(index) &&
 							(<InfoWindow>
 								<Modal
 									trigger={
