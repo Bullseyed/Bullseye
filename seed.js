@@ -163,7 +163,7 @@ const comment = [
     comment: "I'm always down for more reasons to drink!",
     threadId: 1,
   },{
-    comment: 'As long as it is closed on Sundays, I woud be delighted to come by for a drink',
+    comment: 'As long as it is closed on Sundays, I would be delighted to come by for a drink',
     threadId: 1,
   },{
     comment: 'Shine your own damn shoes. How about a hair salon instead?',
