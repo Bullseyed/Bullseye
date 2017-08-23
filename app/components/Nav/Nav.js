@@ -27,7 +27,7 @@ class Nav extends React.Component {
 					<NavItem onClick={reload}>
 						<Icon small> cached </Icon>
 					</NavItem>
-					{location.pathname === '/business'
+					{location.pathname === '/business' || location.pathname === '/report' || location.pathname === '/savedReports'
 					? <NavItem href="threads">
 							Community View
 						</NavItem>

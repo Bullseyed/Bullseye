@@ -156,6 +156,33 @@ const thread = [
     description: "I need a one stop shop for all things Trump in my life. Can't beat the location",
     userId: 2
   },
+  {
+    latitude: 40.76247107,
+    longitude: -73.978844,
+    score: 74,
+    scoreAuthors: [],
+    idea: 'DIY Beekeeping Essentials',
+    description: "I've started beekeeping and every time the online stores ship the bees, the package arrives half empty.",
+    userId: 2
+  },
+  {
+    latitude: 40.750825,
+    longitude: -73.971291,
+    score: 104,
+    scoreAuthors: [],
+    idea: 'Mugshot Photo Hut',
+    description: "This place would be a neighborhood favorite in no time. It's such a simple and brilliant idea. Everyone loves ironic mugshots of themselves",
+    userId: 2
+  },
+  {
+    latitude: 40.750305,
+    longitude: -73.978844,
+    score: 80,
+    scoreAuthors: [],
+    idea: 'Pre-k',
+    description: "I really want a pre-school near my house.",
+    userId: 3
+  },
 ];
 
 const comment = [
@@ -216,6 +243,27 @@ const comment = [
   },{
     comment: "I think I'd post right outside and just people watch. Only in NY amirite?",
     threadId: 7,
+  },{
+    comment: 'maybe it can also have a take a bee/leave a bee area? I can donate a bee or two',
+    threadId: 8,
+  },{
+    comment: 'Is this even legal?',
+    threadId: 8,
+  },{
+    comment: "This would make 0 money. I'd give it two months til bankrupcy.",
+    threadId: 9,
+  },{
+    comment: "Yeah, this is a pretty bad idea",
+    threadId: 9,
+  },{
+    comment: "uhh.....sounds like it's a good time to move out of the neighborhood",
+    threadId: 10,
+  },{
+    comment: "I'm in my 70's and wouldn't mind",
+    threadId: 10,
+  },{
+    comment: "But we already have like 4?",
+    threadId: 10,
   }
 ];
 
