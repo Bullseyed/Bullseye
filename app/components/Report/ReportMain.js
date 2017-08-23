@@ -10,6 +10,7 @@ import Zips from './Zips';
 import Density from './Density';
 import SaveBut from './SaveBut';
 import ChartModal from './ChartModal';
+import Streetview from './Streetview'
 
 
 const ReportMain = (props) => {
@@ -24,18 +25,25 @@ const ReportMain = (props) => {
 					<Nav />
 				</Row>
 				<Row>
-					<Col>
-						<Location />
+				<Col l={7}>
+						<Streetview bullseye={props.bullseye}/>
 					</Col>
-				</Row>
-				<Row>
-					<Col>
-						<Zips zips = { props.zips.join(', ') } />
-					</Col>
-				</Row>
-				<Row>
-					<Col>
-						<Density zipsCount = { props.zips.length } demoData = { props.demoData } />
+					<Col l={5}>
+						<Row>
+							<Col>
+								<Location />
+							</Col>
+						</Row>
+						<Row>
+							<Col>
+								<Zips zips={props.zips.join(', ')} />
+							</Col>
+						</Row>
+						<Row>
+							<Col>
+								<Density zipsCount={props.zips.length} demoData={props.demoData} />
+							</Col>
+						</Row>
 					</Col>
 				</Row>
 				<Row>
@@ -47,7 +55,7 @@ const ReportMain = (props) => {
 					<Col s={5}>
 						<Row>
 							<div style={{ overflow: 'auto', height: 400 }}>
-								<ChartModal demoData = { props.demoData } />
+								<ChartModal demoData={props.demoData} />
 							</div>
 						</Row>
 					</Col>
@@ -68,7 +76,8 @@ const ReportMain = (props) => {
 
 const mapStateToProps = storeState => ({
 	zips: storeState.zip,
-	demoData: storeState.demoData
+	demoData: storeState.demoData,
+	bullseye: storeState.bullseye
 });
 
 export default connect(mapStateToProps, null)(ReportMain);

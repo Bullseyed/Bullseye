@@ -20,8 +20,7 @@ class Main extends React.Component {
         <Col l={8} style={{ paddingRight: 0, paddingLeft: 0}}>
           <MapContainer />
         </Col>
-
-        <Col l={4} style={{ paddingRight: 0, paddingLeft: 0, height: '100%' }}>
+        <Col l={4} style={{ paddingRight: 0, paddingLeft: 0, height: '100vh' }}>
           <Row>
             <Nav />
           </Row>
