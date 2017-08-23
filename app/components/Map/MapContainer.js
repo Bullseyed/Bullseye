@@ -74,6 +74,7 @@ class MapContainer extends React.Component {
     }
 
     const onMapClick = (e) => {
+      if (this.props.bType.length && this.props.radius>0) {
       this.props.addBullseye([parseFloat(e.latLng.lat()), parseFloat(e.latLng.lng())])
       this.props.setCoords(parseFloat(e.latLng.lat()), parseFloat(e.latLng.lng()))
       this.setState({ selectedMarker: { lat: parseFloat(e.latLng.lat()), lng: parseFloat(e.latLng.lng()) }, selectedRestIndex: []},
@@ -83,6 +84,7 @@ class MapContainer extends React.Component {
         }
       )
     }
+  }
 
     const clearRests = async () => {
       await this.props.clearRests()
