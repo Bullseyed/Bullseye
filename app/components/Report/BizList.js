@@ -3,7 +3,6 @@ import { Row, Col, Collection, CollectionItem, Modal, Icon } from 'react-materia
 import { connect } from 'react-redux'
 
 const BizList = (props) => {
-	console.log(props.rests)
 	return (
 		<Row>
 			<Row> <b> Nearby Businesses: </b> </Row>

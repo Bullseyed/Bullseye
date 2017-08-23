@@ -29,7 +29,6 @@ class MapContainer extends React.Component {
   }
 
   handleMapMounted(map) {
-    console.log('handlemap running', map)
     this._map = map;
   }
 
@@ -42,11 +41,9 @@ class MapContainer extends React.Component {
 
   handleSearchBoxMounted(searchBox) {
     this._searchBox = searchBox;
-    // console.log(this._searchBox.getPlaces)
   }
 
   handlePlacesChanged() {
-    console.log("handle places changed running")
     const places = this._searchBox.getPlaces();
 
     // Add a marker for each place returned from search bar
@@ -92,7 +89,6 @@ class MapContainer extends React.Component {
       this.props.fetchZip(locationObj)
       while (offset<950) {
         locationObj.offset = offset
-        console.log('in map container location obj', locationObj)
         await this.props.fetchRests(locationObj)
         if (first) {
           offset = offset + 51
