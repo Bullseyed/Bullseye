@@ -15,6 +15,7 @@ class MapContainer extends React.Component {
     this.state = {
       bounds: null,
       center: { lat: 40.753574, lng: -73.9835933 },
+      markers: [],
       selectedMarker: {},
       restList: this.props.rests,
       selectedRestIndex: [],
@@ -67,9 +68,9 @@ class MapContainer extends React.Component {
     }
 
     const onMapClick = (e) => {
-      this.props.addBullseye([e.latLng.lat(), e.latLng.lng()])
-      this.props.setCoords(e.latLng.lat(), e.latLng.lng())
-      this.setState({ selectedMarker: { lat: e.latLng.lat(), lng: e.latLng.lng() }, selectedRestIndex: []},
+      this.props.addBullseye([parseFloat(e.latLng.lat()), parseFloat(e.latLng.lng())])
+      this.props.setCoords(parseFloat(e.latLng.lat()), parseFloat(e.latLng.lng()))
+      this.setState({ selectedMarker: { lat: parseFloat(e.latLng.lat()), lng: parseFloat(e.latLng.lng()) }, selectedRestIndex: []},
         () => {
           clearRests().then(makeYelpReq(this.state.selectedMarker.lat, this.state.selectedMarker.lng, Math.floor(this.props.radius))
         )

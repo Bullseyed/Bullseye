@@ -43,7 +43,7 @@ function threadReducer(threads = [], action) {
     case GET_THREADS:
       return action.threadList;
     case MAKE_THREAD:
-      return threads.concat(action.threadObj)
+      return [action.threadObj, ...threads]
     case UPVOTE:
       return threads.map(thread=>(
         action.threadObj.id === thread.id ? action.threadObj : thread

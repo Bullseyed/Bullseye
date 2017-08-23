@@ -5,12 +5,14 @@ import { postThread } from '../../reducers/thread-reducer'
 
 const AddNewThreadModal = (props) => {
 
-	const handleSubmitClick = () => {
+	const handleSubmitClick = (e) => {
+    console.log(e)
 		const postObj = {
       latitude: props.bullseye[0],
       longitude: props.bullseye[1],
       idea: document.getElementById('busIdea').value,
       description: document.getElementById('desc').value
+
     };
     props.postThread(postObj)
 
@@ -33,7 +35,7 @@ const AddNewThreadModal = (props) => {
 					label="Description"
 				/>
 			</Row>
-			<Button waves="light" onClick={handleSubmitClick}>Submit</Button>
+			<Button waves="light" modal='close' onClick={handleSubmitClick}>Submit</Button>
 		</div>
 	)
 }

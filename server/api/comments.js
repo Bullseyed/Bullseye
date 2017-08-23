@@ -8,7 +8,9 @@ router.post('/', (req, res, next) => {
 });
 
 router.get('/', (req, res, next) => {
-  Comments.findAll()
+  Comments.findAll({
+    order: [['updatedAt', 'DESC']]
+  })
     .then(allComments => res.json(allComments))
     .catch(next);
 });

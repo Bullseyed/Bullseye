@@ -4,7 +4,7 @@ import { postComment } from '../../reducers/comment-reducer'
 import { connect } from 'react-redux'
 
 class CommentForm extends React.Component {
-	
+
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -37,7 +37,7 @@ class CommentForm extends React.Component {
 						onChange={onChange}
 					/>
 				</Row>
-				<Button onClick={submitComment}> Submit </Button>
+				<Button onClick={submitComment} modal='close'> Submit </Button>
 			</div>
 		)
 	}
