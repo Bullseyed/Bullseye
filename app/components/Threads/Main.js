@@ -25,7 +25,7 @@ const ThreadsMain = () => {
           <AddNew />
         </Row>
         <Row>
-          <div style={{ overflow: 'auto', height: 560 }}>
+          <div style={{ overflow: 'auto', height: 450 }}>
             <Threads />
           </div>
         </Row>

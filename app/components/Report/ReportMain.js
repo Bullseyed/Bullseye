@@ -48,13 +48,13 @@ const ReportMain = (props) => {
 				</Row>
 				<Row>
 					<Col s={7}>
-						<div style={{ overflow: 'auto', height: 400 }}>
+						<div style={{ overflow: 'auto', height: 300 }}>
 							<BizList />
 						</div>
 					</Col>
 					<Col s={5}>
 						<Row>
-							<div style={{ overflow: 'auto', height: 400 }}>
+							<div style={{ overflow: 'auto', height: 300 }}>
 								<ChartModal demoData={props.demoData} />
 							</div>
 						</Row>
