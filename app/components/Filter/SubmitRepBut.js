@@ -20,6 +20,8 @@ const SubmitRepBut = (props) => {
   return (
     <Col s={12}>
       <Row>
+      { (props.rests && props.radius && props.bType)
+      ?
         <Link to="/report">
           <Button
             waves="light"
@@ -28,13 +30,21 @@ const SubmitRepBut = (props) => {
             Get Detailed Report
           </Button>
         </Link>
+      : <Button
+            waves="light"
+            onClick={fetchReports}
+            disabled
+          >
+            Get Detailed Report
+          </Button>
+      }
       </Row>
     </Col>
   );
 };
 
-const mapStateToProps = ({ demoData, zip, rests, bullseye }) => ({
-  demoData, zip, rests, bullseye
+const mapStateToProps = ({ demoData, zip, rests, bullseye, bType, radius }) => ({
+  demoData, zip, rests, bullseye, bType, radius
 });
 
 export default connect(mapStateToProps, { demographicThunk, addLngLat })(SubmitRepBut);
