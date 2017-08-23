@@ -34,8 +34,14 @@ router.get('/logout', (req, res, next) => {
 
 router.get('/', passport.authenticate('google', { scope: 'email' }));
 router.get('/verify', passport.authenticate('google', {
-  successRedirect: '/',
+  successRedirect: '/business',
   failureRedirect: '/'
 }));
+
+// router.get('/', passport.authenticate('google', { scope: 'email' }));
+// router.get('/verify', passport.authenticate('google', {
+//   successRedirect: `/${req.route.path}`,
+//   failureRedirect: '/failure'
+// }));
 
 module.exports = router;
