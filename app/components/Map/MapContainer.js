@@ -15,7 +15,6 @@ class MapContainer extends React.Component {
     this.state = {
       bounds: null,
       center: { lat: 40.753574, lng: -73.9835933 },
-      markers: [],
       selectedMarker: {},
       restList: this.props.rests,
       selectedRestIndex: [],
@@ -29,7 +28,6 @@ class MapContainer extends React.Component {
   }
 
   handleMapMounted(map) {
-    console.log('handlemap running', map)
     this._map = map;
   }
 
@@ -42,11 +40,9 @@ class MapContainer extends React.Component {
 
   handleSearchBoxMounted(searchBox) {
     this._searchBox = searchBox;
-    console.log(this._searchBox.getPlaces)
   }
 
   handlePlacesChanged() {
-    console.log("handle places changed running")
     const places = this._searchBox.getPlaces();
 
     // Add a marker for each place returned from search bar
@@ -57,10 +53,13 @@ class MapContainer extends React.Component {
     // Set markers; set map center to first search result
     const mapCenter = markers.length > 0 ? markers[0].position : this.state.center;
 
+    console.log(markers)
+
+
     this.setState({
       center: mapCenter,
-      markers,
     });
+
   }
 
   render() {
