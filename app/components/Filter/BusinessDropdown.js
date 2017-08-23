@@ -5,6 +5,7 @@ import SubLaund from './SubDropdowns/SubLaund'
 import { connect } from 'react-redux'
 import { addBType } from '../../reducers/b-type-reducer'
 import SubNight from './SubDropdowns/SubNight'
+import SubBeauty from './SubDropdowns/SubBeauty'
 
 class BusinessDropdown extends React.Component {
 	constructor(props) {
@@ -13,7 +14,7 @@ class BusinessDropdown extends React.Component {
 			showSubRest: false,
 			showSubLaund: false,
 			showSubNight: false,
-			showSubSalon: false,
+			showSubBeauty: false,
 		}
 	}
 
@@ -21,16 +22,16 @@ class BusinessDropdown extends React.Component {
 		const changeHandle = (event) => {
 			const val = +event.target.value
 			if (val === 2) {
-				this.setState({ showSubRest: true, showSubLaund: false, showSubNight: false, showSubSalon: false })
+				this.setState({ showSubRest: true, showSubLaund: false, showSubNight: false, showSubBeauty: false })
 			}
 			if (val === 3) {
-				this.setState({ showSubRest: false, showSubLaund: true, showSubNight: false, showSubSalon: false})
+				this.setState({ showSubRest: false, showSubLaund: true, showSubNight: false, showSubBeauty: false})
 			}
 			if (val === 4) {
-				this.setState({ showSubRest: false, showSubLaund: false, showSubNight: true, showSubSalon: false })
+				this.setState({ showSubRest: false, showSubLaund: false, showSubNight: true, showSubBeauty: false })
 			}
 			if (val === 5) {
-				this.setState({ showSubRest: false, showSubLaund: false, showSubNight: false, showSubSalon: true })
+				this.setState({ showSubRest: false, showSubLaund: false, showSubNight: false, showSubBeauty: true })
 			}
 		}
 		return (
@@ -40,13 +41,13 @@ class BusinessDropdown extends React.Component {
 					<option value='2'>Restaurant</option>
 					<option value='3'>Laundry</option>
 					<option value='4'>Nightlife</option>
-					<option value='5'>Salon</option>
+					<option value='5'>Beauty</option>
 				</Input>
 
 				{this.state.showSubRest && <SubRest />}
 				{this.state.showSubLaund && <SubLaund />}
 				{this.state.showSubNight && <SubNight />}
-				{this.state.showSubSalon && <SubSalon />}
+				{this.state.showSubBeauty && <SubBeauty />}
 
 			</div>
 		)
