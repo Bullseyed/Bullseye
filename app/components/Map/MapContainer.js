@@ -53,9 +53,6 @@ class MapContainer extends React.Component {
     // Set markers; set map center to first search result
     const mapCenter = markers.length > 0 ? markers[0].position : this.state.center;
 
-    console.log(markers)
-
-
     this.setState({
       center: mapCenter,
     });

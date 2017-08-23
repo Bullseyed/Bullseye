@@ -18,6 +18,7 @@ class Nav extends React.Component {
   }
 
 	render() {
+		console.log(location)
 
 		const toggleSubNav = () => this.state.showSubNav ? this.setState({ showSubNav: false }) : this.setState({ showSubNav: true })
 		const reload = () => location.reload()
@@ -28,12 +29,15 @@ class Nav extends React.Component {
 					<NavItem onClick={reload}>
 						<Icon small> cached </Icon>
 					</NavItem>
-						<NavItem href="/business">
-							Business View
-						</NavItem>
+					{location.pathname === '/business' ?
 						<NavItem href="threads">
 							Resident View
 						</NavItem>
+						:
+						<NavItem href="/business">
+							Business View
+						</NavItem>
+					}
 					<NavItem onClick={toggleSubNav}>
 						<Icon small> account_circle </Icon>
 					</NavItem>
@@ -43,7 +47,6 @@ class Nav extends React.Component {
 		)
 	}
 }
-
 
 const mapDispatch = dispatch => ({
   retrieveUser: () => dispatch(retrieveLoggedInUser()),
