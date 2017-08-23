@@ -5,6 +5,8 @@ const client = yelp.client(process.env.YELP_TOKEN);
 
 
 router.post('/restaurants', (req, res, next) => {
+	console.log(req.route.path);
+
 	const fullQuery = Object.assign(req.body, {
 		location: 'new york',
 		sort_by: 'distance',
