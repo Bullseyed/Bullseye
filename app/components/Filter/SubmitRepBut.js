@@ -48,4 +48,3 @@ const mapStateToProps = ({ demoData, zip, rests, bullseye, bType, radius }) => (
 });
 
 export default connect(mapStateToProps, { demographicThunk, addLngLat })(SubmitRepBut);
-
