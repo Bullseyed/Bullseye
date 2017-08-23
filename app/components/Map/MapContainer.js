@@ -19,6 +19,7 @@ class MapContainer extends React.Component {
       selectedMarker: {},
       restList: this.props.rests,
       selectedRestIndex: [],
+      selectedGreenIndex: [],
       zip:[]
       }
 
@@ -64,6 +65,11 @@ class MapContainer extends React.Component {
     const onMarkerClick = (rest, index) => {
       !this.state.selectedRestIndex.includes(index)
         ? this.setState({ selectedRestIndex: [index] })
+        : null
+    }
+    const onGreenMarkerClick = (rest, index) => {
+      !this.state.selectedGreenIndex.includes(index)
+        ? this.setState({ selectedGreenIndex: [index] })
         : null
     }
 
@@ -118,9 +124,11 @@ class MapContainer extends React.Component {
           radius={this.props.radius || 0}
           restList={this.props.rests}
           selectedRestIndex={this.state.selectedRestIndex}
+          selectedGreenIndex={this.state.selectedGreenIndex}
           markBullseye={markBullseye}
           zoom={this.props.map.zoom}
           threadList={this.props.threadList}
+          onGreenMarkerClick = {onGreenMarkerClick}
         />
     )
   }
