@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Button, Row, Input } from 'react-materialize'
 import { postComment } from '../../reducers/comment-reducer'
 import { connect } from 'react-redux'
 
-class CommentForm extends React.Component {
+class CommentForm extends Component {
 
 	constructor(props) {
 		super(props)
