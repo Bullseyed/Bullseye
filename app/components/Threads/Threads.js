@@ -20,10 +20,10 @@ import SingleThread from './SingleThread'
                     <Col l={1} style={{marginLeft: 5, marginRight: 5}}>
                       SCORE
                     </Col>
-                    <Col l={9} style={{paddingRight: 0}}>
-                      IDEA
+                    <Col l={8} style={{paddingRight: 0}}>
+                      BUSINESS
                     </Col>
-                    <Col l={1} style={{paddingLeft: 0}}>
+                    <Col l={1} offset='l1' style={{paddingLeft: 0}}>
                       POSTED
                     </Col>
           </Row>

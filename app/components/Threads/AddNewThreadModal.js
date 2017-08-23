@@ -56,7 +56,7 @@ class AddNewThreadModal extends Component {
   				/>
   			</Row>
   			<Button waves="light" modal='close' onClick={handleSubmitClick}>Submit</Button>
-        </Row>
+      </Row>
   	)
   }
 }
