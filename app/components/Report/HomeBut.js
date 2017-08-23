@@ -1,16 +1,14 @@
 import React from 'react'
 import { Button, Row } from 'react-materialize'
 import { Link } from 'react-router-dom'
-import { clearRest } from '../../reducers/rest-reducer'
+import { clearRests } from '../../reducers/rest-reducer'
 import { connect } from 'react-redux'
-
-
 
 const SubmitRepBut = (props) => {
   const backClickReset = () => {
-    props.clearRest()
+    props.clearRests()
   }
-  console.log(props)
+  console.log("!#(*!@#(!#(!@&#!&@*(#&!@#(!&@", props)
   return (
     <Row>
       <Link to='/business'>
@@ -24,4 +22,7 @@ const SubmitRepBut = (props) => {
   )
 }
 
-export default connect(null, { clearRest })(SubmitRepBut)
+const mapDispatchToProps = dispatch => ({
+  clearRests: () => dispatch(clearRests())
+})
+export default connect(null, mapDispatchToProps)(SubmitRepBut)
