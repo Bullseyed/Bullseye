@@ -18,6 +18,8 @@ class Nav extends React.Component {
   }
 
 	render() {
+		console.log(location)
+
 		const toggleSubNav = () => this.state.showSubNav ? this.setState({ showSubNav: false }) : this.setState({ showSubNav: true })
 		const reload = () => location.reload()
 

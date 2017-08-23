@@ -38,61 +38,57 @@ class LandingPage extends Component {
 					<Nav />
 				</Row>
 
-				<Row style={{textAlign:'center', paddingTop: '20px', marginBottom: '10px'}}>
-					<h style={{fontSize: 50, color: '#039be5'}}> I WANT TO </h>
+				<Row style={{width: '75%', margin: '0 auto', paddingTop: 25}}>
+					<Col>
+							<Col l={6}>
+								<Link to='/business' >
+									<Card
+										className='landingCard'
+										onMouseEnter={() => this.handleMouseEnter()}
+										onMouseLeave={() => this.handleMouseLeave()}
+										header={
+											<CardTitle
+												image='BizCard.png'
+												waves='light'
+												style={{ height: 300, width: '100%', opacity: this.state.hovered ? '.4' : '1'}}
+											/>
+										}
+									>
+										{ this.state.hovered
+											? <p style={{ fontSize:16, paddingTop: '12px' }} className='center-align'>{this.state.hoverText}</p>
+											: <p style={{ fontSize:18, paddingTop: '20px' }} className='center-align'>OPEN A BUSINESS</p>
+										}
+									</Card>
+								</Link>
+							</Col>
+
+							<Col l={6}>
+								<Link to='/threads'>
+									<Card
+										className='landingCard'
+										onMouseEnter={() => this.handleMouseEnter2()}
+										onMouseLeave={() => this.handleMouseLeave()}
+										header={
+											<CardTitle
+												image='ResCard.png'
+												waves='light'
+												style={{ height: 300, width: '100%', opacity: this.state.hovered2 ? '.4' : '1'}}
+											/>
+										}
+									>
+										{ this.state.hovered2
+											? <p style={{ fontSize:16, paddingTop: '12px' }} className='center-align'>{this.state.hoverText}</p>
+											: <p style={{ fontSize:18, paddingTop: '20px' }} className='center-align'>SUGGEST A BUSINESS</p>
+										}
+									</Card>
+								</Link>
+							</Col>
+					</Col>
 				</Row>
 
-				<Row>
-
-					<Col l={3} offset='l3'>
-						<Link to='/business' >
-							<Card
-								className='landingCard'
-								onMouseEnter={() => this.handleMouseEnter()}
-								onMouseLeave={() => this.handleMouseLeave()}
-								header={
-									<CardTitle
-										image='BizCard.png'
-										waves='light'
-										style={{ height: 200, width: '100%', opacity: this.state.hovered ? '.4' : '1'}}
-									/>
-								}
-							>
-								{ this.state.hovered
-									? <p style={{ fontSize:16, paddingTop: '8px' }} className='center-align'>{this.state.hoverText}</p>
-									: <p style={{ fontSize:18, paddingTop: '20px' }} className='center-align'>OPEN A BUSINESS</p>
-								}
-							</Card>
-						</Link>
-					</Col>
-
-					<Col l={3}>
-						<Link to='/threads'>
-							<Card
-								className='landingCard'
-								onMouseEnter={() => this.handleMouseEnter2()}
-								onMouseLeave={() => this.handleMouseLeave()}
-								header={
-									<CardTitle
-										image='ResCard.png'
-										waves='light'
-										style={{ height: 200, width: '100%', opacity: this.state.hovered2 ? '.4' : '1'}}
-									/>
-								}
-							>
-								{ this.state.hovered2
-									? <p style={{ fontSize:16, paddingTop: '8px' }} className='center-align'>{this.state.hoverText}</p>
-									: <p style={{ fontSize:18, paddingTop: '20px' }} className='center-align'>SUGGEST A BUSINESS</p>
-								}
-							</Card>
-						</Link>
-					</Col>
-
-				</Row>
-
-				<Row style={{textAlign:'center', margin: 'auto', width: '75%', marginTop: '60px'}}>
+				<Row style={{textAlign:'center', margin: 'auto', width: '75%', marginTop: '40px'}}>
 					<Col l={12} >
-							<span style={{fontSize: 28}}>
+							<span className='landingHeader' style={{fontSize: 30}}>
 								Bullseye helps small business owners find the perfect location for their venture. With a unique mix of business intelligence and crowdsourced data, making informed decisions has never been easier.
 							</span>
 					</Col>

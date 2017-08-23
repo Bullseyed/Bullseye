@@ -47,3 +47,7 @@
 .searchbar {
   backgroundColor: 'white';
 }
+
+.landingHeader {
+    font-family: 'Nunito', sans-serif;
+}
