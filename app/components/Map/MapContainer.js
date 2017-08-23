@@ -15,7 +15,6 @@ class MapContainer extends React.Component {
     this.state = {
       bounds: null,
       center: { lat: 40.753574, lng: -73.9835933 },
-      markers: [],
       selectedMarker: {},
       restList: this.props.rests,
       selectedRestIndex: [],
@@ -54,10 +53,13 @@ class MapContainer extends React.Component {
     // Set markers; set map center to first search result
     const mapCenter = markers.length > 0 ? markers[0].position : this.state.center;
 
+    console.log(markers)
+
+
     this.setState({
       center: mapCenter,
-      markers,
     });
+
   }
 
   render() {

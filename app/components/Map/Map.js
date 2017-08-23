@@ -50,16 +50,16 @@ const InitialMap = withGoogleMap(({ bounds, onPlacesChanged, onSearchBoxMounted,
 			center={center}
 			onClick={onMapClick}
 			onBoundsChanged={onBoundsChanged}
-			onMapMounted={onMapMounted}
 		>
 		<SearchBox
 			ref={onSearchBoxMounted}
 			bounds={bounds}
 			controlPosition={google.maps.ControlPosition.TOP_LEFT}
-			onPlacedChanged={onPlacesChanged}
+			onPlacesChanged={onPlacesChanged}
 			inputPlaceholder="Search here..."
 			className="searchbar"
 			inputStyle={INPUT_STYLE}
+
 		/>
 			<Marker
 				position={selectedMarker}
