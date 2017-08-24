@@ -23,19 +23,19 @@ const SubmitRepBut = (props) => {
       { (props.rests && props.radius && props.bType)
       ?
         <Link to="/report">
-          <Button
+          <Button large
             waves="light"
             onClick={fetchReports}
           >
-            Get Detailed Report
+            Get Report
           </Button>
         </Link>
-      : <Button
+      : <Button large
             waves="light"
             onClick={fetchReports}
             disabled
           >
-            Get Detailed Report
+            Get Report
           </Button>
       }
       </Row>
