@@ -3,10 +3,16 @@ import axios from 'axios';
 const GET_THREADS = 'GET_THREADS';
 const MAKE_THREAD = 'MAKE_THREAD';
 const UPVOTE = 'UPVOTE';
+const SORT_THREADS = 'SORT_THREADS';
 
 const getThreads = (threadList) => ({
   type: GET_THREADS,
   threadList,
+});
+
+export const sortThreads = (threadList) => ({
+  type: SORT_THREADS,
+  threadList
 });
 
 const makeThread = (threadObj) => ({
@@ -41,6 +47,8 @@ export const upvoteThread = (threadObj, userId) => dispatch => {
 function threadReducer(threads = [], action) {
   switch (action.type) {
     case GET_THREADS:
+      return action.threadList;
+    case SORT_THREADS:
       return action.threadList;
     case MAKE_THREAD:
       return [action.threadObj, ...threads]
