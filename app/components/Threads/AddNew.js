@@ -6,17 +6,24 @@ import { postThread } from '../../reducers/thread-reducer'
 import { Link } from 'react-router-dom'
 import AddNewThreadModal from './AddNewThreadModal'
 
-const AddNew = () => {
+const AddNew = (props) => {
 
   return (
-    <Col s={6} offset="s3">
       <Modal
         header='Propose a Business'
-        trigger={<Button waves='light'><i className='material-icons left'>add_location</i>Propose a Business</Button>}>
-        <AddNewThreadModal />
+        trigger=
+          {
+            props.bullseye.length
+            ? <Button large waves='light'><i className='material-icons left'>add_location</i>Propose a Business</Button>
+            : <Button large disabled waves='light'><i className='material-icons left'>add_location</i>Propose a Business</Button>
+
+          }>
+          <AddNewThreadModal />
       </Modal>
-    </Col>
   );
 }
 
-export default AddNew;
+const mapStateToProps = ({bullseye}) => ({ bullseye });
+
+export default connect(mapStateToProps, null)(AddNew);
+

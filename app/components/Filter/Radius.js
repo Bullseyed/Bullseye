@@ -52,7 +52,7 @@ const radius = (props) => {
 	}
 
 	return (
-		<Row>
+		<Row style={{marginBottom: 0}}>
 			<Col s={4}>
 				<Input id='radiusField' label="Radius" validate onChange={changeHandler}></Input>
 			</Col>

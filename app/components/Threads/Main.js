@@ -4,7 +4,6 @@ import MapContainer from '../Map/MapContainer';
 import Nav from '../Nav/Nav';
 import AddNew from './AddNew';
 import Threads from './Threads';
-import HowToUseBut from './HowToUseBut';
 
 
 const ThreadsMain = () => {
@@ -18,17 +17,19 @@ const ThreadsMain = () => {
         <Row>
           <Nav />
         </Row>
-        <Row>
-          <HowToUseBut/>
-        </Row>
-        <Row>
-          <AddNew />
-        </Row>
-        <Row>
-          <div style={{ overflow: 'auto', height: 450 }}>
-            <Threads />
-          </div>
-        </Row>
+      <div className="center-align">
+      <p style={{marginTop: 15, marginBottom: 0, color: '#af0000'}}>
+        Click the map to select location
+      </p>
+      <Row>
+        <AddNew />
+      </Row>
+      </div>
+      <Row>
+        <div style={{ overflow: 'auto', height: 450 }}>
+          <Threads />
+        </div>
+      </Row>
       </Col>
     </Row>
   );
