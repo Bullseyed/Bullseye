@@ -116,7 +116,7 @@ const InitialMap = withGoogleMap(({ bounds, onPlacesChanged, onSearchBoxMounted,
 			<Circle
 				center={selectedMarker}
 				radius={radius}
-				onClick={markBullseye}
+				onClick={onMapClick}
 				options={{
 					fillColor: `red`,
 					fillOpacity: 0.20,
