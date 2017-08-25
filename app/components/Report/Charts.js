@@ -8,6 +8,7 @@ import Bargraph from './BarGraph';
 const Charts = (props) => {
   return (
     <div>
+      <a href="#" style={{color: 'black'}}>
       <Row> <b> Statistics: </b> </Row>
       <Row className="valign-wrapper" height={'100%'}>
 
@@ -34,6 +35,7 @@ const Charts = (props) => {
           }
         </Col>
       </Row>
+      </a>
     </div>
   );
 
