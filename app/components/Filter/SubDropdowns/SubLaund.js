@@ -14,7 +14,7 @@ const SubLaund = (props) => {
 	}
 	return (
 		<Input s={12} type='select' label="Laundry Type" defaultValue='0' onChange={changeHandler}>
-			<option value='0'> All </option>
+						<option value='0' disabled='disabled'> Select Laundry Type </option>
 			<option value='1'>Dry Cleaning</option>
 			<option value='2'>Laundromat</option>
 		</Input>

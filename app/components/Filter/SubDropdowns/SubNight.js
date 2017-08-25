@@ -24,7 +24,7 @@ const SubNight = (props) => {
 
 	return (
 		<Input s={12} type='select' label="Nightlife Type" defaultValue='0' onChange={changeHandler}>
-			<option value='0'> All </option>
+						<option value='0' disabled='disabled'> Select Nightlife Type </option>
 			<option value='1'>Beer Garden</option>
 			<option value='2'>Sports Bar</option>
 			<option value='3'>Speakeasy</option>

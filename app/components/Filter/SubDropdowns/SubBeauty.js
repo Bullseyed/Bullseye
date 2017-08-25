@@ -19,8 +19,8 @@ const SubBeauty = (props) => {
 	}
 
 	return (
-		<Input s={12} type='select' label="Service Type" defaultValue='0' onChange={changeHandler}>
-			<option value='0'> All </option>
+		<Input s={12} type='select' label="Beauty Type" defaultValue='0' onChange={changeHandler}>
+			<option value='0' disabled='disabled'> Select Beauty Type </option>
 			<option value='1'>Hair Stylist </option>
 			<option value='2'>Men's Hair Stylist </option>
 			<option value='3'>Piercing</option>
