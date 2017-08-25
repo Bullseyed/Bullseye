@@ -2,44 +2,44 @@
 
 import React from 'react'
 import { withGoogleMap, GoogleMap, InfoWindow, Marker, Circle } from 'react-google-maps'
-import { Modal } from 'react-materialize'
+import { Modal, Button } from 'react-materialize'
 import SingleThread from '../Threads/SingleThread'
 import SearchBox from 'react-google-maps/lib/places/SearchBox'
 
-	const iconBullseye = {
-		url: '143958.png',
-		scaledSize: new google.maps.Size(22, 22),
-		origin: new google.maps.Point(0, 0), // origin
-		anchor: new google.maps.Point(11, 11) // anchor
-	};
-	const iconBusiness = {
-		url: '249689.png',
-		scaledSize: new google.maps.Size(18, 18),
-		origin: new google.maps.Point(0, 0), // origin
-		anchor: new google.maps.Point(0, 9) // anchor
-	};
-	const proposedBusiness = {
-		url: 'proposedmarker.png',
-		scaledSize: new google.maps.Size(18, 18),
-		origin: new google.maps.Point(0, 0), // origin
-		anchor: new google.maps.Point(0, 9) // anchor
-	};
+const iconBullseye = {
+	url: '143958.png',
+	scaledSize: new google.maps.Size(22, 22),
+	origin: new google.maps.Point(0, 0), // origin
+	anchor: new google.maps.Point(11, 11) // anchor
+};
+const iconBusiness = {
+	url: '249689.png',
+	scaledSize: new google.maps.Size(18, 18),
+	origin: new google.maps.Point(0, 0), // origin
+	anchor: new google.maps.Point(0, 9) // anchor
+};
+const proposedBusiness = {
+	url: 'proposedmarker.png',
+	scaledSize: new google.maps.Size(18, 18),
+	origin: new google.maps.Point(0, 0), // origin
+	anchor: new google.maps.Point(0, 9) // anchor
+};
 
-	const INPUT_STYLE = {
-	  boxSizing: `border-box`,
-	  MozBoxSizing: `border-box`,
-	  border: `1px solid transparent`,
-	  width: `240px`,
-	  height: `32px`,
-	  marginTop: `9px`,
-	  padding: `0 12px`,
-	  borderRadius: `1px`,
-	  boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
-	  fontSize: `14px`,
-	  outline: `none`,
-	  textOverflow: `ellipses`,
-		backgroundColor: 'white'
-	};
+const INPUT_STYLE = {
+	boxSizing: `border-box`,
+	MozBoxSizing: `border-box`,
+	border: `1px solid transparent`,
+	width: `240px`,
+	height: `32px`,
+	marginTop: `9px`,
+	padding: `0 12px`,
+	borderRadius: `1px`,
+	boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
+	fontSize: `14px`,
+	outline: `none`,
+	textOverflow: `ellipses`,
+	backgroundColor: 'white'
+};
 
 const InitialMap = withGoogleMap(({ bounds, onPlacesChanged, onSearchBoxMounted, onMapMounted, onBoundsChanged, markBullseye, restList, onMapClick, selectedMarker, radius, selectedRestIndex, onMarkerClick, center, zoom, threadList, selectedGreenIndex, onGreenMarkerClick }) => { //destructer
 
@@ -51,16 +51,16 @@ const InitialMap = withGoogleMap(({ bounds, onPlacesChanged, onSearchBoxMounted,
 			onClick={onMapClick}
 			onBoundsChanged={onBoundsChanged}
 		>
-		<SearchBox
-			ref={onSearchBoxMounted}
-			bounds={bounds}
-			controlPosition={google.maps.ControlPosition.TOP_LEFT}
-			onPlacesChanged={onPlacesChanged}
-			inputPlaceholder="Search here..."
-			className="searchbar"
-			inputStyle={INPUT_STYLE}
+			<SearchBox
+				ref={onSearchBoxMounted}
+				bounds={bounds}
+				controlPosition={google.maps.ControlPosition.TOP_LEFT}
+				onPlacesChanged={onPlacesChanged}
+				inputPlaceholder="Search here..."
+				className="searchbar"
+				inputStyle={INPUT_STYLE}
 
-		/>
+			/>
 			<Marker
 				position={selectedMarker}
 				icon={iconBullseye}
@@ -98,12 +98,12 @@ const InitialMap = withGoogleMap(({ bounds, onPlacesChanged, onSearchBoxMounted,
 								<Modal
 									trigger={
 										<div>
-												<h5>{thread.idea}</h5>
-												<h6>{thread.description}</h6>
-												<h6>click for details</h6>
+											<h5>{thread.idea}</h5>
+											<h6>{thread.description}</h6>
+											<Button small waves='light'> details</Button>
 										</div>
 									}>
-									<SingleThread thread={thread}/>
+									<SingleThread thread={thread} />
 									</Modal>
 							</InfoWindow>)
 						}
