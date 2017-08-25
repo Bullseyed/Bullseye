@@ -60,7 +60,7 @@ export const demographicThunk = (zipsArr, fipsCode = 36) => dispatch => {
             y: combArr[19] + combArr[20] + combArr[21]
           }]
         }, {
-          graphTitle: 'Sex Breakdown',
+          graphTitle: 'Gender Breakdown',
           data: [{
             x: 'male',
             y: combArr[4]
