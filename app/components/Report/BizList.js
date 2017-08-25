@@ -22,6 +22,7 @@ const BizList = (props) => {
 			</Row>
 			{props.rests.length &&
 				<div>
+					<a href="#" style={{color: 'black'}}>
 					{props.rests.map(rest => {
 						return rest.distance <= props.radius ?
 							<Row key={rest.id} style={{ paddingTop: 0, paddingBottom: 0, marginBottom: 0 }}>
@@ -60,6 +61,7 @@ const BizList = (props) => {
 							</Row>
 							: null
 					})}
+					</a>
 				</div>
 			}
 		</Row>
