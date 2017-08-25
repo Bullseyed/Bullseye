@@ -28,27 +28,26 @@ const report = [
   {
     latitude: 40.748037,
     longitude: -73.994637,
-    address: '229 W 28th St, New York, NY 10001, USA',
+    address: '110 W 40th St, New York, NY 10018, USA',
     radius: 1600,
     businessType: 'american restaurants',
     userId: 1,
-    createdAt: '2017-08-20 17:25:28.086-04'
   },
   {
-    latitude: 40.729698,
-    longitude: -73.985538,
+    latitude: 40.7536,
+    longitude: -73.9832,
     address: '318 E 11th St, New York, NY 10003, USA',
     radius: 1200,
     businessType: 'chinese restaurants',
     userId: 1
   },
   {
-    latitude: 40.725925,
-    longitude: -74.005623,
-    address: '148-150 Varick St, New York, NY 10013, USA',
+    latitude: 40.748037,
+    longitude: -73.994637,
+    address: '110 W 40th St, New York, NY 10018, USA',
     radius: 1600,
     businessType: 'american restaurants',
-    userId: 2
+    userId: 2,
   },
   {
     latitude: 40.75883,
