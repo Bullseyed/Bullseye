@@ -20,7 +20,7 @@ const SubRest = (props) => {
 
 	return (
 		<Input s={12} type='select' label="Restaurant Type" defaultValue='0' onChange={changeHandler}>
-			<option value='0'> All </option>
+						<option value='0' disabled='disabled'> Select Restaurant Type </option>
 			<option value='1'>American</option>
 			<option value='2'>Carribean</option>
 			<option value='3'>Chinese</option>

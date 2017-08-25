@@ -31,7 +31,8 @@ const report = [
     address: '229 W 28th St, New York, NY 10001, USA',
     radius: 1600,
     businessType: 'american restaurants',
-    userId: 1
+    userId: 1,
+    createdAt: '2017-08-20 17:25:28.086-04'
   },
   {
     latitude: 40.729698,
@@ -100,7 +101,8 @@ const thread = [
     scoreAuthors: [1, 2, 3],
     idea: 'Shoe Shine Tavern',
     description: 'A bar where you can get a drink while getting your loafers spitshined' ,
-    userId: 1
+    userId: 1,
+    createdAt: '2017-08-22 12:20:53.957-04'
   },
   {
     latitude: 40.75766,
@@ -109,7 +111,8 @@ const thread = [
     scoreAuthors: [1, 4, 5],
     idea: 'Lemongrass Boutique',
     description: 'A shop where everything is made out of lemongrass and is edible!!!',
-    userId: 2
+    userId: 2,
+    createdAt: '2017-08-21 12:20:53.957-04'
   },
   {
     latitude: 40.737112,
@@ -118,7 +121,8 @@ const thread = [
     scoreAuthors: [3, 2],
     idea: 'Vending Machine Art Gallery',
     description: 'No modern art in this community. Would love to see something cool and unique',
-    userId: 3
+    userId: 3,
+    createdAt: '2017-08-23 12:20:53.957-04'
   },
   {
     latitude: 40.706929,
@@ -127,7 +131,8 @@ const thread = [
     scoreAuthors: [4],
     idea: 'Yard Sale Supplies',
     description: 'I love having yard sales, but dont have a place to go get my labels, sticker, signs, bags, etc. Would love to have something like this near me',
-    userId: 4
+    userId: 4,
+    createdAt: '2017-08-24 12:20:53.957-04'
   },
   {
     latitude: 40.7286572,
@@ -136,7 +141,8 @@ const thread = [
     scoreAuthors: [],
     idea: 'Some Place That Will Not Look At Me With Disgust',
     description: "I'm so tired of walking into an establishment and being met with dirty looks. I don't care what business it is, I just want to be treated with respect",
-    userId: 4
+    userId: 4,
+    createdAt: '2017-08-20 12:20:53.957-04'
   },
   {
     latitude: 40.74998795,
@@ -145,25 +151,28 @@ const thread = [
     scoreAuthors: [],
     idea: 'A Licorice Liquor Store',
     description: 'Have you ever wondered why there are so many licorice flavored spirits from all over the world? Absinthe, Sambuca, Jaegermeister, etc... I have too! Would love to try them all right at home',
-    userId: 2
+    userId: 2,
+    createdAt: '2017-08-19 12:20:53.957-04'
   },
   {
     latitude: 40.76247107,
     longitude: -73.97386550,
-    score: 544,
+    score: 17,
     scoreAuthors: [],
-    idea: 'Trump Paraphernalia',
-    description: "I need a one stop shop for all things Trump in my life. Can't beat the location",
-    userId: 2
+    idea: 'Hardware Store',
+    description: "I need a one stop shop for all of my tooling and hardware needs. Home Depot is too far away. Can't beat the location",
+    userId: 2,
+    createdAt: '2017-08-17 12:20:53.957-04'
   },
   {
     latitude: 40.76247107,
     longitude: -73.978844,
-    score: 74,
+    score: 442,
     scoreAuthors: [],
     idea: 'DIY Beekeeping Essentials',
     description: "I've started beekeeping and every time the online stores ship the bees, the package arrives half empty.",
-    userId: 2
+    userId: 2,
+    createdAt: '2017-08-25 12:20:53.957-04'
   },
   {
     latitude: 40.750825,
@@ -172,7 +181,8 @@ const thread = [
     scoreAuthors: [],
     idea: 'Mugshot Photo Hut',
     description: "This place would be a neighborhood favorite in no time. It's such a simple and brilliant idea. Everyone loves ironic mugshots of themselves",
-    userId: 2
+    userId: 2,
+    createdAt: '2017-08-15 12:20:53.957-04'
   },
   {
     latitude: 40.750305,
@@ -180,90 +190,189 @@ const thread = [
     score: 80,
     scoreAuthors: [],
     idea: 'Pre-k',
-    description: "I really want a pre-school near my house.",
-    userId: 3
+    description: "I really want a pre-school near my house. We're expecting a boy and there aren't any in the area.",
+    userId: 3,
+    createdAt: '2017-08-18, 12:20:53.957-04'
   },
+  {
+  latitude:40.63089063912002,
+  longitude: -74.024977684021,
+  score: 50,
+  scoreAuthors: [],
+  idea: 'Donut Shop',
+  description: 'A donut shop that actually serves donuts made there',
+  userId: 1,
+  createdAt: '2017-08-17 12:20:53.957-04'
+},
+{
+  latitude: 40.6355804575753,
+  longitude: -74.02665138244629,
+  score: 17,
+  scoreAuthors: [],
+  idea: 'Tea Shop',
+  description: 'I would love a tea shop where I can get some exotic teas from around the world.' ,
+  userId: 1,
+  createdAt: '2017-08-14 12:20:53.957-04'
+},
+{
+  latitude: 40.62747077216544,
+  longitude: -74.02300357818604,
+  score: 21,
+  scoreAuthors: [],
+  idea: 'Ramen Shop',
+  description: `I'm tired of the cooking my own sad ramen. I want some real ramen around here.` ,
+  userId: 1,
+  createdAt: '2017-08-20 12:20:53.957-04'
+},
+{
+  latitude: 40.62323640852715,
+  longitude: -74.03098583221436,
+  score: 4,
+  scoreAuthors: [],
+  idea: 'Thai Restaurant',
+  description: `I love thai food but there isn't any around. I just want some decent thai food at a decent price.` ,
+  userId: 1,
+  createdAt: '2017-08-20 12:20:53.957-04'
+}
 ];
 
 const comment = [
   {
     comment: "I'm always down for more reasons to drink!",
     threadId: 1,
+    createdAt: '2017-08-22 12:20:53.957-04'
   },{
     comment: 'As long as it is closed on Sundays, I would be delighted to come by for a drink',
     threadId: 1,
+    createdAt: '2017-08-23 12:20:53.957-04'
   },{
     comment: 'Shine your own damn shoes. How about a hair salon instead?',
     threadId: 1,
+    createdAt: '2017-08-24 12:20:53.957-04'
   },{
     comment: 'I like this. I can go there to play AND eat - my two favorites!',
     threadId: 2,
+    createdAt: '2017-08-22 12:20:53.957-04'
   },{
     comment: 'We already have too many bubble tea and FROYO places. This would just be more of the same',
     threadId: 2,
+    createdAt: '2017-08-25 12:20:53.957-04'
   },{
     comment: 'Hmmm, maybe you can also have vending machines for sale? I would consider buying one if it was art.',
     threadId: 3,
+    createdAt: '2017-08-23 12:20:53.957-04'
   },{
     comment: "As a connoisseur of fine art since the early 80's, I would be tormented having to walk by such distaste every day",
     threadId: 3,
+    createdAt: '2017-08-24 12:20:53.957-04'
   },{
     comment: 'OMG YASSSSSS!!!!!1111!!11!!!',
     threadId: 3,
+    createdAt: '2017-08-25 12:20:53.957-04'
   },{
     comment: 'This is a terrible idea. Just go to a 99 cents store, gosh!',
     threadId: 4,
+    createdAt: '2017-08-24 12:20:53.957-04'
   },{
     comment: ':c',
     threadId: 5,
+    createdAt: '2017-08-20 12:20:53.957-04'
   },{
     comment: ':/',
     threadId: 5,
+    createdAt: '2017-08-22 12:20:53.957-04'
   },{
     comment: ':((((',
     threadId: 5,
+    createdAt: '2017-08-23 12:20:53.957-04'
   },{
     comment: 'D:',
     threadId: 5,
+    createdAt: '2017-08-20 12:20:53.957-04'
   },{
     comment: 'I hate licorice. EWWWWWW',
     threadId: 6,
+    createdAt: '2017-08-21 12:20:53.957-04'
   },{
     comment: "You forgot absinthe!",
     threadId: 6,
+    createdAt: '2017-08-20 12:20:53.957-04'
   },{
     comment: "Absinthe is the first on the list, idiot...",
     threadId: 6,
+    createdAt: '2017-08-21 12:20:53.957-04'
   },{
     comment: "Heck Yes. I know where I'd be spending my Christmas bonus",
     threadId: 7,
+    createdAt: '2017-08-17 12:20:53.957-04'
   },{
-    comment: "Not my president",
+    comment: "Call John for all your household needs (555)-344-2332",
     threadId: 7,
+    createdAt: '2017-08-18 12:20:53.957-04'
   },{
-    comment: "I think I'd post right outside and just people watch. Only in NY amirite?",
+    comment: "Much better than another Chipotle. Mom & Pop shops rule!",
     threadId: 7,
+    createdAt: '2017-08-18 12:20:53.957-04'
   },{
     comment: 'maybe it can also have a take a bee/leave a bee area? I can donate a bee or two',
     threadId: 8,
+    createdAt: '2017-08-25 12:20:53.957-04'
   },{
     comment: 'Is this even legal?',
     threadId: 8,
+    createdAt: '2017-08-25 12:20:53.957-04'
   },{
     comment: "This would make 0 money. I'd give it two months til bankrupcy.",
     threadId: 9,
+    createdAt: '2017-08-17 12:20:53.957-04'
   },{
     comment: "Yeah, this is a pretty bad idea",
     threadId: 9,
+    createdAt: '2017-08-20 12:20:53.957-04'
   },{
     comment: "uhh.....sounds like it's a good time to move out of the neighborhood",
     threadId: 10,
+    createdAt: '2017-08-20 12:20:53.957-04'
   },{
-    comment: "I'm in my 70's and wouldn't mind",
+    comment: "A couple of them closed in the past few years - might not be a money-maker in this neighborhood",
     threadId: 10,
+    createdAt: '2017-08-23 12:20:53.957-04'
   },{
-    comment: "But we already have like 4?",
+    comment: "I'm pretty sure we already have like 4",
     threadId: 10,
+    createdAt: '2017-08-23 12:20:53.957-04'
+  },{
+    comment: "OOOOhhhh donuutssss. Donuts <3333",
+    threadId: 11,
+    createdAt: '2017-08-18 12:20:53.957-04'
+  },{
+    comment: "True. No great donut shops in the neighborhood",
+    threadId: 11,
+    createdAt: '2017-08-20 12:20:53.957-04'
+  },{
+    comment: "It would be great if I could buy loose-leaf tea there in addition to buying a cup of tea",
+    threadId: 12,
+    createdAt: '2017-08-15 12:20:53.957-04'
+  },{
+    comment: "Eh, I just drink Lipton. Why waste extra moneh",
+    threadId: 12,
+    createdAt: '2017-08-17 12:20:53.957-04'
+  },{
+    comment: "I need more noodles in my life",
+    threadId: 13,
+    createdAt: '2017-08-21 12:20:53.957-04'
+  },{
+    comment: "A few of these here already, but none deliver. So please make it available on Seamless",
+    threadId: 13,
+    createdAt: '2017-08-24 12:20:53.957-04'
+  },{
+    comment: "Great Idea. We have Chinese and Sushi, but no Thai!",
+    threadId: 14,
+    createdAt: '2017-08-21 12:20:53.957-04'
+  },{
+    comment: "Eh, I just drink Lipton. Why waste extra money",
+    threadId: 14,
+    createdAt: '2017-08-23 12:20:53.957-04'
   }
 ];
 
