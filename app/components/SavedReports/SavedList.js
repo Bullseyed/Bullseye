@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom'
 import { addLngLat } from '../../reducers/report'
 import { fetchAddress } from '../../reducers/address-reducer'
 import { updateRadius } from '../../reducers/radius-reducer'
+import { markBullseye } from '../../reducers/bullseye-reducer'
 
 class SavedList extends React.Component {
 	constructor(props) {
@@ -32,7 +33,8 @@ class SavedList extends React.Component {
 			}
 
 			this.props.clearRests();
-			this.props.fetchAddress({latitude: matchedReport.latitude, longitude: matchedReport.longitude})
+			this.props.addBullseye([this.props.report.latitude, this.props.report.longitude])
+				this.props.fetchAddress({ latitude: matchedReport.latitude, longitude: matchedReport.longitude })
 			this.props.addLngLat(matchedReport.latitude, matchedReport.longitude)
 			this.props.updateRadius(Math.floor(+matchedReport.radius))
 			const rests = await this.props.fetchRests(yelpObj)
@@ -66,15 +68,17 @@ const mapStateToProps = storeState => ({
 	currentUser: storeState.currentUser,
 	rests: storeState.rests,
 	demoData: storeState.demoData,
-	zip: storeState.zip
+	zip: storeState.zip,
+	report: storeState.report
 })
 const mapDispatchToProps = dispatch => ({
+	addBullseye: (coordsArr, callback) => dispatch(markBullseye(coordsArr, callback)),
 	fetchReports: (currentUserId) => dispatch(fetchReports(currentUserId)),
 	demographicThunk: (zipArr, fipsCode) => dispatch(demographicThunk(zipArr, fipsCode)),
 	fetchZip: (locationObj) => dispatch(fetchZip(locationObj)),
 	fetchRests: (locationObj) => dispatch(fetchRests(locationObj)),
 	clearRests: () => dispatch(clearRests()),
-	addLngLat: (Lat, Lng) => dispatch(addLngLat(Lat,Lng)),
+	addLngLat: (Lat, Lng) => dispatch(addLngLat(Lat, Lng)),
 	fetchAddress: (locationObj) => dispatch(fetchAddress(locationObj)),
 	updateRadius: (int) => dispatch(updateRadius(int))
 })

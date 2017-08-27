@@ -15,7 +15,7 @@ class Location extends React.Component {
       locObj.longitude = +this.props.bullseyeLocation[1]
     }
     else {
-      locObj.latitude = this.props.report.latitude
+      locObj.latitude = +this.props.report.latitude
       locObj.longitude = +this.props.report.longitude
     }
 
