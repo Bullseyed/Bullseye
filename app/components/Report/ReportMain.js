@@ -26,7 +26,7 @@ const ReportMain = (props) => {
 				</Row>
 				<Row>
 				<Col l={7}>
-						<Streetview bullseye={props.bullseye}/>
+						<Streetview bullseye={props.bullseye} report={props.report}/>
 					</Col>
 					<Col l={5}>
 						<Row>
@@ -77,7 +77,8 @@ const ReportMain = (props) => {
 const mapStateToProps = storeState => ({
 	zips: storeState.zip,
 	demoData: storeState.demoData,
-	bullseye: storeState.bullseye
+	bullseye: storeState.bullseye,
+	report: storeState.report
 });
 
 export default connect(mapStateToProps, null)(ReportMain);
