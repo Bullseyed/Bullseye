@@ -20,7 +20,7 @@ const ReportMain = (props) => {
 				<MapContainer />
 			</Col>
 
-			<Col l={9} style={{ paddingRight: 0, paddingLeft: 0 }}>
+			<Col l={9} style={{ paddingRight: 0, paddingLeft: 0, height: '100vh' }}>
 				<Row>
 					<Nav />
 				</Row>
@@ -46,21 +46,21 @@ const ReportMain = (props) => {
 						</Row>
 					</Col>
 				</Row>
-				<Row>
+				<Row style={{marginBottom: 10}}>
 					<Col s={7}>
-						<div style={{ overflow: 'auto', height: 300 }}>
+						<div style={{ overflow: 'auto', height: '45vh' }}>
 							<BizList />
 						</div>
 					</Col>
 					<Col s={5}>
-						<Row>
-							<div style={{ overflow: 'auto', height: 300 }}>
+						<Row style={{marginBottom: 0}}>
+							<div style={{ overflow: 'auto', height: '45vh' }}>
 								<ChartModal demoData={props.demoData} />
 							</div>
 						</Row>
 					</Col>
 				</Row>
-				<Row>
+				<Row style={{marginBottom: 0}}>
 					<Col>
 						<HomeBut />
 					</Col>
