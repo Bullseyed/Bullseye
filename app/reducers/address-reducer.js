@@ -1,4 +1,3 @@
-import geocoding from 'reverse-geocoding';
 import axios from 'axios';
 
 const GET_ADDRESS = 'GET_ADDRESS'
@@ -14,21 +13,6 @@ export const fetchAddress = (latLongObj) => dispatch => {
   .then(res => res.data)
   .then(address => dispatch(getAddress(address.results)))
 }
-// export const fetchAddress = (latLongObj) => dispatch => {
-//   latLongObj.options = {
-//     protocol: 'https:'
-//   };
-//   console.log('howdy', latLongObj)
-//   geocoding.location(latLongObj, function (err, data){
-//     if (err) {
-//         console.log(err);
-//     } else {
-//       const address = data.results[0].formatted_address;
-//       const neighborhood  = data.results[0].address_components[2].long_name;
-//       dispatch(getAddress([address, neighborhood]));
-//     }
-//   });
-// };
 
 function addressReducer (address = [], action) {
   switch (action.type){
