@@ -13,13 +13,13 @@ class Location extends React.Component {
     if (this.props.bullseyeLocation[0]) {
       locObj.latitude = +this.props.bullseyeLocation[0]
       locObj.longitude = +this.props.bullseyeLocation[1]
+      this.props.fetchAddress(locObj);
     }
     else {
       locObj.latitude = +this.props.report.latitude
       locObj.longitude = +this.props.report.longitude
+      this.props.fetchAddress(locObj);
     }
-
-    this.props.fetchAddress(locObj);
   }
 
   render() {
@@ -27,7 +27,8 @@ class Location extends React.Component {
       <Row>
         <h>
           <b>Location: </b>
-          {`(${this.props.address[1]}) ${this.props.address[0]}`}
+          {this.props.address[0] && `(${this.props.address[4].address_components[0].long_name}) ${this.props.address[0].formatted_address}`}
+          {this.props.address[0] && console.log('yo', this.props.address)}
         </h>
       </Row>
     );

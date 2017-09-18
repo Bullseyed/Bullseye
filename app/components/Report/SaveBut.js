@@ -15,7 +15,7 @@ class SaveBut extends Component {
 
   saveReport() {
     this.setState({reportSaved: true})
-    const newReport = Object.assign({},this.props.report,{userId: this.props.currentUser.id, address: this.props.address[0]})
+    const newReport = Object.assign({},this.props.report,{userId: this.props.currentUser.id, address: this.props.address[0].formatted_address})
     this.props.postReport(newReport)
   }
 

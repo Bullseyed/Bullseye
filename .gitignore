@@ -17,6 +17,8 @@ npm-debug.log
 .DS_Store
 
 *.log
+
 #secret
+secret.js
 
 

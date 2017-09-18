@@ -21322,6 +21322,10 @@ var _reverseGeocoding = __webpack_require__(1233);
 
 var _reverseGeocoding2 = _interopRequireDefault(_reverseGeocoding);
 
+var _axios = __webpack_require__(79);
+
+var _axios2 = _interopRequireDefault(_axios);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var GET_ADDRESS = 'GET_ADDRESS';
@@ -21335,17 +21339,28 @@ var getAddress = function getAddress(address) {
 
 var fetchAddress = exports.fetchAddress = function fetchAddress(latLongObj) {
   return function (dispatch) {
-    _reverseGeocoding2.default.location(latLongObj, function (err, data) {
-      if (err) {
-        console.log(err);
-      } else {
-        var address = data.results[0].formatted_address;
-        var neighborhood = data.results[0].address_components[2].long_name;
-        dispatch(getAddress([address, neighborhood]));
-      }
+    _axios2.default.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + latLongObj.latitude + ',' + latLongObj.longitude + '&sensor=true').then(function (res) {
+      return res.data;
+    }).then(function (address) {
+      return dispatch(getAddress(address.results));
     });
   };
 };
+// export const fetchAddress = (latLongObj) => dispatch => {
+//   latLongObj.options = {
+//     protocol: 'https:'
+//   };
+//   console.log('howdy', latLongObj)
+//   geocoding.location(latLongObj, function (err, data){
+//     if (err) {
+//         console.log(err);
+//     } else {
+//       const address = data.results[0].formatted_address;
+//       const neighborhood  = data.results[0].address_components[2].long_name;
+//       dispatch(getAddress([address, neighborhood]));
+//     }
+//   });
+// };
 
 function addressReducer() {
   var address = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -81878,17 +81893,17 @@ var Location = function (_React$Component) {
       if (this.props.bullseyeLocation[0]) {
         locObj.latitude = +this.props.bullseyeLocation[0];
         locObj.longitude = +this.props.bullseyeLocation[1];
+        this.props.fetchAddress(locObj);
       } else {
         locObj.latitude = +this.props.report.latitude;
         locObj.longitude = +this.props.report.longitude;
+        this.props.fetchAddress(locObj);
       }
-
-      this.props.fetchAddress(locObj);
     }
   }, {
     key: 'render',
     value: function render() {
-      return _jsx(_reactMaterialize.Row, {}, void 0, _jsx('h', {}, void 0, _ref, '(' + this.props.address[1] + ') ' + this.props.address[0]));
+      return _jsx(_reactMaterialize.Row, {}, void 0, _jsx('h', {}, void 0, _ref, this.props.address[0] && '(' + this.props.address[4].address_components[0].long_name + ') ' + this.props.address[0].formatted_address, this.props.address[0] && console.log('yo', this.props.address)));
     }
   }]);
 
@@ -82042,7 +82057,7 @@ var SaveBut = function (_Component) {
     key: 'saveReport',
     value: function saveReport() {
       this.setState({ reportSaved: true });
-      var newReport = Object.assign({}, this.props.report, { userId: this.props.currentUser.id, address: this.props.address[0] });
+      var newReport = Object.assign({}, this.props.report, { userId: this.props.currentUser.id, address: this.props.address[0].formatted_address });
       this.props.postReport(newReport);
     }
   }, {
